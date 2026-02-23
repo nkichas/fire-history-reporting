@@ -1,0 +1,1349 @@
+IncidentName,CalendarYear,POOJurisdictionalUnit,Fire Type Protection Type,Fire Type,Fire Cause,Size Class,IncidentSize,FireDiscoveryDateTime
+Lower Geyser Bas ,1881,WYYNP,NA,NA,NA,NA,4587,NA
+Lake Hotel ,1889,WYYNP,NA,NA,NA,NA,3918,NA
+Madison Canyon ,1889,WYYNP,NA,NA,NA,NA,1821,NA
+Shoshone Lake ,1889,WYYNP,NA,NA,NA,NA,804,NA
+Shoshone Lake ,1889,WYYNP,NA,NA,NA,NA,5465,NA
+West Thumb ,1889,WYYNP,NA,NA,NA,NA,499,NA
+Norris Basin ,1893,WYYNP,NA,NA,NA,NA,892,NA
+Shoshone Lake ,1900,WYYNP,NA,NA,NA,NA,2532,NA
+Madison/gibbon ,1901,WYYNP,NA,NA,NA,NA,1728,NA
+Upper Gyser Basi ,1901,WYYNP,NA,NA,NA,NA,181,NA
+Flat Mt ,1910,WYYNP,NA,NA,NA,NA,0,NA
+Juniper Creek ,1910,WYYNP,NA,NA,NA,NA,2295,NA
+Mt Holmes ,1910,WYYNP,NA,NA,NA,NA,728,NA
+Cougar Creek ,1916,WYYNP,NA,NA,NA,NA,7281,NA
+Grizzly Peak ,1919,WYYNP,NA,NA,NA,NA,3115,NA
+Mirror Plateau ,1919,WYYNP,NA,NA,NA,NA,2118,NA
+Mountain Ash Ck ,1919,WYYNP,NA,NA,NA,NA,1174,NA
+Shoshone Geyser ,1919,WYYNP,NA,NA,NA,NA,582,NA
+Pitchstone ,1924,WYYNP,NA,NA,NA,NA,1416,NA
+Unknown ,1930,WYYNP,NA,NA,NA,NA,984,NA
+Chipmunk Creek ,1931,WYYNP,NA,NA,NA,NA,1199,NA
+Grayling ,1931,WYYNP,NA,NA,NA,NA,271,NA
+Heart Lake ,1931,WYYNP,NA,NA,NA,NA,0,NA
+Mist Cr ,1931,WYYNP,NA,NA,NA,NA,45,NA
+Mirror Plateau ,1932,WYYNP,NA,NA,NA,NA,1038,NA
+Fern Lake ,1933,WYYNP,NA,NA,NA,NA,878,NA
+Madison River ,1933,WYYNP,NA,NA,NA,NA,172,NA
+Mt. Ash Creek ,1933,WYYNP,NA,NA,NA,NA,129,NA
+Squaw Lake Fire ,1933,WYYNP,NA,NA,NA,NA,147,NA
+Cougar Creek ,1934,WYYNP,NA,NA,NA,NA,209,NA
+Madison #1 ,1934,WYYNP,NA,NA,NA,NA,272,NA
+Raven Creek ,1934,WYYNP,NA,NA,NA,NA,129,NA
+Mirror Pl #2 ,1935,WYYNP,NA,NA,NA,NA,185,NA
+Astringent Creek ,1939,WYYNP,NA,NA,NA,NA,1351,NA
+Tower Falls ,1939,WYYNP,NA,NA,NA,NA,142,NA
+Chipmunk Creek ,1940,WYYNP,NA,NA,NA,NA,1726,NA
+Moose Cr #1 ,1940,WYYNP,NA,NA,NA,NA,2955,NA
+Mtn Ash Creek ,1940,WYYNP,NA,NA,NA,NA,4354,NA
+Ousel Falls #2 ,1940,WYYNP,NA,NA,NA,NA,1568,NA
+Ranger Lake ,1940,WYYNP,NA,NA,NA,NA,0,NA
+Soda Butte #2 ,1940,WYYNP,NA,NA,NA,NA,387,NA
+Spirea Creek ,1940,WYYNP,NA,NA,NA,NA,2248,NA
+Grizzly Lake ,1942,WYYNP,NA,NA,NA,NA,155,NA
+Witch Cr ,1942,WYYNP,NA,NA,NA,NA,682,NA
+Duck Creek ,1943,WYYNP,NA,NA,NA,NA,352,NA
+Lewis Lake Outle ,1943,WYYNP,NA,NA,NA,NA,394,NA
+Lewis River ,1946,WYYNP,NA,NA,NA,NA,940,NA
+Lava Creek ,1949,WYYNP,NA,NA,NA,NA,780,NA
+Mirror Plateau ,1949,WYYNP,NA,NA,NA,NA,243,NA
+N Summit Lake ,1949,WYYNP,NA,NA,NA,NA,368,NA
+Specimen Creek ,1949,WYYNP,NA,NA,NA,NA,1468,NA
+Chipmunk R ,1953,WYYNP,NA,NA,NA,NA,77,NA
+White Lake ,1953,WYYNP,NA,NA,NA,NA,1486,NA
+Surprise Creek ,1956,WYYNP,NA,NA,NA,NA,266,NA
+Central Plateau ,1960,WYYNP,NA,NA,NA,NA,307,NA
+Clear Creek ,1960,WYYNP,NA,NA,NA,NA,65,NA
+Indian Creek ,1960,WYYNP,NA,NA,NA,NA,147,NA
+Miller Creek ,1960,WYYNP,NA,NA,NA,NA,113,NA
+Madison River ,1961,WYYNP,NA,NA,NA,NA,819,NA
+Buffalo Plateau ,1966,WYYNP,NA,NA,NA,NA,70,NA
+Otter Creek ,1966,WYYNP,NA,NA,NA,NA,39,NA
+ARTIST,1972,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,5/31/1972
+C R SOUTH,1972,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/9/1972
+C R WEST,1972,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/8/1972
+CENTRAL,1972,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/26/1972
+CODY,1972,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,2,8/5/1972
+CRAGS,1972,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/19/1972
+FIR RIDGE,1972,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,6/1/1972
+GARDNER,1972,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,9/18/1972
+GIBBON,1972,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/7/1972
+HEART,1972,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/8/1972
+HOT SPRING,1972,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/8/1972
+RIBBON,1972,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,B,5,7/13/1972
+ROOSEVELT,1972,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/18/1972
+SNAKE,1972,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/11/1972
+SPECIMEN,1972,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/27/1972
+SUSPENSION,1972,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,6/1/1972
+SWAN,1972,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/2/1972
+TERRACE,1972,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/3/1972
+TOWER,1972,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/27/1972
+VIRGINIA,1972,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/8/1972
+WHITE,1972,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/22/1972
+BEAVER PND,1974,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/16/1974
+CAMPANULA,1974,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/30/1974
+COTTONGRAS,1974,WYYNP,Naturally Ignited Wildland Fires,49,Natural,B,1,7/6/1974
+CRAGS,1974,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/31/1974
+DIVIDE LK,1974,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/30/1974
+DIVIDE LK2,1974,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/3/1974
+DOGSHEAD,1974,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/24/1974
+ELK PARK,1974,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/25/1974
+ELK POINT,1974,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/3/1974
+FAN CREEK,1974,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,E,470,7/14/1974
+GNEISS CK,1974,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/28/1974
+GRANT VIL,1974,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/28/1974
+GRANTS PAS,1974,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/28/1974
+INCINERATR,1974,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/14/1974
+KNOWLES FL,1974,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/28/1974
+LAKE BUTTE,1974,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/26/1974
+LONESTAR 2,1974,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,B,1,9/21/1974
+MADISON R,1974,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/8/1974
+MEADOW,1974,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/28/1974
+PITCHSTONE,1974,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/28/1974
+RICHARDS C,1974,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/30/1974
+SCHOOL,1974,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,4/16/1974
+SEDGE CREE,1974,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/1/1974
+SENTINEL,1974,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/24/1974
+SHOSHONE C,1974,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/27/1974
+SNAKE RIVE,1974,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,1,7/22/1974
+SPECIMEN,1974,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/1/1974
+TURBID LK,1974,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/10/1974
+xx NONE xx,1974,WYYNP,Naturally Ignited Wildland Fires,49,Natural,E,580,9/17/1974
+CHICKEN RI,1975,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/22/1975
+COLUMBINE,1975,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/9/1975
+CRAGS,1975,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/13/1975
+E WHITE LK,1975,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/28/1975
+ELEPHANT,1975,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,10/4/1975
+ENTRANCE,1975,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/6/1975
+FAWN,1975,WYYNP,Naturally Ignited Wildland Fires,49,Natural,B,1,9/7/1975
+FOREST LK,1975,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/6/1975
+FRANK ISL,1975,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,9/12/1975
+GARNET HIL,1975,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,9/16/1975
+GRIZZLY LK,1975,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/13/1975
+HEART LK 2,1975,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/6/1975
+LEHARDY,1975,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,10/4/1975
+LEWIS RVR,1975,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/6/1975
+MT HOLMES,1975,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/7/1975
+PLOVER PT,1975,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/8/1975
+SHALLOW CR,1975,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/28/1975
+SHEEPEATER,1975,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,B,2,9/10/1975
+TERN LAKE,1975,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/28/1975
+W WHITE LK,1975,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/28/1975
+WAPITI LK,1975,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/28/1975
+ARROW,1976,WYYNP,Naturally Ignited Wildland Fires,49,Natural,C,31,6/29/1976
+BRIDGE,1976,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/1/1976
+BRIMSTONE,1976,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/22/1976
+BROAD,1976,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/30/1976
+CASCADE,1976,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,9/10/1976
+COUGAR,1976,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/1/1976
+DEUCE,1976,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/30/1976
+DIVIDE,1976,WYYNP,Naturally Ignited Wildland Fires,49,Natural,F,1500,7/11/1976
+ELK,1976,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/17/1976
+FAITHFUL,1976,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/14/1976
+HOLE,1976,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,9/5/1976
+JACKS,1976,WYYNP,Naturally Ignited Wildland Fires,49,Natural,C,26,8/30/1976
+LANGFORD,1976,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/27/1976
+LOVELY,1976,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,9/2/1976
+MCBRIDE,1976,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/16/1976
+PAINTBRUSH,1976,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/30/1976
+PELICAN,1976,WYYNP,Naturally Ignited Wildland Fires,49,Natural,B,4,7/16/1976
+PELIGAN,1976,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/29/1976
+PHANTOM,1976,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/30/1976
+PITCHSTONE,1976,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/4/1976
+PLATEAU,1976,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/16/1976
+RIDDLE,1976,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/10/1976
+SOLFATARA,1976,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/29/1976
+STRAIGHT,1976,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,C,20,7/11/1976
+TERRACE,1976,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/13/1976
+TIMOTHY,1976,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/28/1976
+TONGUE,1976,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,10/12/1976
+BEACH,1977,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,9/16/1977
+BUFFALO,1977,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,9/15/1977
+CASCADE,1977,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/9/1977
+CHITTENDEN,1977,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,6/20/1977
+COTTONWOOD,1977,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,B,4,8/20/1977
+COWEN,1977,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/9/1977
+DELACY,1977,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,9/5/1977
+DOME,1977,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/13/1977
+GEODE,1977,WYYNP,Naturally Ignited Wildland Fires,49,Natural,B,1,8/4/1977
+GREBE,1977,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/26/1977
+LAVA,1977,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/22/1977
+LEWIS,1977,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/12/1977
+MADISON,1977,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/4/1977
+MARIPOSA,1977,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,9/13/1977
+OTTER,1977,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/12/1977
+PAINTER'S,1977,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,9/7/1977
+PITCHSTONE,1977,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/3/1977
+ROAD,1977,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/13/1977
+ROLLING,1977,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,9/11/1977
+SHOSHONE,1977,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,C,12,8/1/1977
+SURPRISE,1977,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/8/1977
+SUSPENSION,1977,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/21/1977
+TERRACE,1977,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/18/1977
+THUMB,1977,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/12/1977
+TROUT,1977,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,C,40,7/12/1977
+WASHBURN,1977,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/26/1977
+WEST,1977,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/20/1977
+AGATE,1978,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/26/1978
+CARNELIAN,1978,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/16/1978
+CHIP,1978,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/26/1978
+COTTONWOOD,1978,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,9/23/1978
+COUGAR,1978,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,1,8/22/1978
+CUB,1978,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/27/1978
+EAST,1978,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/29/1978
+FERN,1978,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,9/2/1978
+FORD,1978,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,9/2/1978
+FRANK,1978,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,B,2,7/25/1978
+GALLATIN,1978,WYYNP,Naturally Ignited Wildland Fires,49,Natural,B,6,7/25/1978
+GRIZZLY,1978,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/16/1978
+GROUSE,1978,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/17/1978
+HOLE,1978,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,10/26/1978
+JASPER,1978,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/16/1978
+MATCH,1978,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/10/1978
+MESA,1978,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,6/9/1978
+MYSTIC,1978,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/24/1978
+NOTCH,1978,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,2,8/11/1978
+OXBOW,1978,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,9/9/1978
+POWERLINE,1978,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/10/1978
+RIVERSIDE,1978,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/22/1978
+SAGE,1978,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,B,1,8/7/1978
+TERRACE,1978,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,B,2,7/18/1978
+AGATE,1979,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,B,1,7/19/1979
+ANTELOPE,1979,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,10/17/1979
+BEAVER HRT,1979,WYYNP,Naturally Ignited Wildland Fires,49,Natural,F,4900,7/20/1979
+BLACK,1979,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,6/13/1979
+BRIDGE,1979,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/18/1979
+CARTER,1979,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/20/1979
+CLEAR,1979,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,9/7/1979
+COOKE,1979,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/20/1979
+CREEK,1979,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/30/1979
+DEEP,1979,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/11/1979
+DELACY,1979,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,9/8/1979
+EVERTS,1979,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,9/5/1979
+FAIRY,1979,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/10/1979
+FENWICK,1979,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/29/1979
+FOLSOM,1979,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/20/1979
+FROSTBITE,1979,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,10/31/1979
+GALLATIN,1979,WYYNP,Naturally Ignited Wildland Fires,49,Natural,F,2650,7/1/1979
+GARNET,1979,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/10/1979
+LAVA,1979,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/14/1979
+LEHARDY,1979,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/19/1979
+LEWIS,1979,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,9/10/1979
+LODGE,1979,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/6/1979
+MALLARD CR,1979,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/15/1979
+MCBRIDE,1979,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,9/7/1979
+MIRROR,1979,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/20/1979
+MOSS,1979,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/21/1979
+MYSTIC,1979,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/10/1979
+NARROW,1979,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,2,7/21/1979
+OTTER,1979,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/20/1979
+PEBBLE 24,1979,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/28/1979
+PETRIFIED,1979,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/20/1979
+PIKA,1979,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/28/1979
+PITCHSTONE,1979,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,9/12/1979
+RAINY,1979,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,B,1,7/19/1979
+RED,1979,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/6/1979
+SLOUGH,1979,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/25/1979
+SNAKE,1979,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/30/1979
+SOLFATARA,1979,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/20/1979
+SPECIMEN,1979,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/30/1979
+SPIREA,1979,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/6/1979
+SPRING CRK,1979,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/12/1979
+STONE,1979,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/20/1979
+SURPRISE,1979,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/7/1979
+WASHBURN,1979,WYYNP,Naturally Ignited Wildland Fires,49,Natural,F,2950,7/20/1979
+WOLF,1979,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,9/17/1979
+ASTER,1980,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/4/1980
+BUFFALO,1980,WYYNP,Suppressed: Origin on NPS land; protected other federal agency,11,Natural,A,0.1,6/28/1980
+CACHE,1980,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/19/1980
+CORRAL,1980,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/8/1980
+COUGAR,1980,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/25/1980
+CYGNET,1980,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/23/1980
+DOUGLAS,1980,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/25/1980
+EVERTS,1980,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,10/19/1980
+FERRIS,1980,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/25/1980
+FOLSOM,1980,WYYNP,Naturally Ignited Wildland Fires,49,Natural,B,4,7/25/1980
+GIFFORD,1980,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/23/1980
+HIDDEN,1980,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/8/1980
+MAE WEST,1980,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/25/1980
+MAGPIE,1980,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/24/1980
+OXBOW,1980,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/29/1980
+PHANTOM,1980,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/31/1980
+PICNIC,1980,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/18/1980
+PITCHSTONE,1980,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/25/1980
+RAVEN,1980,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/23/1980
+RIDGE,1980,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/12/1980
+SLOUGH,1980,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/25/1980
+TERRACE,1980,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/18/1980
+TONGUE,1980,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/13/1980
+TURBID,1980,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/24/1980
+7-Mile,1981,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,N,NA,8/14/1981
+ARNICA,1981,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/8/1981
+ASTER,1981,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,9/10/1981
+ASTRINGENT,1981,WYYNP,Naturally Ignited Wildland Fires,49,Natural,E,921,8/31/1981
+BASIN,1981,WYYNP,Naturally Ignited Wildland Fires,49,Natural,D,115,8/11/1981
+BERYL,1981,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/26/1981
+BIRCH,1981,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,9/3/1981
+BOUNDARY,1981,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/18/1981
+BUFFALO,1981,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,5/5/1981
+CANYON,1981,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,9/5/1981
+CASCADE,1981,WYYNP,Naturally Ignited Wildland Fires,49,Natural,E,930,8/26/1981
+CLEAR,1981,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/27/1981
+Continental,1981,WYYNP,Naturally Ignited Wildland Fires,49,Natural,E,909,9/1/1981
+COYOTE,1981,WYYNP,Suppressed: Origin on NPS land; protected other federal agency,11,Natural,A,0.1,7/13/1981
+CREEK,1981,WYYNP,Naturally Ignited Wildland Fires,49,Natural,B,3,8/26/1981
+DELACY,1981,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/1/1981
+DIVIDE,1981,WYYNP,Naturally Ignited Wildland Fires,49,Natural,C,85,8/14/1981
+DUCK,1981,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/19/1981
+FOREST LK,1981,WYYNP,Naturally Ignited Wildland Fires,49,Natural,G,7396,8/29/1981
+FOUNTAIN,1981,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/26/1981
+GARDINER,1981,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,5/31/1981
+GNEISS,1981,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,E,335,8/23/1981
+GRANT,1981,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,2,9/3/1981
+GRIZZLY,1981,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/19/1981
+HOLMES,1981,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/19/1981
+Howard Eaton,1981,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/23/1981
+HUCKLEBERR,1981,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/27/1981
+IMPERIAL,1981,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/20/1981
+LEWIS,1981,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,9/10/1981
+MOUNTAIN,1981,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,2,7/26/1981
+NUTHATCH,1981,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/26/1981
+OBSERVATIO,1981,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,4,8/26/1981
+OUZEL,1981,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/8/1981
+PAYCHECK,1981,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/25/1981
+PELICAN,1981,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/20/1981
+PHANTOM,1981,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/25/1981
+PITCHSTONE,1981,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/7/1981
+PLATEAU,1981,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/24/1981
+PROPOSITIO,1981,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,3,8/25/1981
+RIDGE,1981,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/11/1981
+SEDGE,1981,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,4,9/4/1981
+SHELF,1981,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,9/5/1981
+SHOSHONE,1981,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/20/1981
+SLOUGH CRK,1981,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/8/1981
+SMOKEJUMPR,1981,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,1,8/19/1981
+SOUTH,1981,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,1,9/13/1981
+Specimen,1981,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/24/1981
+Spruce Forest,1981,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/22/1981
+STONE,1981,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/14/1981
+SULPHUR,1981,WYYNP,Naturally Ignited Wildland Fires,49,Natural,F,3216,8/2/1981
+SUMMIT,1981,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,9/4/1981
+SUPRISE,1981,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/19/1981
+SWAN,1981,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/26/1981
+TEPEE,1981,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,9/2/1981
+THUMB,1981,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/25/1981
+TOWER,1981,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/19/1981
+TURBID,1981,WYYNP,Naturally Ignited Wildland Fires,49,Natural,C,15,9/2/1981
+TWO OCEAN,1981,WYYNP,Naturally Ignited Wildland Fires,49,Natural,F,3170,8/31/1981
+URSUS,1981,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,1,8/27/1981
+WEST,1981,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/25/1981
+WINTER,1981,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/15/1981
+WITCH,1981,WYYNP,Naturally Ignited Wildland Fires,49,Natural,F,3481,8/25/1981
+WOLVERINE,1981,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/26/1981
+ABIATHAR,1982,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/28/1982
+BAUM,1982,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/16/1982
+BISCUIT,1982,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/15/1982
+BREEZE,1982,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,9/8/1982
+CAMP,1982,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/1/1982
+COLUMBINE,1982,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/11/1982
+CRYSTAL,1982,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/23/1982
+EVERTS,1982,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/8/1982
+GRANT,1982,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/7/1982
+GREBE,1982,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/15/1982
+IRIS,1982,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/17/1982
+LONE,1982,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,5/27/1982
+MUD,1982,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/20/1982
+NARROW,1982,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/18/1982
+OTTER,1982,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/21/1982
+SLOUGH,1982,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/18/1982
+SNAKE,1982,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/10/1982
+SUMMIT,1982,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/2/1982
+WEST,1982,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/14/1982
+WOLFE,1982,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/5/1982
+CHICKEN,1983,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/27/1983
+COTTONWOOD,1983,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.2,9/15/1983
+ELK,1983,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/10/1983
+FAWN,1983,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/23/1983
+FISHING,1983,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/30/1983
+HOWELL,1983,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,9/8/1983
+PICNIC,1983,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,5/2/1983
+BUFFALO,1984,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/7/1984
+CANYON,1984,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/5/1984
+DEEP,1984,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/5/1984
+HOT SPRING,1984,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/24/1984
+JOSEPH,1984,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/5/1984
+LEWIS,1984,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/29/1984
+LOVELY,1984,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/29/1984
+PELICAN,1984,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/26/1984
+RIDDLE,1984,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,9/11/1984
+SOLUTION,1984,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,9/11/1984
+SPECIMEN,1984,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/6/1984
+WILLOW,1984,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/10/1984
+AGATE,1985,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/28/1985
+ASTRINGE,1985,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/18/1985
+BALD KNOB,1985,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/27/1985
+BEAR,1985,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/27/1985
+BROAD,1985,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/8/1985
+BUFFALO,1985,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/9/1985
+CABIN,1985,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/27/1985
+CAMPANULA,1985,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/23/1985
+CASCADE,1985,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/21/1985
+CHITTENDEN,1985,WYYNP,Naturally Ignited Wildland Fires,49,Natural,B,0.3,8/26/1985
+CHRISTMAS,1985,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.2,8/26/1985
+CLOVER,1985,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/13/1985
+CREEK,1985,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/10/1985
+CUB,1985,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/10/1985
+DRUID,1985,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/28/1985
+FERN,1985,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/23/1985
+FOX,1985,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.2,9/8/1985
+GRANT,1985,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/19/1985
+HAREBELL,1985,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/26/1985
+HELLROARIN,1985,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/23/1985
+JUNCTION,1985,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,6/20/1985
+KLOOP,1985,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/25/1985
+LAMAR,1985,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/10/1985
+LOOKOUT,1985,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/27/1985
+MADISON,1985,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/24/1985
+MEADOW,1985,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/13/1985
+MIRROR,1985,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.2,6/23/1985
+MIST,1985,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/9/1985
+MUDKETTLE,1985,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/29/1985
+MUSHPOT,1985,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/29/1985
+NORRIS,1985,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/3/1985
+OTTER,1985,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.2,6/20/1985
+PASS,1985,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/27/1985
+PEBBLE,1985,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/6/1985
+PELICAN,1985,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/27/1985
+RAVEN,1985,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/27/1985
+RIDDLE,1985,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/1/1985
+SADDLE,1985,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/20/1985
+SEDGE,1985,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/27/1985
+SLOUGH,1985,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/27/1985
+SOLFATERA,1985,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/28/1985
+SOLUTION,1985,WYYNP,Naturally Ignited Wildland Fires,49,Natural,C,30,8/27/1985
+SPRINGS,1985,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/27/1985
+STONETOP,1985,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/27/1985
+SURPRISE,1985,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/30/1985
+TURBID,1985,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/10/1985
+UPPER RAV,1985,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/27/1985
+VERMILION,1985,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.2,8/26/1985
+VISITOR,1985,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/18/1985
+WAPITI,1985,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/1/1985
+WHITE,1985,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/27/1985
+ABIATHAR,1986,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/26/1986
+BACON,1986,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/28/1986
+BEACH,1986,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/28/1986
+BROAD,1986,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/2/1986
+BUFFALO,1986,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/2/1986
+BUNSEN,1986,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/1/1986
+CATHEDRAL,1986,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/2/1986
+CRAG,1986,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/27/1986
+CREEK,1986,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/2/1986
+EAST GATE,1986,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,10/8/1986
+EVERTS,1986,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/29/1986
+FERN,1986,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/27/1986
+GRAYLING,1986,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/22/1986
+GULL,1986,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/15/1986
+HEART,1986,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/27/1986
+LAMAR,1986,WYYNP,Naturally Ignited Wildland Fires,49,Natural,B,0.3,6/27/1986
+LAVA,1986,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/4/1986
+LOVELY,1986,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/2/1986
+MIRROR,1986,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/14/1986
+MIST,1986,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/14/1986
+NATURAL BR,1986,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/4/1986
+OXBOW,1986,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/2/1986
+PATROL,1986,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/2/1986
+PELICAN,1986,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/25/1986
+PROMINTORY,1986,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,B,0.5,8/28/1986
+QUEENS,1986,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,B,1,7/4/1986
+RAVEN,1986,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/2/1986
+SNAKE,1986,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,9/9/1986
+SOUTH ARM,1986,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/18/1986
+TIM,1986,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/10/1986
+TIMOTHY,1986,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/27/1986
+WHITE,1986,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/9/1986
+WRONG,1986,WYYNP,Naturally Ignited Wildland Fires,49,Natural,B,0.4,7/1/1986
+A LOOP,1987,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Human,A,0.1,8/6/1987
+ARROW,1987,WYYNP,Naturally Ignited Wildland Fires,49,Natural,B,1.5,9/25/1987
+ASTRINGENT,1987,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/23/1987
+BEAVER CR,1987,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Human,B,4,9/13/1987
+BROAD,1987,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/12/1987
+CENTRAL,1987,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/3/1987
+COLUMBINE,1987,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/18/1987
+COYOTE,1987,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/13/1987
+CYGNET,1987,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,9/1/1987
+FIREHOLE,1987,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,10/7/1987
+GNEISS,1987,WYYNP,Naturally Ignited Wildland Fires,49,Natural,B,0.5,6/30/1987
+GROUSE,1987,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/18/1987
+HEART RVR,1987,WYYNP,Naturally Ignited Wildland Fires,49,Natural,B,6.2,8/12/1987
+KNOWLES,1987,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,2/27/1987
+LAKE BUTTE,1987,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/18/1987
+LOPEZ,1987,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/10/1987
+MIRROR,1987,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/18/1987
+MIST,1987,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/15/1987
+MUD POT,1987,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,9/1/1987
+PELICAN SP,1987,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/18/1987
+PELICAN VA,1987,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/18/1987
+PLATEAU,1987,WYYNP,Naturally Ignited Wildland Fires,49,Natural,B,0.5,7/4/1987
+POLECAT,1987,WYYNP,Naturally Ignited Wildland Fires,49,Natural,E,948,8/7/1987
+SNAKE,1987,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,9/1/1987
+SO ASTRING,1987,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/23/1987
+TERN,1987,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/2/1987
+TOWER CR,1987,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/14/1987
+UNION,1987,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/17/1987
+UP PELICAN,1987,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/18/1987
+UPR FLINT,1987,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/18/1987
+UPR RAVEN,1987,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/18/1987
+WATER,1987,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/18/1987
+WEASEL,1987,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/10/1987
+WOLVERINE,1987,WYYNP,Naturally Ignited Wildland Fires,49,Natural,B,0.5,9/2/1987
+WYOMING CR,1987,WYYNP,Naturally Ignited Wildland Fires,49,Natural,B,2,8/10/1987
+AMETHYST,1988,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/5/1988
+BADGER,1988,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/1/1988
+BASIN,1988,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,3,7/31/1988
+BOUNDARY,1988,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/12/1988
+CLOVER,1988,WYYNP,Naturally Ignited Wildland Fires,49,Natural,G,10700,7/11/1988
+CLOVERMIST,1988,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,G,178891.2,7/9/1988
+COLONNADE,1988,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/28/1988
+CONE,1988,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/10/1988
+CONTINENTAL,1988,WYYNP,Naturally Ignited Wildland Fires,49,Natural,F,4240,7/29/1988
+COUGAR,1988,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/23/1988
+CRYSTAL,1988,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/12/1988
+CUB,1988,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,C,10,7/30/1988
+CUB,1988,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,C,25,7/30/1988
+Emerald,1988,WYYNP,Naturally Ignited Wildland Fires,49,Natural,E,744.174175,<Null>
+FACTORY,1988,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,C,10,7/24/1988
+FALLS,1988,WYYNP,Naturally Ignited Wildland Fires,49,Natural,D,140,7/12/1988
+FALLS,1988,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,F,4152.9,7/12/1988
+FAN,1988,WYYNP,Naturally Ignited Wildland Fires,49,Natural,F,3500,6/25/1988
+FAN,1988,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,G,18100,7/25/1988
+FERN,1988,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,F,1985,8/5/1988
+FOREST,1988,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/11/1988
+GRIZZLY,1988,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/12/1988
+HANCOCK,1988,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/28/1988
+HAREBELL,1988,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,C,26,7/23/1988
+HELLROARIN,1988,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,G,19625,8/15/1988
+HUCK,1988,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,G,25625,8/20/1988
+Lake Creek ,1988,WYYNP,Naturally Ignited Wildland Fires,49,Natural,F,1344.952456,<Null>
+LAVA,1988,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,C,70,7/5/1988
+LEHARDY,1988,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,10/2/1988
+LEWIS,1988,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/25/1988
+LOVELY,1988,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,F,1666.2,7/20/1988
+MADISON,1988,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,C,50,8/13/1988
+MAPLE,1988,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/25/1988
+MILLER,1988,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/5/1988
+MINK,1988,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,G,41550,7/11/1988
+MIST,1988,WYYNP,Naturally Ignited Wildland Fires,49,Natural,F,1527,7/9/1988
+NARROWS,1988,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,B,2,7/14/1988
+NORRIS,1988,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/16/1988
+NORTH FORK,1988,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,G,279149,7/22/1988
+OBSRVATION,1988,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,6/9/1988
+PASSAGE,1988,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/17/1988
+PEALE,1988,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,0.5,8/11/1988
+PELICAN,1988,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/10/1988
+RAVEN,1988,WYYNP,Naturally Ignited Wildland Fires,49,Natural,C,60,7/11/1988
+RED,1988,WYYNP,Naturally Ignited Wildland Fires,49,Natural,F,1000,7/1/1988
+RED,1988,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,G,18300,7/1/1988
+REDSHOSHON,1988,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,G,35511.1,6/23/1988
+RIDGE,1988,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,D,127,8/4/1988
+ROSE,1988,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,5/24/1988
+SHALLOW,1988,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,G,5945.6,7/31/1988
+SHOSHONE,1988,WYYNP,Naturally Ignited Wildland Fires,49,Natural,E,379,6/23/1988
+SHOSHONE,1988,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,G,27604.9,6/23/1988
+SNAKE,1988,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,G,79332,6/23/1988
+SO. MAPLE,1988,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,0.5,7/30/1988
+SOUR,1988,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,5,8/27/1988
+SPRING,1988,WYYNP,Naturally Ignited Wildland Fires,49,Natural,B,0.3,7/17/1988
+STORMCREEK,1988,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,G,18200,6/19/1988
+TERRACE,1988,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/31/1988
+TOWER,1988,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/15/1988
+WOLF LAKE,1988,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,G,93050,7/22/1988
+ASTRINGENT,1989,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,0.3,7/15/1989
+BLACKSAND,1989,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/12/1989
+BOUNDARY,1989,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,3,7/26/1989
+BROADCREEK,1989,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,5,9/5/1989
+CLEARCREEK,1989,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/4/1989
+CONE,1989,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/25/1989
+CORRAL,1989,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/31/1989
+CRAWFISH,1989,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/30/1989
+DIVIDE,1989,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.2,8/1/1989
+GLEN,1989,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/25/1989
+HOTMIX,1989,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,9/2/1989
+LAKE BUTTE,1989,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/25/1989
+LEWIS LAKE,1989,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,10/20/1989
+LITTLEBUFF,1989,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/10/1989
+MOOSE,1989,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/23/1989
+MUSHPOT,1989,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.2,7/26/1989
+PARKPOINT,1989,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/24/1989
+PELICAN,1989,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/25/1989
+PHILLIPS,1989,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/30/1989
+PIT,1989,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,6/14/1989
+SOLUTION,1989,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/12/1989
+SUMMIT,1989,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/23/1989
+SWAN LAKE,1989,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/24/1989
+WASHBURN,1989,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/15/1989
+7 MILE,1990,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/11/1990
+ALUM,1990,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/1/1990
+AMPHITHEA,1990,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/12/1990
+ANTELOPE,1990,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/12/1990
+ASTRINGENT,1990,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,6/26/1990
+BEULA,1990,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/25/1990
+BLACKTAIL,1990,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,9/15/1990
+BROAD,1990,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/16/1990
+BUFFALO,1990,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,6/27/1990
+BULL,1990,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,0.3,9/15/1990
+BURNT CRK,1990,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/19/1990
+CODY PEAK,1990,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,7,8/10/1990
+DALY  CRK,1990,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/27/1990
+DIVIDE,1990,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/13/1990
+ELECTRIC,1990,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.2,7/24/1990
+FALLS,1990,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/28/1990
+FAN CREEK,1990,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.2,8/8/1990
+FIREHOLE,1990,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/8/1990
+FLAT,1990,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/4/1990
+GIBBON,1990,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,9/2/1990
+GRAYLING,1990,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/27/1990
+MARY MTN,1990,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,2,7/19/1990
+MOOSE,1990,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/28/1990
+OUZEL,1990,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/1/1990
+PELICAN,1990,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,9/13/1990
+PHANTOM,1990,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/25/1990
+PITCHSTONE,1990,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,6/26/1990
+POWERLINE,1990,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/11/1990
+RED,1990,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/31/1990
+RESCUE CRK,1990,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,6/14/1990
+SLOUGH,1990,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/14/1990
+SPECIMEN,1990,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/23/1990
+SPRING CRK,1990,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/18/1990
+STONETOP,1990,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,C,15,7/12/1990
+SULPHUR,1990,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,6/26/1990
+SYLVAN,1990,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/7/1990
+TERRACE,1990,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/22/1990
+THUNDERER,1990,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/12/1990
+UNION,1990,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/27/1990
+WASHBURN,1990,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,D,220,7/5/1990
+WEST FORK,1990,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,9/13/1990
+WHITE,1990,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,2,7/1/1990
+ARTIST,1991,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/9/1991
+BEAVER CRK,1991,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/14/1991
+BLACKBUTTE,1991,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/2/1991
+CANYON,1991,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.2,10/17/1991
+CRYSTAL,1991,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/20/1991
+DIVIDE,1991,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/31/1991
+DRUID PEAK,1991,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/4/1991
+EAST FORK,1991,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,2,7/31/1991
+FISHING BR,1991,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,B,1,10/16/1991
+HEDGES,1991,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/7/1991
+INSPIRE,1991,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/8/1991
+JOSEPH,1991,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/2/1991
+LAKE BUTTE,1991,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/14/1991
+LAKE MAINT,1991,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,10/16/1991
+MADISON,1991,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/23/1991
+MARY BAY,1991,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/23/1991
+MCMINN,1991,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,6/30/1991
+MOSS,1991,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/14/1991
+OUZEL CRK,1991,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,2,7/15/1991
+PELICAN,1991,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,D,260,7/4/1991
+PITCHSTONE,1991,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/22/1991
+RED,1991,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/14/1991
+REESE,1991,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/1/1991
+RIDDLE,1991,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/19/1991
+ROBINSON,1991,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.2,8/31/1991
+SOLITARY,1991,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/1/1991
+STEPHENSCK,1991,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,6/22/1991
+TEPEE,1991,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/19/1991
+TURBID,1991,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/14/1991
+ASH,1992,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/12/1992
+ASTRINGENT,1992,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,9/3/1992
+BACON,1992,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/8/1992
+BARRONETTE,1992,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/21/1992
+BLACK,1992,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,6/25/1992
+BUFFALO,1992,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/29/1992
+COLUMBINE,1992,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/1/1992
+CONE,1992,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/19/1992
+COTTONWOOD,1992,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/21/1992
+EAST,1992,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,2,8/19/1992
+FLINT,1992,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/2/1992
+FOX,1992,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/21/1992
+GAME,1992,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/21/1992
+GIBBON,1992,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,6/12/1992
+ICEBOX,1992,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/17/1992
+ICELAKE,1992,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/13/1992
+LAKE JCT,1992,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/3/1992
+MIST,1992,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/3/1992
+MUD,1992,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/12/1992
+MUSH,1992,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/12/1992
+PLATEAU,1992,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,E,480,9/23/1992
+RAVEN,1992,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/19/1992
+RED,1992,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/16/1992
+SNAKE,1992,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/21/1992
+SODA,1992,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/3/1992
+SOUTH,1992,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/22/1992
+SPRING,1992,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/2/1992
+STORM,1992,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,1.5,8/9/1992
+WHITELAKE,1992,WYYNP,Naturally Ignited Wildland Fires,49,Natural,B,1.5,7/31/1992
+BEACH,1993,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/19/1993
+BONEYARD,1993,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Human,A,0.1,7/20/1993
+FROG II,1993,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/21/1993
+FROG ROCK,1993,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Human,A,0.1,7/2/1993
+HELLROARIN,1993,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/7/1993
+HOO DOO,1993,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,5/20/1993
+L.BUFFALO,1993,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,6/6/1993
+SLOUGH,1993,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/20/1993
+SULPHUR,1993,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/19/1993
+WEST,1993,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Human,B,0.5,10/4/1993
+ALUM,1994,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/18/1994
+AMETHYST,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/4/1994
+BAGGIE,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/24/1994
+BEARING,1994,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,10/2/1994
+BIRCH,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/29/1994
+BOILING,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/29/1994
+BRIM,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.2,7/13/1994
+BRIMSTONE,1994,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/5/1994
+BROAD,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/24/1994
+CABIN,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,6/26/1994
+CANYON,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,6/26/1994
+CASCADE,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,3,8/14/1994
+CRAWFISH,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,0.3,9/11/1994
+CREVICE,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/28/1994
+DECKARD,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,C,37,9/1/1994
+EASTGATE,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,1/30/1994
+EVERTS,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/25/1994
+FAIRY,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/24/1994
+FALLS,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,2.5,9/4/1994
+FERN,1994,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/5/1994
+FIRE,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/2/1994
+FOLSOM,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/25/1994
+GARDINER,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/4/1994
+GRANT,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/15/1994
+GRAYLING,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.2,8/28/1994
+GREBE,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,9/5/1994
+GREGG,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/10/1994
+HELLROARN,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/2/1994
+KEPLER,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/2/1994
+LAKE,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,10/2/1994
+LITTLE,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/30/1994
+LONE,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/13/1994
+LONESTAR,1994,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/9/1994
+NORRIS,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,9/2/1994
+PARKS EDGE,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,B,0.5,8/19/1994
+PEBBLE,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/5/1994
+PEBBLE 2,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/10/1994
+PELICAN,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,C,81,8/5/1994
+PHANTOM,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/21/1994
+PITCHSTONE,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/14/1994
+PLATEAU,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,0.3,8/21/1994
+RAINBOW,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,0.5,9/10/1994
+RAINBOW 2,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,0.8,9/11/1994
+RANGER,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.2,9/2/1994
+RAVEN,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,F,3000,8/12/1994
+ROBINSON,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,G,8482,9/9/1994
+SENTINEL,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,4,9/2/1994
+SHOSHONE,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,1,8/27/1994
+SNAKE,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/4/1994
+SPECIMEN,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/4/1994
+SPRING,1994,WYYNP,Suppressed: Origin on NPS land; protected other federal agency,11,Natural,B,0.3,7/29/1994
+SURPRISE,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,9/8/1994
+TELEMARK,1994,WYYNP,Suppressed: Origin on NPS land; protected other federal agency,11,Natural,B,6,8/6/1994
+TERN,1994,WYYNP,Naturally Ignited Wildland Fires,49,Natural,F,4728,8/6/1994
+THUMB,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/7/1994
+TREASURE,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,9/2/1994
+UNION,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,0.8,9/10/1994
+UNION 2,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,9/10/1994
+UNNAMED,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/5/1994
+VALLEY,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/15/1994
+WARM,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/25/1994
+WHITE CRK,1994,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/29/1994
+ASH,1995,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,B,0.3,8/4/1995
+BASIN,1995,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,9/7/1995
+BEAR,1995,WYYNP,Naturally Ignited Wildland Fires,49,Natural,B,1.3,8/6/1995
+BIGHORN,1995,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/17/1995
+BUTTE,1995,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,7/11/1995
+CASCADE,1995,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/6/1995
+COTTONWOOD,1995,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,9/10/1995
+CUB,1995,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/6/1995
+DOUGLAS,1995,WYYNP,Naturally Ignited Wildland Fires,49,Natural,B,1,8/7/1995
+EXHIBIT,1995,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/11/1995
+FROG ROCK,1995,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,6/24/1995
+HOT SPRING,1995,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/21/1995
+HUCKLEBRRY,1995,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/29/1995
+MEADOWS,1995,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/28/1995
+ARNICA,1996,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/9/1996
+BOILING,1996,WYYNP,Management Ignited Prescribed Fires,48,Human,B,1.5,6/26/1996
+CEMENT,1996,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/28/1996
+CHICKADEE,1996,WYYNP,Naturally Ignited Wildland Fires,49,Natural,B,6.7,8/27/1996
+COYOTE PNF,1996,WYYNP,Naturally Ignited Wildland Fires,49,Natural,F,4283,6/26/1996
+CREVICE,1996,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/2/1996
+DELACEY,1996,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/27/1996
+DIVIDE,1996,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/11/1996
+FALLS,1996,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,10/1/1996
+GRANT,1996,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/27/1996
+HELLROARIN,1996,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/16/1996
+LOST CREEK,1996,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,2,8/30/1996
+MARY,1996,WYYNP,Naturally Ignited Wildland Fires,49,Natural,C,13.4,8/24/1996
+PELICAN,1996,WYYNP,Naturally Ignited Wildland Fires,49,Natural,F,1570,8/11/1996
+RATHBONE,1996,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/28/1996
+RATHBONE 2,1996,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/28/1996
+SNOWSLIDE,1996,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,0.5,7/29/1996
+SOUTH BAY,1996,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/14/1996
+SPEAR,1996,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/21/1996
+SPRING,1996,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/28/1996
+WASHBURN,1996,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/29/1996
+CACHE,1997,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,9/7/1997
+CLAGETT,1997,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,9/10/1997
+ELKPARK,1997,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/25/1997
+LAMAR,1997,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,9/14/1997
+PELICAN,1997,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.2,7/9/1997
+QUARTZ,1997,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/27/1997
+SNAKESPRIN,1997,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,7/21/1997
+SULPHUR,1997,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,7/27/1997
+TROUT LAKE,1997,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/23/1997
+VERMILION,1997,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/30/1997
+WHITE PEAK,1997,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/19/1997
+AMETHYST,1998,WYYNP,Naturally Ignited Wildland Fires,49,Natural,B,2,9/1/1998
+BEARCUB,1998,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,8/7/1998
+BEAVERDAM,1998,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/28/1998
+COWAN,1998,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,9/7/1998
+COYOTE,1998,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/11/1998
+CRAGS,1998,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,8/16/1998
+LAMAR FORD,1998,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/14/1998
+ONE BOTTLE,1998,WYYNP,Naturally Ignited Wildland Fires,49,Natural,B,1,8/19/1998
+PELICAN,1998,WYYNP,Naturally Ignited Wildland Fires,49,Natural,B,2,8/26/1998
+RESCUE,1998,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,C,16,9/6/1998
+SNAKE,1998,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/27/1998
+SOUR,1998,WYYNP,Naturally Ignited Wildland Fires,49,Natural,D,105,8/30/1998
+TERRACE SP,1998,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,9/5/1998
+ABIATHAR,1999,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/7/1999
+beulah lk,1999,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/9/1999
+Bison,1999,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/23/1999
+Continenta,1999,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.2,7/24/1999
+HUCKLEBERR,1999,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,7/7/1999
+LEWIS,1999,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/16/1999
+MCBRIDE,1999,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,7/19/1999
+powerline,1999,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,B,3,10/4/1999
+RED,1999,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,8/6/1999
+SPORTSMAN,1999,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/18/1999
+STONETOP,1999,WYYNP,Naturally Ignited Wildland Fires,49,Natural,B,6,8/10/1999
+WHITE,1999,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,9/9/1999
+WRONG,1999,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/20/1999
+ALUM CREEK,2000,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,0.5,8/2/2000
+ASTRINGENT,2000,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/28/2000
+BASIN,2000,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/23/2000
+BEAVER DAM,2000,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/2/2000
+BOUNDARY,2000,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,D,265,8/15/2000
+BRIDGE,2000,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,C,10,8/2/2000
+CHITTENDON,2000,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,1,8/1/2000
+CYGNET,2000,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,6/5/2000
+ELEPHANT,2000,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,3,8/11/2000
+FIREHOLE,2000,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/15/2000
+FRED,2000,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,2,8/15/2000
+HANCOCK,2000,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/23/2000
+Headwater,2000,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/18/2000
+JONES PASS,2000,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,C,25,8/2/2000
+KNOTHEAD,2000,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/16/2000
+MALLARD,2000,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/15/2000
+MOOSE 1,2000,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,F,1212,8/15/2000
+MOOSE 2,2000,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,2,8/15/2000
+NINE,2000,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,0.5,8/3/2000
+PETRIFIED,2000,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/1/2000
+PLATEAU,2000,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,F,2760,8/16/2000
+SIGNAL,2000,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,0.5,8/2/2000
+SLATE,2000,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/4/2000
+Spring,2000,WYYNP,Suppressed: Origin on NPS land; protected other federal agency,11,Natural,B,5,8/15/2000
+SPRUCE,2000,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,2,8/13/2000
+STAR,2000,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,2,8/15/2000
+STONE,2000,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/19/2000
+SUBSTATION,2000,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,5/29/2000
+THUMB,2000,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,0.5,8/15/2000
+TRAILER,2000,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/12/2000
+TRAPPER,2000,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,0.5,8/2/2000
+TWOSMOKES,2000,WYYNP,Naturally Ignited Wildland Fires,49,Natural,B,2,7/18/2000
+UNION,2000,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/25/2000
+UNLUCKY,2000,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,F,2020,8/13/2000
+ALDER,2001,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/5/2001
+ARTHUR,2001,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,F,2850,7/29/2001
+ASH,2001,WYYNP,Naturally Ignited Wildland Fires,49,Natural,B,0.5,7/15/2001
+BADGER,2001,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,7/16/2001
+BARNSHOLE,2001,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,10/21/2001
+CARRINGTON,2001,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/4/2001
+CASCADE,2001,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/19/2001
+COLUMBINE,2001,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/3/2001
+CORRAL,2001,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/28/2001
+CRYSTAL,2001,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/3/2001
+DIVIDE,2001,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,9/15/2001
+DOUGLAS,2001,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.2,7/20/2001
+FALCON,2001,WYYNP,Suppressed: Origin not on NPS land; protection action taken to prevent spread to NPS lands,14,Natural,F,3760,8/7/2001
+FLAT,2001,WYYNP,Naturally Ignited Wildland Fires,49,Natural,C,10,9/14/2001
+FROGROCK,2001,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,6/7/2001
+HUCKLEBERR,2001,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,9/13/2001
+INKSPOT,2001,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,B,3,7/26/2001
+LEWIS,2001,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/5/2001
+LITTLE,2001,WYYNP,Naturally Ignited Wildland Fires,49,Natural,E,430,9/10/2001
+LITTLE JOE,2001,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,D,110,8/25/2001
+LONESTAR,2001,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,9/28/2001
+MAMPOWWOW,2001,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,6/26/2001
+MIDDLE,2001,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/4/2001
+MOOSE,2001,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,8/15/2001
+MUD,2001,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/28/2001
+OXBOW,2001,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,7/14/2001
+PHANTOM,2001,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/14/2001
+RED,2001,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.2,8/12/2001
+SEPULCHER,2001,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,4,8/20/2001
+SHOOTING,2001,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/17/2001
+SPRING,2001,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/28/2001
+STONE,2001,WYYNP,Naturally Ignited Wildland Fires,49,Natural,D,130,8/16/2001
+STONETOP,2001,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,9/15/2001
+SULPHUR,2001,WYYNP,Naturally Ignited Wildland Fires,49,Natural,F,3750,8/15/2001
+THUMB,2001,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,7/5/2001
+TURBID,2001,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/11/2001
+WHISTLER,2001,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/14/2001
+arm,2002,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.2,6/21/2002
+bacon,2002,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,6/27/2002
+basin,2002,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/26/2002
+big thumb,2002,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/23/2002
+bluff,2002,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,6/27/2002
+boiling,2002,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/17/2002
+brimstone,2002,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/27/2002
+broad,2002,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,G,9140,6/27/2002
+butte,2002,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/13/2002
+clear,2002,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/17/2002
+columbine,2002,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/24/2002
+cottonwood,2002,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,0.3,7/24/2002
+cub,2002,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/13/2002
+daly,2002,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.2,8/26/2002
+dividelake,2002,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,C,10,7/6/2002
+doane,2002,WYYNP,Naturally Ignited Wildland Fires,49,Natural,B,1,8/28/2002
+drainage,2002,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/28/2002
+druid,2002,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,6/27/2002
+dryad,2002,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/16/2002
+duck,2002,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/27/2002
+flat mtn,2002,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/27/2002
+forest,2002,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/18/2002
+fountain,2002,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,1,9/4/2002
+harebell,2002,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/26/2002
+howard,2002,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/23/2002
+humphries,2002,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/28/2002
+jones,2002,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/23/2002
+lehardy,2002,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/9/2002
+mcbride,2002,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,6/28/2002
+moose,2002,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,1,7/23/2002
+pebble,2002,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/28/2002
+phantom,2002,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/28/2002
+phlox,2002,WYYNP,Naturally Ignited Wildland Fires,49,Natural,F,3600,8/10/2002
+red,2002,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/23/2002
+robinson,2002,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,0.3,7/10/2002
+rocky,2002,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,9/5/2002
+sedge,2002,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/13/2002
+signal,2002,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/23/2002
+sink,2002,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/21/2002
+snake,2002,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/26/2002
+snowslide,2002,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/5/2002
+SOLFATARA,2002,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Human,A,0.1,6/18/2002
+stonetop,2002,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,6/27/2002
+washburn,2002,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/17/2002
+westgate,2002,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/8/2002
+yancey,2002,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/16/2002
+ALDER,2003,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/16/2003
+AMETHYST,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,E,315,7/15/2003
+ARNICA,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/19/2003
+BAKERSHOLE,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,E,506,7/5/2003
+BASIN,2003,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/9/2003
+BEULA,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/10/2003
+BIGGAME,2003,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/9/2003
+BISON,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,0.3,7/16/2003
+BOG,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,0.3,8/24/2003
+BOUNDARY,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,2.5,7/21/2003
+BRIMSTONE,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/10/2003
+BUCKET,2003,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,8/28/2003
+BUTTE,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/11/2003
+CARCASS,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/17/2003
+CAVE,2003,WYYNP,Naturally Ignited Wildland Fires,49,Natural,B,0.3,6/14/2003
+CC,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,0.3,8/22/2003
+CHICKADEE,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,0.5,8/9/2003
+CHICKEN,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/22/2003
+COLUMBINE,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/8/2003
+COTTON,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/29/2003
+CREEK,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/10/2003
+CREVICE,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/8/2003
+CROOKED,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/11/2003
+CUB,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,0.5,8/8/2003
+DALY,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/6/2003
+DIVIDE,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/9/2003
+DOANE,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/8/2003
+DUCKLING,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/8/2003
+EAST,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,G,18762,8/11/2003
+EASTSHORE,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/8/2003
+ELBERRY,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/16/2003
+FALLS,2003,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,8/11/2003
+FAN,2003,WYYNP,Naturally Ignited Wildland Fires,49,Natural,B,3.2,7/12/2003
+FISH,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,0.8,8/10/2003
+FRANK,2003,WYYNP,Naturally Ignited Wildland Fires,49,Natural,E,600,8/8/2003
+FREIGHT,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,5/16/2003
+GRENN POND,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,2,8/19/2003
+GRIZZLY,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,G,5000,8/2/2003
+HAREBELL,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/10/2003
+HEART,2003,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/15/2003
+HILL,2003,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,9/4/2003
+HOTSPRINGS,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/3/2003
+HUCK,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,0.5,8/15/2003
+INDIAN CRK,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/23/2003
+JUDO,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/2/2003
+LITTLE,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/10/2003
+MALLARD,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.2,8/8/2003
+MIDWAY,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/4/2003
+MOOSE,2003,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/8/2003
+MUSHPOT,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,9/3/2003
+PASS,2003,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,8/9/2003
+PEBBLE,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,B,0.3,9/24/2003
+PLUMBER,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/12/2003
+POLECAT,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/10/2003
+PUMICE,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,4,7/18/2003
+rathbone,2003,WYYNP,Suppressed: Origin not on NPS land; protection action taken to prevent spread to NPS lands,11,Natural,F,3010,8/20/2003
+RED,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.2,8/16/2003
+REPUBLIC,2003,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,8/26/2003
+RESCUE,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/9/2003
+RIVER,2003,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,8/10/2003
+ROCKY,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/14/2003
+signal,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/31/2003
+SLOPE,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/8/2003
+SMKJUMPER,2003,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,8/16/2003
+SNAKE,2003,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,8/3/2003
+SOUR,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.2,8/15/2003
+SPRTSMAN,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.2,8/5/2003
+SYLVAN,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/8/2003
+TERRACE,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/16/2003
+THUMB,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/10/2003
+TWISTED,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/11/2003
+TYSON,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,D,149,8/13/2003
+UNDINE,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/8/2003
+Union,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,E,768,8/14/2003
+WEASEL,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/10/2003
+WEST,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,6/14/2003
+WILLOW,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/12/2003
+WRONG,2003,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,0.3,9/3/2003
+BEAVER CRE,2004,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/4/2004
+BISCUIT,2004,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,6/14/2004
+BRIDGE,2004,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.2,8/4/2004
+BROKEN ANK,2004,WYYNP,Naturally Ignited Wildland Fires,49,Natural,C,28,8/13/2004
+BUTTE,2004,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/17/2004
+DELACY,2004,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,6/9/2004
+DOGSHEAD,2004,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/25/2004
+ELKTONGUE,2004,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,5/18/2004
+FACTORY,2004,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/25/2004
+FALLS,2004,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/8/2004
+FISHING BR,2004,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Human,A,0.1,6/9/2004
+FROGROCK,2004,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/1/2004
+GRANT,2004,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,6/9/2004
+HAY MEADOW,2004,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,8/17/2004
+HIGH LAKE,2004,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/16/2004
+ISA LAKE,2004,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,6/9/2004
+JUNCTION,2004,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,8/16/2004
+MADISON LK,2004,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/6/2004
+NORRIS,2004,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,6/9/2004
+PARK POINT,2004,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/4/2004
+PROMONTORY,2004,WYYNP,Naturally Ignited Wildland Fires,49,Natural,D,159,8/7/2004
+PROPOSITIO,2004,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/6/2004
+SLOUGH,2004,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/9/2004
+SOGGY SNAG,2004,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/17/2004
+WEASEL,2004,WYYNP,Suppressed: Origin on NPS land; protected non-federal agency,11,Natural,A,0.1,7/16/2004
+WOLF LAKE,2004,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/3/2004
+Bacon,2005,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/3/2005
+Butte,2005,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/8/2005
+Cascade,2005,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/21/2005
+Chickadee,2005,WYYNP,Naturally Ignited Wildland Fires,49,Natural,C,90,7/14/2005
+Cody Peak,2005,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,0.3,8/2/2005
+Elk Tongue,2005,WYYNP,Naturally Ignited Wildland Fires,49,Natural,C,33,8/10/2005
+Hills,2005,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/1/2005
+J Loop,2005,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/8/2005
+Meldrum,2005,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/27/2005
+Phantom,2005,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/16/2005
+Red,2005,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/22/2005
+Sabbath,2005,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,9/4/2005
+Tardy,2005,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,10/1/2005
+Vermillion,2005,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,8/8/2005
+Alice,2006,WYYNP,Natural Out: Origin on NPS land; protected by other federal agency,21,Natural,A,0.1,8/6/2006
+Big Thumb,2006,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/16/2006
+Bison Peak,2006,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/12/2006
+Dryad,2006,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/21/2006
+Falling,2006,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/24/2006
+Hellroaring,2006,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/27/2006
+Magpie,2006,WYYNP,Naturally Ignited Wildland Fires,49,Natural,F,3235,7/17/2006
+Natural Bridge,2006,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/11/2006
+Pumice,2006,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,1,8/21/2006
+Sandy,2006,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,7/3/2006
+Scorched,2006,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/31/2006
+Sefton,2006,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/24/2006
+Stinky,2006,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,F,1010,8/15/2006
+Summit,2006,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/25/2006
+BARNES,2007,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,5/19/2007
+Beaverdam,2007,WYYNP,Naturally Ignited Wildland Fires,49,Natural,F,1353,7/22/2007
+BIG GRASSY FIRE,2007,WYYNP,Naturally Ignited Wildland Fires,49,Natural,C,13,9/15/2007
+Black,2007,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,6/5/2007
+Boundary,2007,WYYNP,Suppressed: Origin not on NPS land; protection action taken to prevent spread to NPS lands,11,Human,A,0.2,8/26/2007
+Brown Trout,2007,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/4/2007
+CAVE FIRE,2007,WYYNP,Naturally Ignited Wildland Fires,49,Natural,D,219,9/9/2007
+CHICKEN FIRE,2007,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/6/2007
+Columbine,2007,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Human,A,0.1,6/3/2007
+Columbine 1,2007,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,G,18595,8/9/2007
+Cone,2007,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,9/22/2007
+ELEPHANT FIRE,2007,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/6/2007
+Feather,2007,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/14/2007
+Grouse,2007,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,8/17/2007
+Huckleberry,2007,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,C,40,8/11/2007
+Lookout,2007,WYYNP,Naturally Ignited Wildland Fires,49,Natural,B,7,8/26/2007
+Norris RX Fire,2007,WYYNP,Management Ignited Prescribed Fires,48,Human,C,65,9/15/2007
+Owl,2007,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,F,2810,7/20/2007
+Promontory NE,2007,WYYNP,Naturally Ignited Wildland Fires,49,Natural,E,980,8/9/2007
+Promontory NW,2007,WYYNP,Naturally Ignited Wildland Fires,49,Natural,E,590,8/9/2007
+Promontory South,2007,WYYNP,Naturally Ignited Wildland Fires,49,Natural,C,68,8/9/2007
+RATTLESNAKE,2007,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,4/18/2007
+RAVEN FIRE,2007,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,C,20,7/6/2007
+SOLFATARA,2007,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,B,0.3,7/1/2007
+SPECIMEN,2007,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,9/14/2007
+STONETOP,2007,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,9/21/2007
+Thistle,2007,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.2,8/16/2007
+WOLVERINE,2007,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,6/29/2007
+Ash,2008,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,C,10,9/28/2008
+Aster,2008,WYYNP,Naturally Ignited Wildland Fires,49,Natural,A,0.1,6/26/2008
+Crevice,2008,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,12/1/2008
+Elephant Back,2008,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,6/13/2008
+LeHardy,2008,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,G,10361,7/30/2008
+No Name,2008,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/11/2008
+Outlet,2008,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,C,10,9/22/2008
+RV,2008,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/5/2008
+Arnica,2009,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,G,10700,9/23/2009
+Butte,2009,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,D,180,8/30/2009
+Cascade,2009,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,7/26/2009
+Chaw Pass,2009,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,B,0.3,9/22/2009
+Corral,2009,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/2/2009
+Druid,2009,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,B,0.4,7/20/2009
+Fern,2009,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/4/2009
+Independence,2009,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/4/2009
+Lookout,2009,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,B,0.3,8/30/2009
+Meridian,2009,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,B,0.3,8/30/2009
+Moss,2009,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,B,0.3,7/25/2009
+Northshore,2009,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/13/2009
+Pebble,2009,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,5/30/2009
+Pocket Fire,2009,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/12/2009
+Rainbow,2009,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,C,15,9/14/2009
+Ram,2009,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,B,0.3,9/17/2009
+Rescue Fire,2009,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/29/2009
+Rock,2009,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,9/5/2009
+Thumb,2009,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,8/3/2009
+Washburn,2009,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,8/30/2009
+Antelope,2010,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,G,5510,9/14/2010
+Arthur 2,2010,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,D,200,8/18/2010
+Avalanche,2010,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,B,0.5,8/25/2010
+Beach,2010,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,E,520,7/18/2010
+Buffalo,2010,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/6/2010
+Doane,2010,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,B,0.3,7/11/2010
+Grandma,2010,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,4/22/2010
+Lava,2010,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/22/2010
+Lookout,2010,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,9/14/2010
+Recycle,2010,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/2/2010
+Slough Creek,2010,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,B,1,7/20/2010
+Bighorn,2011,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/20/2011
+Coyote,2011,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Natural,A,0.1,8/7/2011
+Devil,2011,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/5/2011
+Floating,2011,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,6/8/2011
+Gibbon,2011,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Natural,C,23.4,7/26/2011
+Grant,2011,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/24/2011
+Grouse,2011,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,7/12/2011
+Headwaters,2011,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,3,9/26/2011
+Heart,2011,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Natural,A,0.1,8/25/2011
+Huckleberry,2011,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Natural,B,1,8/25/2011
+Junction,2011,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Natural,A,0.1,8/7/2011
+Mud,2011,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,6/30/2011
+Ouzel,2011,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Natural,B,3,8/27/2011
+Pitchstone,2011,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Natural,A,0.1,8/30/2011
+Point,2011,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Natural,F,2000,8/25/2011
+Prospect,2011,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/26/2011
+Ribbon,2011,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,9/17/2011
+Sour,2011,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Natural,A,0.1,8/25/2011
+Specimen,2011,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/31/2011
+Trischman,2011,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,5.7,9/10/2011
+Weasel,2011,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,0.5,8/29/2011
+Agate,2012,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Natural,B,0.5,8/7/2012
+Beach 2,2012,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/27/2012
+Beaver,2012,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,6/5/2012
+Blacktail,2012,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,C,29,7/12/2012
+Camera,2012,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Natural,B,0.3,7/28/2012
+Canyon,2012,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,9/21/2012
+Cygnet,2012,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Natural,F,3540,8/10/2012
+Dewdrop,2012,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Natural,F,1498,7/27/2012
+Dewdrop 2,2012,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Natural,A,0.1,7/29/2012
+Elk Plaza,2012,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,10/16/2012
+Fan 1,2012,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,1,8/7/2012
+Fan 2,2012,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,0.3,8/7/2012
+Floating Island Lake,2012,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/3/2012
+Grant Pile Rx,2012,WYYNP,Management Ignited Prescribed Fires,48,Human,C,40,11/15/2012
+March,2012,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,3/6/2012
+Overpass,2012,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/21/2012
+Range,2012,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Natural,E,542,7/26/2012
+Shoshone,2012,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,1,8/4/2012
+Stephen's Creek Rx,2012,WYYNP,Management Ignited Prescribed Fires,48,Human,C,22,10/31/2012
+Swan,2012,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,4/24/2012
+Alder,2013,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Natural,F,4240,8/14/2013
+Alum,2013,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Natural,G,7299,8/14/2013
+Caldron,2013,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Natural,A,0.1,8/29/2013
+Druid,2013,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Natural,D,205,8/9/2013
+Lewis Falls,2013,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,6/13/2013
+Passage,2013,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Natural,B,1,8/15/2013
+Picnic,2013,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/30/2013
+Quadrant,2013,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,7/30/2013
+RV Park,2013,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/31/2013
+Shoshone,2013,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,9/17/2013
+Slough,2013,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/3/2013
+Snake,2013,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Natural,D,189,8/5/2013
+Stephen's Creek RX,2013,WYYNP,Management Ignited Prescribed Fires,48,Human,C,22,4/14/2013
+Teepee,2013,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,0.8,7/4/2013
+Weber,2013,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/27/2013
+West,2013,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/4/2013
+Fawn Pass Pile Rx,2014,WYYNP,Management Ignited Prescribed Fires,48,Human,B,9,6/23/2014
+Grouse,2014,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,8/14/2014
+Lake Pile Burn,2014,WYYNP,Management Ignited Prescribed Fires,48,Human,B,2,12/10/2014
+Landslide,2014,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,7/4/2014
+Line,2014,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/24/2014
+Norris Pile Rx,2014,WYYNP,Management Ignited Prescribed Fires,48,Human,B,2,10/29/2014
+Rescue Creek,2014,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,6/24/2014
+Specimen,2014,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/5/2014
+5L4,2015,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Natural,C,16,8/24/2015
+Bighorn,2015,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,9/12/2015
+Cathedral,2015,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Human,A,0.1,8/15/2015
+Firehole,2015,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,5/3/2015
+Frisbee,2015,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/25/2015
+Plumber,2015,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,9/10/2015
+Powerline,2015,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,5/16/2015
+Pumice,2015,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/21/2015
+Spruce,2015,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Natural,F,2556,9/9/2015
+Yankee,2015,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/3/2015
+Bighorn,2016,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,7/3/2016
+Black Butte,2016,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,0.7,7/2/2016
+Bluff,2016,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,9,6/28/2016
+Boundary,2016,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,D,192,8/15/2016
+Buffalo,2016,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Natural,G,13697.2,8/13/2016
+Central,2016,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Natural,F,2129,8/26/2016
+Cougar,2016,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/2/2016
+Dresser,2016,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/10/2016
+Fawn,2016,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Natural,F,2706,8/4/2016
+Golden,2016,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,6/14/2016
+Grayling,2016,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,5/26/2016
+Grayling 2,2016,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,0.9,8/17/2016
+Hornaday,2016,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/7/2016
+Jasper,2016,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Natural,B,1,9/4/2016
+Lamar Foot,2016,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,6/22/2016
+Mae West,2016,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Natural,A,0.1,10/2/2016
+Maple,2016,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Natural,G,51555.7,8/8/2016
+Otter,2016,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Natural,A,0.1,10/2/2016
+Petrified,2016,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Natural,A,0.1,9/4/2016
+Pocket,2016,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,0.5,8/10/2016
+Sand,2016,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/19/2016
+Spasm,2016,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/20/2016
+Talus,2016,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,9/12/2016
+Thumb,2016,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,1.1,8/15/2016
+Canyon,2017,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,7/17/2017
+Firehole,2017,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,9/8/2017
+Flat Mountain,2017,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/31/2017
+Marsh,2017,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,5/13/2017
+Midway,2017,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/19/2017
+Potts Basin,2017,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/29/2017
+Ribbon,2017,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/3/2017
+West Boundary,2017,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/28/2017
+Bacon Rind,2018,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Natural,G,5232,7/21/2018
+Basin Creek,2018,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Natural,C,32,8/10/2018
+Folsom,2018,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,8/4/2018
+Hayden,2018,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,7/10/2018
+Northeast Pile Rx,2018,WYYNP,Management Ignited Prescribed Fires,48,Human,B,5,10/1/2018
+Pow Wow,2018,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,9/12/2018
+Prospect,2018,WYYNP,Natural Out: Origin on NPS land; protected by NPS,21,Natural,A,0.1,8/24/2018
+Ray,2018,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/14/2018
+Terminal,2018,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,0.3,8/14/2018
+7 Mile Hole,2019,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Natural,A,0.1,7/17/2019
+Brimstone,2019,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Natural,D,217,8/26/2019
+Carnelian,2019,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Natural,A,0.1,8/17/2019
+Cinnabar Exclosure Rx,2019,WYYNP,Management Ignited Prescribed Fires,48,Human,C,17,10/16/2019
+Lake Stump,2019,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/26/2019
+North Entrance,2019,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,B,4.5,7/26/2019
+Northeast Entrance Pile Rx,2019,WYYNP,Management Ignited Prescribed Fires,48,Human,B,5,9/30/2019
+Observation Peak,2019,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Natural,A,0.1,7/30/2019
+Pollux,2019,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Natural,C,29,8/3/2019
+Raft Launch,2019,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,12/9/2019
+Roadside,2019,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/19/2019
+Sour Creek,2019,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/19/2019
+Wahb,2019,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Natural,B,0.5,9/1/2019
+Wyodaho,2019,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Natural,B,0.5,8/21/2019
+2H3,2020,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/17/2020
+Branding Iron,2020,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,9/13/2020
+Cutoff,2020,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/20/2020
+Gibbon,2020,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,9/24/2020
+Hancock,2020,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,9/21/2020
+Lone Star,2020,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Natural,F,4123,8/22/2020
+PICNIC,2020,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,8/11/2020
+SODA,2020,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/4/2020
+SOUR,2020,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/1/2020
+4E2,2021,<Null>,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/8/2021
+Beaver Lake,2021,<Null>,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/26/2021
+Corral,2021,<Null>,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,0.7,7/31/2021
+Divide Springs,2021,<Null>,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.25,7/1/2021
+ELK CREEK,2021,<Null>,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,6/25/2021
+Fossil,2021,<Null>,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/2/2021
+Gull,2021,<Null>,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/24/2021
+Hard Road,2021,<Null>,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/2/2021
+Rocky,2021,<Null>,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.2,8/1/2021
+South Bridge,2021,<Null>,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/3/2021
+Specimen Forks,2021,<Null>,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/7/2021
+Tele Meadows,2021,<Null>,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.25,8/2/2021
+Two Springs,2021,<Null>,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/22/2021
+Big Horn,2022,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Natural,B,5.55,9/27/2022
+Geode,2022,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,9/8/2022
+Glen,2022,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,9/8/2022
+Gray,2022,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/29/2022
+Obsidian,2022,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,7/20/2022
+Phantom Pitchstone,2022,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.1,9/6/2022
+Telemark,2022,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/17/2022
+Douglas Knob,2023,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Natural,A,0.1,9/12/2023
+Hitching Post,2023,WYYNP,Suppressed:  Origin on NPS land; not full or limited suppression response,14,Natural,B,0.5,7/27/2023
+Pup,2023,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,7/22/2023
+Site 9,2023,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,8/12/2023
+Yancey,2023,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.1,10/1/2023
+5E1,2024,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.01,7/20/2024
+Camp Creek,2024,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.25,7/23/2024
+Lovely,2024,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.01,9/4/2024
+Mile Post 17,2024,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.01,6/9/2024
+Mile Post 18,2024,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.01,7/23/2024
+Riverside,2024,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,C,11.3,9/4/2024
+Sheepeater,2024,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,0.5,7/19/2024
+Three Mile,2024,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.01,9/11/2024
+Triple M,2024,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.01,8/10/2024
+Wyodaho,2024,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,B,0.5,8/6/2024
+Ash,2025,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,,26,7/30/2025
+Beaver,2025,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,,0.01,8/25/2025
+Bow,2025,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,,0.07,8/18/2025
+Bus Barn,2025,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.01,7/12/2025
+Bus Barn 2,2025,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.01,7/13/2025
+Cascade MVA,2025,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.01,6/20/2025
+Cliff,2025,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,,1,7/17/2025
+Cone Cabin,2025,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,,15,8/15/2025
+Cub,2025,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,,0.1,7/28/2025
+Cutoff,2025,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,,0.3,7/30/2025
+Cygnet,2025,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,,0.1,8/19/2025
+Escarpment,2025,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,,22,8/15/2025
+Gibbon Picnic,2025,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.01,6/8/2025
+Lodge Cabin,2025,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.01,7/15/2025
+Mary,2025,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,,0.5,8/18/2025
+Memorial Day,2025,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,A,0.01,5/26/2025
+Moss Creek,2025,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,,0.5,8/4/2025
+Osprey,2025,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,,0.1,8/18/2025
+Petrified,2025,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,,0.01,9/21/2025
+Prismatic,2025,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.01,7/14/2025
+Ribbon,2025,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,,0.5,8/16/2025
+Riverdance,2025,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.01,6/9/2025
+Silver Scarf,2025,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,,2,7/23/2025
+South Cache,2025,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,,8,8/15/2025
+South Pitchstone,2025,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,,1,7/31/2025
+Terminal,2025,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.01,6/25/2025
+Trail Creek,2025,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,C,11,7/8/2025
+Triple 7,2025,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Human,A,0.2,7/6/2025
+West Gate,2025,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Unknown,A,0.01,6/3/2025
+Wrangler,2025,WYYNP,Suppressed: Origin on NPS land; protected NPS,11,Natural,,0.1,7/19/2025

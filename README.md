@@ -1,0 +1,1 @@
+This report summarizes annual fire season data (number of fires, fire size, fire cause, and types of management actions taken) across a singular year or multiple years in Yellowstone National Park.

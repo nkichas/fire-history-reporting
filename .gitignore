@@ -1,0 +1,11 @@
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+
+# HTML output files
+*.html
+
+# Mac / Windows junk
+.DS_Store
+Thumbs.db

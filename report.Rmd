@@ -1,0 +1,1839 @@
+---
+title: "Yellowstone Fire Statistics Reporting"
+author: "Nickolas Kichas"
+date: "2026-02-11"
+output: html_document
+runtime: shiny
+---
+
+# Purpose
+
+This report summarizes annual fire season data (number of fires, fire size, fire cause, and types of management actions taken) across a singular year or multiple years in Yellowstone National Park.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r install packages, include=FALSE}
+# ---- Install packages (if needed) ----
+
+# install.packages("boot")
+# install.packages("dplyr")
+# install.packages("DT")
+# install.packages("fs")
+# install.packages("FSA")
+# install.packages("ggplot2")
+# install.packages("ggrepel")
+# install.packages("here")
+# install.packages("htmltools")
+# install.packages("kableExtra")
+# install.packages("knitr")
+# install.packages("lubridate")
+# install.packages("multcompView")
+# install.packages("patchwork")
+# install.packages("plotly")
+# install.packages("purrr")
+# install.packages("shiny")
+# install.packages("stringr")
+# install.packages("stringdist")
+# install.packages("tidyverse")
+```
+
+```{r load packages, include=FALSE}
+# ---- Load packages ----
+library(boot)
+library(dplyr)
+library(DT)
+library(fs)
+library(FSA)
+library(ggplot2)
+library(ggrepel)
+library(here)
+library(htmltools)
+library(kableExtra)
+library(knitr)
+library(lubridate)
+library(multcompView)
+library(patchwork)
+library(plotly)
+library(purrr)
+library(reactable)
+library(shiny)
+library(stringr)
+library(stringdist)
+library(tidyverse)
+```
+
+```{r import data, include=FALSE}
+# ---- Identify working directory ----
+wDir <- here()
+```
+
+```{r load data, include=FALSE}
+# ---- Load data ----
+YELL_Fire <- read_csv(path(wDir, "GitHub/fire-history-reporting/data/YELL_Fires_2025.csv")) # 2025
+INFORM_Fire <- read_csv(path(wDir, "GitHub/fire-history-reporting/data/Yellowstone_INFORM_Incidents_2025.csv")) # 2025
+
+# For code diagnostics (will not resolve in Shiny runtime)
+#YELL_Fire <- read_csv(file = file.path(wDir, "Fire Statistics", "YELL_Fires_2025.csv"))
+#INFORM_Fire <- read_csv(file = file.path(wDir, "Fire Statistics", "Yellowstone_INFORM_Incidents_2025.csv"))
+
+# ---- Collect file date into new objects ----
+file_info <- file.info(path(wDir,"YELL_Fires_2025.csv"))
+data_date <- file_info$mtime
+formatted_data_date <- paste0(format(data_date, "%b %d"), ", ", format(data_date, "%Y"))
+```
+
+
+The following R output summarizes Yellowstone fire data that was last updated on: [`r formatted_data_date`]{style="color:red"}
+
+
+```{r clean data, include=FALSE}
+###############################
+#### Clean and Filter Data ####
+###############################
+
+# ---- Join together YELL Fire Record & INFORM Fire Record ----
+
+# Clean IncidentName for merging
+clean_name <- function(x) {
+  str_squish(str_to_upper(x))
+}
+
+# Normalize IncidentName BEFORE filtering and join
+YELL_Fire <- YELL_Fire %>%
+  mutate(IncidentName = clean_name(IncidentName))
+
+INFORM_Fire <- INFORM_Fire %>%
+  mutate(IncidentName = clean_name(IncidentName))
+
+# 1. Filter INFORM_Fire to remove blank Fire Cause
+INFORM_Fire <- INFORM_Fire %>%
+  filter(!is.na(`Fire Cause`) & trimws(`Fire Cause`) != "")
+
+# 2. Warn if duplicates exist in either dataset for join keys
+join_keys <- c("IncidentName", "CalendarYear")
+
+dup_YELL <- YELL_Fire %>%
+  count(across(all_of(join_keys))) %>%
+  filter(n > 1)
+
+dup_INFORM <- INFORM_Fire %>%
+  count(across(all_of(join_keys))) %>%
+  filter(n > 1)
+
+if (nrow(dup_YELL) > 0) {
+  warning("Duplicates found in YELL_Fire:\n",
+          paste(capture.output(print(dup_YELL)), collapse = "\n"))
+}
+if (nrow(dup_INFORM) > 0) {
+  warning("Duplicates found in INFORM_Fire:\n",
+          paste(capture.output(print(dup_INFORM)), collapse = "\n"))
+}
+
+# 3. Join datasets
+joined <- full_join(YELL_Fire, INFORM_Fire, by = join_keys, suffix = c(".yell", ".inform"))
+
+# Helper function to merge columns robustly, handling presence/absence of suffixes
+merge_cols <- function(df, colname) {
+  col_yell <- paste0(colname, ".yell")
+  col_inform <- paste0(colname, ".inform")
+  
+  if (col_yell %in% colnames(df) & col_inform %in% colnames(df)) {
+    dplyr::coalesce(df[[col_yell]], df[[col_inform]])
+  } else if (col_yell %in% colnames(df)) {
+    df[[col_yell]]
+  } else if (col_inform %in% colnames(df)) {
+    df[[col_inform]]
+  } else if (colname %in% colnames(df)) {
+    df[[colname]]
+  } else {
+    rep(NA, nrow(df)) # fallback if column does not exist
+  }
+}
+
+# 4. Use merge_cols() to combine all relevant columns safely
+YELL_Fire_Final <- joined %>%
+  mutate(
+    POOJurisdictionalUnit      = merge_cols(., "POOJurisdictionalUnit"),
+    `Fire Cause`               = merge_cols(., "Fire Cause"),
+    FireDiscoveryDateTime      = merge_cols(., "FireDiscoveryDateTime"),
+    FireOutDateTime            = merge_cols(., "FireOutDateTime"),
+    ContainmentDateTime        = merge_cols(., "ContainmentDateTime"),
+    ControlDateTime            = merge_cols(., "ControlDateTime"),
+    `Fire Cause General`       = merge_cols(., "Fire Cause General"),
+    `Fire Cause Specific`      = merge_cols(., "Fire Cause Specific"),
+    DetectionMethod            = merge_cols(., "DetectionMethod"),
+    `Fire Type Protection Type` = merge_cols(., "Fire Type Protection Type"),
+    `Fire Type`                = merge_cols(., "Fire Type"),
+    IncidentSize               = merge_cols(., "IncidentSize"),
+    Longitude                  = merge_cols(., "Longitude"),
+    Latitude                   = merge_cols(., "Latitude"),
+    FinalFireReportNarrative   = merge_cols(., "FinalFireReportNarrative")
+  ) %>%
+  select(
+    IncidentName,
+    CalendarYear,
+    FireDiscoveryDateTime,
+    FireOutDateTime,
+    ContainmentDateTime,
+    ControlDateTime,
+    `Fire Cause`,
+    `Fire Cause General`,
+    `Fire Cause Specific`,
+    DetectionMethod,
+    `Fire Type Protection Type`,
+    `Fire Type`,
+    IncidentSize,
+    Longitude,
+    Latitude,
+    POOJurisdictionalUnit,
+    FinalFireReportNarrative
+  )
+
+print(colnames(YELL_Fire_Final)) 
+
+YELL_Fire_Final <- YELL_Fire_Final %>%
+  filter(IncidentSize != 0) %>%
+  rename(Name = IncidentName,
+         Year = CalendarYear,
+         Owner = POOJurisdictionalUnit,
+         Tactic = `Fire Type Protection Type`,
+         Type = `Fire Type`,
+         Cause = `Fire Cause`,
+         Acres = IncidentSize,
+         Date = FireDiscoveryDateTime,
+         Date_Out = FireOutDateTime,
+         Contain_Date = ContainmentDateTime,
+         Control_Date = ControlDateTime) %>%
+  mutate(
+    Size_Class = case_when(
+      Acres > 0 & Acres <= 0.25 ~ "A",
+      Acres > 0.25 & Acres <= 9.99 ~ "B",
+      Acres >= 10 & Acres <= 99.9 ~ "C",
+      Acres >= 100 & Acres <= 299.9 ~ "D",
+      Acres >= 300 & Acres <= 999.9 ~ "E",
+      Acres >= 1000 & Acres <= 4999.9 ~ "F",
+      Acres >= 5000 ~ "G",
+      TRUE ~ "Unknown"
+    )
+  )
+
+# ---- Ensure Date is parsed properly ----
+YELL_Fire_Final$Date <- as.Date(YELL_Fire_Final$Date, format = "%m/%d/%Y")
+YELL_Fire_Final$Date_Out <- as.Date(YELL_Fire_Final$Date_Out, format = "%m/%d/%Y")
+YELL_Fire_Final$Contain_Date <- as.Date(YELL_Fire_Final$Contain_Date, format = "%m/%d/%Y")
+YELL_Fire_Final$Control_Date <- as.Date(YELL_Fire_Final$Control_Date, format = "%m/%d/%Y")
+
+# --- Write .csv file for merged dataset for use with Fire Statisitcs Reporting (Names) script ----
+#write.csv(YELL_Fire_Final, "YELL_Fire_Final_Merged_2025.csv")
+```
+
+
+### Select Year(s)
+
+```{r select year, include=TRUE, echo=FALSE}
+checkboxInput("include_1988", "Include 1988 (outlier year)", value = FALSE)
+
+selectInput("selected_year", 
+            "Select Year(s):", 
+            choices = sort(unique(YELL_Fire_Final$Year), decreasing = TRUE), 
+            selected = NULL, 
+            multiple = TRUE)
+```
+
+
+```{r select batch, include=TRUE, echo=FALSE}
+### Select by Batch (Most Recent X Years)
+batch_lengths <- c(5, 10, 20, 30, 40, 50)
+all_years <- sort(unique(YELL_Fire_Final$Year), decreasing = TRUE)
+max_year <- max(all_years)
+
+batch_choices <- list()
+for (len in batch_lengths) {
+  start_year <- max_year
+  end_year <- max(max_year - len + 1, min(all_years))
+  label <- paste0("Most recent ", len, " years (", start_year, "–", end_year, ")")
+  years <- all_years[all_years <= start_year & all_years >= end_year]
+  batch_choices[[label]] <- years
+}
+
+batch_choices[["Full Record (Post-1972)"]] <- sort(unique(YELL_Fire_Final$Year[YELL_Fire_Final$Year >= 1972]), decreasing = TRUE)
+batch_labels <- names(batch_choices)
+names(batch_labels) <- batch_labels
+
+selectInput("selected_batch", 
+            "Select Multi-Year Group (5–50 yrs):", 
+            choices = c("None" = "", batch_labels),
+            selected = "",
+            multiple = FALSE)
+```
+
+
+```{r sync inputs, include=FALSE}
+observeEvent(input$selected_year, {
+  if (!is.null(input$selected_year) && length(input$selected_year) > 0) {
+    updateSelectInput(session, "selected_batch", selected = "")
+  }
+})
+
+observeEvent(input$selected_batch, {
+  if (!is.null(input$selected_batch) && input$selected_batch != "") {
+    updateSelectInput(session, "selected_year", selected = character(0))
+  }
+})
+
+selected_years <- reactive({
+  has_year <- !is.null(input$selected_year) && length(input$selected_year) > 0
+  has_batch <- !is.null(input$selected_batch) && input$selected_batch != "" && input$selected_batch %in% names(batch_choices)
+
+  years <- NULL
+  if (has_year && !has_batch) {
+    years <- input$selected_year
+  } else if (has_batch && !has_year) {
+    years <- batch_choices[[input$selected_batch]]
+  }
+
+  # Exclude 1988 unless toggle is on
+  if (!is.null(years) && !input$include_1988) {
+    years <- years[years != 1988]
+  }
+
+  years
+})
+```
+
+
+### Year(s) Selected
+
+```{r summary header, include=TRUE, echo=FALSE}
+renderUI({
+  yrs <- sort(as.numeric(selected_years()))
+  if (is.null(yrs) || length(yrs) == 0) {
+    return(tags$div(style = "color: red; font-style: italic;",
+                    "Please select either individual year(s) or a year group to view results."))
+  }
+
+  # Check if selection came from a batch
+  is_batch <- input$selected_batch != "" && input$selected_batch %in% names(batch_choices)
+
+  year_text <- if (is_batch) {
+    paste0(min(yrs), "–", max(yrs))
+  } else if (length(yrs) == 1) {
+    paste(yrs)
+  } else {
+    paste(yrs, collapse = ", ")
+  }
+
+  tags$h4(
+    style = "color: orange; font-weight: bold;",
+    paste("Showing results for:", year_text,
+          sprintf("(%d year%s selected)", length(yrs), ifelse(length(yrs) > 1, "s", "")))
+  )
+})
+```
+
+
+--- 
+
+## Number of Fires and Acres Burned
+
+```{r full record plotly outputs, include=FALSE}
+### Create full record plots in a separate chunk
+output$hist_acres <- renderPlotly({
+  req(input$selected_batch == "Full Record (Post-1972)")
+
+  df <- YELL_Fire_Final %>%
+    filter(Year %in% batch_choices[["Full Record (Post-1972)"]]) %>%
+    { if (!input$include_1988) filter(., Year != 1988) else . } %>%
+    group_by(Year) %>%
+    summarise(Total_Acres = sum(suppressWarnings(as.numeric(Acres)), na.rm = TRUE))
+
+  max_y <- quantile(df$Total_Acres, 0.95, na.rm = TRUE) * 1.1
+
+  df <- df %>%
+    mutate(Label = case_when(
+      Year == 2016 ~ paste0(Year, "*"),
+      Year == 1988 & input$include_1988 ~ paste0(Year, "*"),
+      TRUE ~ as.character(Year)
+    ))
+
+  p <- ggplot(df, aes(x = factor(Label, levels = Label), y = Total_Acres,
+                      text = paste0("Year: ", Year, "<br>Total Acres: ", round(Total_Acres, 0)))) +
+    geom_col(fill = "#F4A261") +
+    labs(x = "Year", y = "Total Acres Burned", caption = "*Capped or annotated year for readability") +
+    theme_minimal(base_size = 16) +
+    theme(axis.text.x = element_text(angle = 90, hjust = 1),
+          axis.title.x = element_text(face = "bold", size = 14), 
+          axis.title.y = element_text(face = "bold", size = 14)) +
+    coord_cartesian(ylim = c(0, max_y))
+
+  ggplotly(p, tooltip = "text")  
+  
+})
+
+output$hist_fires <- renderPlotly({
+  req(input$selected_batch == "Full Record (Post-1972)")
+
+  df <- YELL_Fire_Final %>%
+    filter(Year %in% batch_choices[["Full Record (Post-1972)"]]) %>%
+    { if (!input$include_1988) filter(., Year != 1988) else . } %>%
+    count(Year, name = "Fire_Count")
+
+  p <- ggplot(df, aes(x = factor(Year), y = Fire_Count,
+                      text = paste0("Year: ", Year, "<br>Fires: ", Fire_Count))) +
+    geom_col(fill = "#E76F51") +
+    labs(x = "Year", y = "Number of Fires") +
+    theme_minimal(base_size = 16) +
+    theme(axis.text.x = element_text(angle = 90, hjust = 1),
+          axis.title.x = element_text(face = "bold", size = 14), 
+          axis.title.y = element_text(face = "bold", size = 14))
+
+  ggplotly(p, tooltip = "text") 
+  
+})
+```
+
+
+```{r summary header for summary table, include=TRUE, echo=FALSE}
+renderUI({
+  yrs <- sort(as.numeric(selected_years()))
+  if (is.null(yrs) || length(yrs) == 0) {
+    return(tags$div(style = "color: red; font-style: italic;",
+                    "Please select either individual year(s) or a year group to view results."))
+  }
+
+  # Check if selection came from a batch
+  is_batch <- input$selected_batch != "" && input$selected_batch %in% names(batch_choices)
+
+  year_text <- if (is_batch) {
+    paste0(min(yrs), "–", max(yrs))
+  } else if (length(yrs) == 1) {
+    paste(yrs)
+  } else {
+    paste(yrs, collapse = ", ")
+  }
+
+  tags$h4(
+    style = "color: orange; font-weight: bold;",
+    paste("Showing results for:", year_text,
+          sprintf("(%d year%s selected)", length(yrs), ifelse(length(yrs) > 1, "s", "")))
+  )
+})
+```
+
+
+```{r total acres, include=TRUE, echo=FALSE}
+# --- Helper function to calculate mode ---
+get_mode <- function(x) {
+  ux <- na.omit(unique(x))
+  ux[which.max(tabulate(match(x, ux)))]
+}
+
+# --- Reactive plot data frame ---
+plot_df_reactive <- reactive({
+  yrs <- selected_years()
+  req(yrs)
+  
+  df <- YELL_Fire_Final %>%
+    filter(Year %in% yrs) %>%
+    mutate(Acres = suppressWarnings(as.numeric(Acres))) %>%
+    group_by(Year) %>%
+    summarise(
+      Total_Acres = sum(Acres, na.rm = TRUE),
+      Fire_Count = n(),
+      .groups = "drop"
+    ) %>%
+    mutate(Label = case_when(
+      Year == 2016 ~ paste0(Year, "*"),
+      Year == 1988 & input$include_1988 ~ paste0(Year, "*"),
+      TRUE ~ as.character(Year)
+    ))
+  
+  return(df)
+})
+
+# --- Summary table ---
+summary_df <- reactive({
+  df <- YELL_Fire_Final %>%
+    filter(Year %in% selected_years()) %>%
+    mutate(Acres = suppressWarnings(as.numeric(Acres)))
+  
+  summary_type <- df %>% count(Type, name = "Type_Count")
+  
+  total_number <- sum(summary_type$Type_Count)
+  avg_number_fires <- total_number / length(selected_years())
+  acres_median <- median(df$Acres, na.rm = TRUE)
+  acres_mode <- get_mode(df$Acres)
+  fires_mode <- get_mode(summary_type$Type_Count)
+  
+  yearly_summary <- df %>%
+    group_by(Year) %>%
+    summarise(Total_Acres_Yearly = sum(Acres, na.rm = TRUE),
+              Fire_Count_Yearly = n(), .groups = "drop")
+  
+  acres_median_yearly <- median(yearly_summary$Total_Acres_Yearly)
+  acres_mode_yearly <- get_mode(yearly_summary$Total_Acres_Yearly)
+  fires_median_yearly <- median(yearly_summary$Fire_Count_Yearly)
+  fires_mode_yearly <- get_mode(yearly_summary$Fire_Count_Yearly)
+  
+  total_summary <- df %>%
+    summarise(Total_Acres = sum(Acres, na.rm = TRUE)) %>%
+    mutate(
+      `Acres Burned (Total)` = round(Total_Acres, 0),
+      `Acres Burned (Average)` = round(Total_Acres / length(selected_years()), 0),
+      `Acres Burned (Median)` = round(acres_median_yearly, 0),
+      `Acres Burned (Mode)` = round(acres_mode, 2),
+      `Number of Fires (Total)` = total_number,
+      `Number of Fires (Average)` = as.integer(round(avg_number_fires)),
+      `Number of Fires (Median)` = as.integer(round(fires_median_yearly)),
+      `Number of Fires (Mode)` = as.integer(round(fires_mode_yearly))
+    ) %>%
+    select(`Number of Fires (Total)`, `Acres Burned (Total)`,
+           `Number of Fires (Average)`, `Acres Burned (Average)`,
+           `Number of Fires (Median)`, `Acres Burned (Median)`,
+           `Number of Fires (Mode)`, `Acres Burned (Mode)`) %>%
+    pivot_longer(cols = everything(), names_to = "Metric", values_to = "Value") %>%
+    mutate(Category = case_when(
+      grepl("Total", Metric) ~ "Total",
+      grepl("Average", Metric) ~ "Average",
+      grepl("Median", Metric) ~ "Median",
+      grepl("Mode", Metric) ~ "Mode"
+    ))
+  
+  total_summary
+})
+
+# --- Render Plots ---
+output$plot_acres <- renderPlotly({
+  df <- plot_df_reactive()
+  max_y_acres <- quantile(df$Total_Acres, 0.95, na.rm = TRUE) * 1.1
+  
+  p <- ggplot(df, aes(x = factor(Label, levels = Label), y = Total_Acres,
+                      text = paste0("Year: ", Year, "<br>Total Acres: ", round(Total_Acres, 0)))) +
+    geom_col(fill = "#F4A261") +
+    labs(x = "Year", y = "Total Acres Burned",
+         caption = "*Indicates year with large area burned") +
+    theme_minimal(base_size = 16) +
+    theme(axis.text.x = element_text(angle = 90, hjust = 1),
+          axis.title.x = element_text(face = "bold", size = 14),
+          axis.title.y = element_text(face = "bold", size = 14)) +
+    coord_cartesian(ylim = c(0, max_y_acres))
+  
+  ggplotly(p, tooltip = "text")
+})
+
+output$plot_fires <- renderPlotly({
+  df <- plot_df_reactive()
+  max_y_fires <- quantile(df$Fire_Count, 0.95, na.rm = TRUE) * 1.1
+  
+  p <- ggplot(df, aes(x = factor(Label, levels = Label), y = Fire_Count,
+                      text = paste0("Year: ", Year, "<br>Fires: ", Fire_Count))) +
+    geom_col(fill = "#E76F51") +
+    labs(x = "Year", y = "Number of Fires") +
+    theme_minimal(base_size = 16) +
+    theme(axis.text.x = element_text(angle = 90, hjust = 1),
+          axis.title.x = element_text(face = "bold", size = 14),
+          axis.title.y = element_text(face = "bold", size = 14)) +
+    coord_cartesian(ylim = c(0, max_y_fires))
+  
+  ggplotly(p, tooltip = "text")
+})
+
+# --- Download Handlers ---
+output$download_plot_acres <- downloadHandler(
+  filename = function() "YELL_Acres_Burned_By_Year.png",
+  content = function(file) {
+    df <- plot_df_reactive()
+    max_y <- quantile(df$Total_Acres, 0.95, na.rm = TRUE) * 1.1
+    
+    g <- ggplot(df, aes(x = factor(Label, levels = Label), y = Total_Acres)) +
+      geom_col(fill = "#F4A261") +
+      labs(x = "Year", y = "Total Acres Burned") +
+      theme_minimal(base_size = 16) +
+      coord_cartesian(ylim = c(0, max_y))
+    
+    ggplot2::ggsave(file, g, width = 10, height = 6, dpi = 300)
+  }
+)
+
+output$download_plot_fires <- downloadHandler(
+  filename = function() "YELL_Number_of_Fires_By_Year.png",
+  content = function(file) {
+    df <- plot_df_reactive()
+    max_y <- quantile(df$Fire_Count, 0.95, na.rm = TRUE) * 1.1
+    
+    g <- ggplot(df, aes(x = factor(Label, levels = Label), y = Fire_Count)) +
+      geom_col(fill = "#E76F51") +
+      labs(x = "Year", y = "Number of Fires") +
+      theme_minimal(base_size = 16) +
+      coord_cartesian(ylim = c(0, max_y))
+    
+    ggplot2::ggsave(file, g, width = 10, height = 6, dpi = 300)
+  }
+)
+
+# --- Render Summary Table and Plots conditionally ---
+renderUI({
+  yrs <- selected_years()
+  
+  # Require that years have been selected before displaying anything
+  req(yrs)
+  
+  tagList(
+    reactable::reactable(
+      summary_df(),
+      bordered = TRUE,
+      highlight = TRUE,
+      fullWidth = TRUE,
+      defaultPageSize = 10,
+      columns = list(
+        Metric = colDef(name = "Metric"),
+        Value = colDef(
+          name = "",
+          style = function(value, index) {
+            category <- summary_df()$Category[index]
+            color <- switch(category,
+                            "Total" = "#f4cccc",
+                            "Average" = "#cfe2f3",
+                            "Median" = "#d9ead3",
+                            "Mode" = "#fff2cc")
+            list(background = color)
+          }
+        )
+      )
+    ),
+    h4(tags$span(style = "font-weight: bold; color: purple; font-size: 24px;",
+                 "Acres Burned by Year")),
+    plotlyOutput("plot_acres"),
+    downloadButton("download_plot_acres", "Download Plot"),
+    h4(tags$span(style = "font-weight: bold; color: purple; font-size: 24px;",
+                 "Number of Fires by Year")),
+    plotlyOutput("plot_fires"),
+    downloadButton("download_plot_fires", "Download Plot")
+  )
+})
+```
+
+
+```{r boxplot calculations, include=FALSE}
+# Reactive filtered data for the decadal boxplot
+decadal_plot_df <- reactive({
+  req(input$selected_batch == "Full Record (Post-1972)")
+
+  df <- YELL_Fire_Final %>%
+    filter(Year >= 1972) %>%
+    { if (!input$include_1988) filter(., Year != 1988) else . } %>%
+    mutate(Acres = as.numeric(Acres)) %>%
+    filter(!is.na(Acres) & Acres > 0)
+
+  if(nrow(df) == 0) return(NULL)
+
+  # Decade binning
+  breaks <- seq(1972, max(df$Year, na.rm = TRUE) + 11, by = 11)
+  labels <- paste0(breaks[-length(breaks)], "_", breaks[-1] - 1)
+  df <- df %>% mutate(Decade = cut(Year, breaks = breaks, labels = labels, include.lowest = TRUE))
+
+  # Post-hoc letters for Dunn's test (skip if only one decade present)
+  letters_df <- if(length(unique(df$Decade)) > 1) {
+    dunn_result <- FSA::dunnTest(Acres ~ Decade, data = df, method = "holm")
+    dunn_pvals <- dunn_result$res %>%
+      select(Comparison, P.adj) %>%
+      tidyr::separate(Comparison, into = c("Group1","Group2"), sep = " - ")
+
+    pval_matrix <- matrix(1, nrow=length(labels), ncol=length(labels), dimnames=list(labels, labels))
+    for(i in 1:nrow(dunn_pvals)) {
+      g1 <- dunn_pvals$Group1[i]
+      g2 <- dunn_pvals$Group2[i]
+      pval_matrix[g1,g2] <- dunn_pvals$P.adj[i]
+      pval_matrix[g2,g1] <- dunn_pvals$P.adj[i]
+    }
+    multcompView::multcompLetters(pval_matrix)$Letters %>%
+      enframe(name="Decade", value="Letters") %>%
+      mutate(Decade = factor(Decade, levels = levels(df$Decade))) %>%
+      left_join(df %>% group_by(Decade) %>% summarise(max_y=max(Acres), .groups="drop"),
+                by="Decade") %>%
+      mutate(y_pos = log10(max_y)*1.05)
+  } else {
+    tibble(Decade=character(), Letters=character(), max_y=numeric(), y_pos=numeric())
+  }
+
+  list(df=df, letters_df=letters_df)
+})
+
+# Render the decadal boxplot
+output$decadal_boxplot <- renderPlot({
+  data_list <- decadal_plot_df()
+  req(data_list)  # ensures plot only renders if data exists
+
+  df <- data_list$df
+  letters_df <- data_list$letters_df
+
+  ggplot(df, aes(x=Decade, y=log10(Acres))) +
+    geom_boxplot(fill="#2a9d8f", alpha=0.7) +
+    geom_jitter(width=0.1, alpha=0.3, color="gray40", size=4) +
+    geom_text(data=letters_df, aes(x=Decade, y=y_pos, label=Letters), size=6, vjust=0, color="red3") +
+    scale_x_discrete(labels=function(x) gsub("_","–",x)) +
+    theme_minimal(base_size=16) +
+    labs(title="Acres Burned by Decade (Kruskal-Wallis + Dunn's)",
+         y="Log(Acres Burned)", x="Decade",
+         caption="Letters indicate statistically distinct groups (Dunn’s test, Holm correction)")
+})
+
+# Conditional UI: only show if full record is selected
+output$decadal_boxplot_ui <- renderUI({
+  req(input$selected_batch == "Full Record (Post-1972)")
+  plotOutput("decadal_boxplot")
+})
+
+# Download button
+output$download_decadal_boxplot <- downloadHandler(
+  filename = function() "Decadal_Boxplot.png",
+  content = function(file) {
+    data_list <- decadal_plot_df()
+    req(data_list)
+    df <- data_list$df
+    letters_df <- data_list$letters_df
+
+    g <- ggplot(df, aes(x=Decade, y=log10(Acres))) +
+      geom_boxplot(fill="#2a9d8f", alpha=0.7) +
+      geom_jitter(width=0.1, alpha=0.3, color="gray40", size=4) +
+      geom_text(data=letters_df, aes(x=Decade, y=y_pos, label=Letters), size=6, vjust=0, color="red3") +
+      scale_x_discrete(labels=function(x) gsub("_","–",x)) +
+      theme_minimal(base_size=16) +
+      labs(title="Acres Burned by Decade (Kruskal-Wallis + Dunn's)",
+           y="Log(Acres Burned)", x="Decade",
+           caption="Letters indicate statistically distinct groups (Dunn’s test, Holm correction)")
+
+    ggsave(file, g, width=10, height=6, dpi=300)
+  }
+)
+```
+
+```{r boxplot output, include=TRUE, echo=FALSE}
+uiOutput("decadal_boxplot_ui")
+conditionalPanel(
+  condition="input.selected_batch=='Full Record (Post-1972)'",
+  downloadButton("download_decadal_boxplot", "Download Plot")
+)
+```
+
+
+```{r dicsovery dates, include=FALSE}
+output$discovery_doy_plot <- renderPlot({
+  req(input$selected_batch == "Full Record (Post-1972)")
+
+  # Prep data
+  filtered_df <- YELL_Fire_Final %>%
+  filter(!is.na(Date)) %>%
+  mutate(Year = lubridate::year(Date),
+         DOY = lubridate::yday(Date)) %>%
+  filter(Year >= 1972) %>%
+  { if (!input$include_1988) filter(., Year != 1988) else . }
+
+  # Bin by decade
+  breaks <- seq(1972, max(filtered_df$Year, na.rm = TRUE) + 11, by = 11)
+  labels <- paste0(breaks[-length(breaks)], "_", breaks[-1] - 1)
+  filtered_df <- filtered_df %>%
+    mutate(Decade = cut(Year, breaks = breaks, labels = labels, include.lowest = TRUE))
+
+  # Kruskal-Wallis + Dunn's test
+  kw_result <- kruskal.test(DOY ~ Decade, data = filtered_df)
+  dunn_result <- FSA::dunnTest(DOY ~ Decade, data = filtered_df, method = "holm")
+
+  dunn_pvals <- dunn_result$res %>%
+    select(Comparison, P.adj) %>%
+    tidyr::separate(Comparison, into = c("Group1", "Group2"), sep = " - ")
+
+  pval_matrix <- matrix(1, nrow = length(labels), ncol = length(labels),
+                        dimnames = list(labels, labels))
+  for (i in seq_len(nrow(dunn_pvals))) {
+    g1 <- as.character(dunn_pvals$Group1[i])
+    g2 <- as.character(dunn_pvals$Group2[i])
+    p <- dunn_pvals$P.adj[i]
+    pval_matrix[g1, g2] <- p
+    pval_matrix[g2, g1] <- p
+  }
+
+  letters_df <- multcompView::multcompLetters(pval_matrix)$Letters %>%
+    tibble::enframe(name = "Decade", value = "Letters")
+
+  # Get max DOY per decade for positioning letters
+  position_df <- filtered_df %>%
+    group_by(Decade) %>%
+    summarize(max_y = max(DOY, na.rm = TRUE), .groups = "drop")
+
+  letters_df <- left_join(letters_df, position_df, by = "Decade") %>%
+    mutate(label_y = max_y + 5)  # offset a bit above max
+
+  # Plot
+  ggplot(filtered_df, aes(x = Decade, y = DOY)) +
+    geom_boxplot(fill = "#264653", alpha = 0.7) +
+    geom_jitter(width = 0.1, alpha = 0.3, color = "gray40", size = 3) +
+    geom_text(data = letters_df,
+              aes(x = Decade, y = label_y, label = Letters),
+              size = 6, vjust = 0, color = "red3") +
+    scale_x_discrete(labels = function(x) gsub("_", "–", x)) +
+    scale_y_continuous(name = "Day of Year", breaks = seq(100, 300, 20)) +
+    theme_minimal(base_size = 16) +
+    labs(
+      title = "Fire Discovery Dates by Decade",
+      x = "Decade",
+      caption = "Letters indicate statistically distinct groups (Dunn’s test, Holm correction)"
+    )
+})
+```
+
+```{r discovery date output, include=TRUE, echo=FALSE}
+conditionalPanel(
+  condition = "input.selected_batch == 'Full Record (Post-1972)'",
+  plotOutput("discovery_doy_plot")
+)
+```
+
+--- 
+
+## Fires by Size Class
+
+```{r summary header for size class, include=TRUE, echo=FALSE}
+renderUI({
+  yrs <- sort(as.numeric(selected_years()))
+  if (is.null(yrs) || length(yrs) == 0) {
+    return(tags$div(style = "color: red; font-style: italic;",
+                    "Please select either individual year(s) or a year group to view results."))
+  }
+
+  # Check if selection came from a batch
+  is_batch <- input$selected_batch != "" && input$selected_batch %in% names(batch_choices)
+
+  year_text <- if (is_batch) {
+    paste0(min(yrs), "–", max(yrs))
+  } else if (length(yrs) == 1) {
+    paste(yrs)
+  } else {
+    paste(yrs, collapse = ", ")
+  }
+
+  tags$h4(
+    style = "color: orange; font-weight: bold;",
+    paste("Showing results for:", year_text,
+          sprintf("(%d year%s selected)", length(yrs), ifelse(length(yrs) > 1, "s", "")))
+  )
+})
+```
+
+```{r summary size class, include=TRUE, echo=FALSE}
+renderUI({
+  yrs <- selected_years()
+  req(yrs)
+
+  filtered_df <- YELL_Fire_Final %>%
+    filter(Year %in% yrs)
+
+  summary_size <- filtered_df %>%
+    count(Size_Class, name = "Count") %>%
+    mutate(Size_Description = case_when(
+      Size_Class == "A" ~ "0.1 - 0.25 acres",
+      Size_Class == "B" ~ "0.26 - 9.99 acres",
+      Size_Class == "C" ~ "10 - 99.9 acres",
+      Size_Class == "D" ~ "100 - 299.9 acres",
+      Size_Class == "E" ~ "300 - 999.9 acres",
+      Size_Class == "F" ~ "1,000 - 4,999.9 acres",
+      Size_Class == "G" ~ "5,000+ acres",
+      TRUE ~ "Unknown"
+    )) %>%
+    mutate(Percentage = round(Count / sum(Count) * 100)) %>%
+    select(Size_Class, Size_Description, Count, Percentage) %>%
+    arrange(Size_Class)
+
+  # ---- Interactive Plot ----
+  output$bar_size <- renderPlotly({
+    p <- ggplot(summary_size,
+                aes(
+                  x = Count,
+                  y = reorder(Size_Description, Count),
+                  text = paste0("<b>", Size_Description, "</b><br>Count: ", Count, "<br>(", Percentage, "%)")
+                )) +
+      geom_col(fill = "#457b9d") +
+      labs(x = NULL, y = NULL, title = NULL) +
+      theme_minimal(base_size = 16)
+
+    ggplotly(p, tooltip = "text") %>%
+      layout(
+        hoverlabel = list(bgcolor = "white"),
+        hovermode = "closest",
+        xaxis = list(title = ""),
+        yaxis = list(title = ""),
+        margin = list(b = 60),  # bottom margin for annotation
+        annotations = list(
+          list(
+            x = 0.5,
+            y = -0.08,
+            text = "<b>Number of Fires</b>",
+            showarrow = FALSE,
+            xref = "paper",
+            yref = "paper",
+            xanchor = "center",
+            yanchor = "top",
+            font = list(size = 18, color = "black")
+          )
+        )
+      )
+  })
+
+  # ---- Download PNG ----
+  output$download_bar_size <- downloadHandler(
+    filename = function() {
+      "YELL_Fire_Size_Class_Summary.png"
+    },
+    content = function(file) {
+      p <- ggplot(summary_size, aes(x = Count, y = reorder(Size_Description, Count))) +
+        geom_col(fill = "#457b9d") +
+        labs(
+          title = "Fire Count by Size Class",
+          x = "Number of Fires",
+          y = NULL
+        ) +
+        theme_minimal(base_size = 18) +
+        theme(
+          plot.title = element_text(face = "bold", hjust = 0, size = 16),
+          axis.title.x = element_text(size = 14, face = "bold", hjust = 0.5),
+          axis.title.y = element_blank()
+        )
+
+      ggsave(filename = file, plot = p, width = 10, height = 6, dpi = 300)
+    }
+  )
+
+  # ---- Render UI ----
+  tagList(
+    reactable(
+      summary_size,
+      columns = list(
+        Size_Class = colDef(name = "Size Class"),
+        Size_Description = colDef(name = "Description"),
+        Count = colDef(name = "Count"),
+        Percentage = colDef(name = "Percentage", format = colFormat(suffix = "%"))
+      ),
+      bordered = TRUE,
+      highlight = TRUE,
+      striped = TRUE
+    ),
+    plotlyOutput("bar_size", height = "500px"),
+    downloadButton("download_bar_size", "Download Plot", style = "margin-top: 10px;")
+  )
+})
+```
+
+--- 
+
+## Type of Management Action Taken
+
+```{r summary header for management action, include=TRUE, echo=FALSE}
+renderUI({
+  yrs <- sort(as.numeric(selected_years()))
+  if (is.null(yrs) || length(yrs) == 0) {
+    return(tags$div(style = "color: red; font-style: italic;",
+                    "Please select either individual year(s) or a year group to view results."))
+  }
+
+  # Check if selection came from a batch
+  is_batch <- input$selected_batch != "" && input$selected_batch %in% names(batch_choices)
+
+  year_text <- if (is_batch) {
+    paste0(min(yrs), "–", max(yrs))
+  } else if (length(yrs) == 1) {
+    paste(yrs)
+  } else {
+    paste(yrs, collapse = ", ")
+  }
+
+  tags$h4(
+    style = "color: orange; font-weight: bold;",
+    paste("Showing results for:", year_text,
+          sprintf("(%d year%s selected)", length(yrs), ifelse(length(yrs) > 1, "s", "")))
+  )
+})
+```
+
+```{r summary type, include=TRUE, echo=FALSE}
+renderUI({
+  yrs <- selected_years()
+  req(yrs)
+
+  # ---- Data prep ----
+  summary_type <- YELL_Fire_Final %>%
+    filter(Year %in% yrs) %>%
+    mutate(Type_Description = case_when(
+      Type == 11 ~ "Full Suppression Strategy",
+      Type %in% c(14, 49) ~ "Not Full Suppression Strategy",
+      Type == 21 ~ "Natural Out",
+      Type == 48 ~ "Rx Burn",
+      Type == 51 ~ "False Report",
+      TRUE ~ "Unreported Strategy"
+    )) %>%
+    count(Type_Description, name = "Count") %>%
+    mutate(Percentage = round(Count / sum(Count) * 100)) %>%
+    arrange(desc(Count))
+
+  # ---- Interactive Plot ----
+  output$bar_type <- renderPlotly({
+  p <- ggplot(summary_type, aes(
+    x = Count,
+    y = reorder(Type_Description, Count),
+    text = paste0("<b>", Type_Description, "</b><br>Count: ", Count, "<br>(", Percentage, "%)")
+  )) +
+    geom_col(fill = "#2a9d8f") +
+    labs(x = NULL, y = NULL, title = NULL) +
+    theme_minimal(base_size = 16)
+
+  ggplotly(p, tooltip = "text") %>%
+    layout(
+      hoverlabel = list(bgcolor = "white"),
+      hovermode = "closest",
+      xaxis = list(title = ""), # remove default x-axis title
+      yaxis = list(title = ""),
+      margin = list(b = 60),   # increase bottom margin to fit annotation
+      annotations = list(
+        list(
+          x = 0.5,
+          y = -0.08,             # move further down
+          text = "<b>Number of Fires</b>",
+          showarrow = FALSE,
+          xref = "paper",
+          yref = "paper",
+          xanchor = "center",
+          yanchor = "top",
+          font = list(size = 18, color = "black")
+        )
+      )
+    )
+})
+
+  # ---- Download PNG ----
+  output$download_bar_type <- downloadHandler(
+    filename = function() {
+      "YELL_Fire_Strategy_Summary.png"
+    },
+    content = function(file) {
+      p <- ggplot(summary_type, aes(x = Count, y = reorder(Type_Description, Count))) +
+        geom_col(fill = "#2a9d8f") +
+        labs(
+          title = "Fire Count by Management Strategy",
+          x = "Number of Fires",
+          y = NULL
+        ) +
+        theme_minimal(base_size = 18) +
+        theme(
+          plot.title = element_text(face = "bold", hjust = 0, size = 16),
+          axis.title.x = element_text(size = 14, face = "bold", hjust = 0.5),
+          axis.title.y = element_blank()
+        )
+
+      ggsave(filename = file, plot = p, width = 8, height = 5, dpi = 300)
+    }
+  )
+
+  # ---- Render UI ----
+  tagList(
+    reactable(
+      summary_type,
+      columns = list(
+        Type_Description = colDef(name = "Description"),
+        Count = colDef(name = "Count"),
+        Percentage = colDef(name = "Percentage", format = colFormat(suffix = "%"))
+      ),
+      bordered = TRUE,
+      highlight = TRUE,
+      striped = TRUE
+    ),
+    plotlyOutput("bar_type", height = "500px"),
+    downloadButton("download_bar_type", "Download Plot", style = "margin-top: 10px;")
+  )
+})
+```
+
+--- 
+
+## Cause of Fire
+
+```{r summary header for fire cause, include=TRUE, echo=FALSE}
+renderUI({
+  yrs <- sort(as.numeric(selected_years()))
+  if (is.null(yrs) || length(yrs) == 0) {
+    return(tags$div(style = "color: red; font-style: italic;",
+                    "Please select either individual year(s) or a year group to view results."))
+  }
+
+  # Check if selection came from a batch
+  is_batch <- input$selected_batch != "" && input$selected_batch %in% names(batch_choices)
+
+  year_text <- if (is_batch) {
+    paste0(min(yrs), "–", max(yrs))
+  } else if (length(yrs) == 1) {
+    paste(yrs)
+  } else {
+    paste(yrs, collapse = ", ")
+  }
+
+  tags$h4(
+    style = "color: orange; font-weight: bold;",
+    paste("Showing results for:", year_text,
+          sprintf("(%d year%s selected)", length(yrs), ifelse(length(yrs) > 1, "s", "")))
+  )
+})
+```
+
+```{r summary cause, include=TRUE, echo=FALSE}
+renderUI({
+  yrs <- selected_years()
+  req(yrs)
+
+  # ---- Data prep ----
+  summary_cause <- YELL_Fire_Final %>%
+    filter(Year %in% yrs) %>%
+    count(Cause, name = "Count") %>%
+    mutate(Percentage = round(Count / sum(Count) * 100)) %>%
+    arrange(desc(Count))
+
+  # ---- Interactive Plot ----
+  output$bar_cause <- renderPlotly({
+    p <- ggplot(summary_cause, aes(
+      x = Count,
+      y = reorder(Cause, Count),
+      text = paste0("<b>", Cause, "</b><br>Count: ", Count, "<br>(", Percentage, "%)")
+    )) +
+      geom_col(fill = "#e76f51") +
+      labs(x = NULL, y = NULL, title = NULL) +
+      theme_minimal(base_size = 16)
+
+    ggplotly(p, tooltip = "text") %>%
+      layout(
+        hoverlabel = list(bgcolor = "white"),
+        hovermode = "closest",
+        xaxis = list(title = ""),  # remove default x-axis title
+        yaxis = list(title = ""),
+        margin = list(b = 60),     # bottom margin for annotation
+        annotations = list(
+          list(
+            x = 0.5,
+            y = -0.08,  # position below plot
+            text = "<b>Number of Fires</b>",  # bold x-axis title
+            showarrow = FALSE,
+            xref = "paper",
+            yref = "paper",
+            xanchor = "center",
+            yanchor = "top",
+            font = list(size = 18, color = "black")
+          )
+        )
+      )
+  })
+
+  # ---- Download PNG ----
+  output$download_bar_cause <- downloadHandler(
+    filename = function() {
+      "YELL_Fire_Cause_Summary.png"
+    },
+    content = function(file) {
+      p <- ggplot(summary_cause, aes(x = Count, y = reorder(Cause, Count))) +
+        geom_col(fill = "#e76f51") +
+        labs(
+          title = "Fire Count by Cause",
+          x = "Number of Fires",
+          y = NULL
+        ) +
+        theme_minimal(base_size = 18) +
+        theme(
+          plot.title = element_text(face = "bold", hjust = 0, size = 16),
+          axis.title.x = element_text(size = 14, face = "bold", hjust = 0.5),
+          axis.title.y = element_blank()
+        )
+
+      ggsave(filename = file, plot = p, width = 8, height = 5, dpi = 300)
+    }
+  )
+
+  # ---- Render UI ----
+  tagList(
+    reactable(
+      summary_cause,
+      columns = list(
+        Cause = colDef(name = "Cause"),
+        Count = colDef(name = "Count"),
+        Percentage = colDef(name = "Percentage", format = colFormat(suffix = "%"))
+      ),
+      bordered = TRUE,
+      highlight = TRUE,
+      striped = TRUE
+    ),
+    plotlyOutput("bar_cause", height = "500px"),
+    downloadButton("download_bar_cause", "Download Plot", style = "margin-top: 10px;")
+  )
+})
+```
+
+---
+
+## Specific Cause of Fire
+
+```{r summary header for specific cause, include=TRUE, echo=FALSE}
+renderUI({
+  yrs <- sort(as.numeric(selected_years()))
+  if (is.null(yrs) || length(yrs) == 0) {
+    return(tags$div(style = "color: red; font-style: italic;",
+                    "Please select either individual year(s) or a year group to view results."))
+  }
+
+  # Check if selection came from a batch
+  is_batch <- input$selected_batch != "" && input$selected_batch %in% names(batch_choices)
+
+  year_text <- if (is_batch) {
+    paste0(min(yrs), "–", max(yrs))
+  } else if (length(yrs) == 1) {
+    paste(yrs)
+  } else {
+    paste(yrs, collapse = ", ")
+  }
+
+  tags$h4(
+    style = "color: orange; font-weight: bold;",
+    paste("Showing results for:", year_text,
+          sprintf("(%d year%s selected)", length(yrs), ifelse(length(yrs) > 1, "s", "")))
+  )
+})
+```
+
+```{r summary cause specific, include=TRUE, echo=FALSE}
+renderUI({
+  yrs <- selected_years()
+  req(yrs)
+
+  filtered_df <- YELL_Fire_Final %>%
+    filter(Year %in% yrs) %>%
+    mutate(`Fire Cause Specific` = ifelse(
+      is.na(`Fire Cause Specific`) | `Fire Cause Specific` == "",
+      "No data available",
+      `Fire Cause Specific`
+    ))
+
+  summary_specific <- filtered_df %>%
+    count(`Fire Cause Specific`, name = "Count") %>%
+    mutate(Percentage = round(Count / sum(Count) * 100))
+
+  # Separate "No data available" from the rest
+  no_data_row <- summary_specific %>% filter(`Fire Cause Specific` == "No data available")
+  real_data <- summary_specific %>% filter(`Fire Cause Specific` != "No data available") %>%
+    arrange(desc(Count))
+
+  # Combine back together
+  summary_specific <- bind_rows(real_data, no_data_row)
+
+  # Set factor order for plotting
+  summary_specific <- summary_specific %>%
+    mutate(`Fire Cause Specific` = factor(`Fire Cause Specific`, levels = summary_specific$`Fire Cause Specific`))
+
+  # ---- Interactive Plot ----
+  output$bar_cause_specific <- renderPlotly({
+    p <- ggplot(summary_specific,
+                aes(
+                  x = Count,
+                  y = fct_rev(`Fire Cause Specific`),
+                  text = paste0("<b>", `Fire Cause Specific`, "</b><br>Count: ", Count, "<br>(", Percentage, "%)")
+                )) +
+      geom_col(fill = "#ffb703") +
+      labs(x = NULL, y = NULL, title = NULL) +
+      theme_minimal(base_size = 14)
+
+    ggplotly(p, tooltip = "text") %>%
+      layout(
+        hoverlabel = list(bgcolor = "white"),
+        hovermode = "closest",
+        xaxis = list(title = ""),
+        yaxis = list(title = ""),
+        margin = list(b = 20),  # enough space for x-axis annotation
+        annotations = list(
+          list(
+            x = 0.5,
+            y = -0.04,  # adjust position
+            text = "<b>Number of Fires</b>",
+            showarrow = FALSE,
+            xref = "paper",
+            yref = "paper",
+            xanchor = "center",
+            yanchor = "top",
+            font = list(size = 16, color = "black")
+          )
+        )
+      )
+  })
+
+  # ---- Download PNG ----
+  output$download_bar_cause_specific <- downloadHandler(
+    filename = function() {
+      "YELL_Fire_Cause_Specific_Summary.png"
+    },
+    content = function(file) {
+      p <- ggplot(summary_specific,
+                  aes(x = Count, y = fct_rev(`Fire Cause Specific`))) +
+        geom_col(fill = "#ffb703") +
+        labs(
+          title = "Fire Count by Specific Cause",
+          x = "Number of Fires",
+          y = NULL
+        ) +
+        theme_minimal(base_size = 18) +
+        theme(
+          plot.title = element_text(face = "bold", hjust = 0, size = 16),
+          axis.title.x = element_text(size = 14, face = "bold", hjust = 0.5),
+          axis.title.y = element_blank()
+        )
+
+      ggsave(filename = file, plot = p, width = 10, height = 8, dpi = 300)
+    }
+  )
+
+  # ---- Render UI ----
+  tagList(
+    reactable(
+      summary_specific,
+      columns = list(
+        `Fire Cause Specific` = colDef(name = "Cause (Specific)"),
+        Count = colDef(name = "Count"),
+        Percentage = colDef(name = "Percentage", format = colFormat(suffix = "%"))
+      ),
+      bordered = TRUE,
+      highlight = TRUE,
+      striped = TRUE,
+      pagination = FALSE,
+      defaultPageSize = nrow(summary_specific)
+    ),
+    plotlyOutput("bar_cause_specific", height = "700px"),
+    tags$p(
+      style = "color: red; font-style: italic; margin-top: 10px;",
+      "Data for specific fire cause is not available prior to 1992."
+    ),
+    downloadButton("download_bar_cause_specific", "Download Plot", style = "margin-top: 10px;")
+    
+  )
+})
+```
+
+--- 
+
+## Fires by Month
+
+```{r summary header for fires by month, include=TRUE, echo=FALSE}
+renderUI({
+  yrs <- sort(as.numeric(selected_years()))
+  if (is.null(yrs) || length(yrs) == 0) {
+    return(tags$div(style = "color: red; font-style: italic;",
+                    "Please select either individual year(s) or a year group to view results."))
+  }
+
+  # Check if selection came from a batch
+  is_batch <- input$selected_batch != "" && input$selected_batch %in% names(batch_choices)
+
+  year_text <- if (is_batch) {
+    paste0(min(yrs), "–", max(yrs))
+  } else if (length(yrs) == 1) {
+    paste(yrs)
+  } else {
+    paste(yrs, collapse = ", ")
+  }
+
+  tags$h4(
+    style = "color: orange; font-weight: bold;",
+    paste("Showing results for:", year_text,
+          sprintf("(%d year%s selected)", length(yrs), ifelse(length(yrs) > 1, "s", "")))
+  )
+})
+```
+
+```{r fires by month, include=FALSE, echo=FALSE}
+# ---- Helper function (define outside render functions) ----
+# now accepts optional title (for static PNG use)
+make_bar <- function(df, x, y, ylab, color, title = NULL) {
+  ggplot(df, aes(x = {{ x }}, y = {{ y }}, 
+                 text = paste0("<b>", {{ x }}, "</b><br>", ylab, ": ", round({{ y }}, 0)))) +
+    geom_col(fill = color) +
+    labs(title = title, x = NULL, y = ylab) +
+    theme_minimal(base_size = 16) +
+    theme(
+      axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5),
+      plot.margin = margin(10, 30, 10, 20) # give extra right margin to prevent label clipping
+    )
+}
+
+# ---- Average Plots (Interactive) ----
+output$monthly_fire_histograms_avg <- renderPlotly({
+  req(selected_years())
+  
+  monthly_df <- YELL_Fire_Final %>%
+    filter(Year %in% selected_years()) %>%
+    mutate(
+      Month = month(Date, label = TRUE, abbr = FALSE),
+      Acres = as.numeric(Acres)
+    )
+
+  # Compute average metrics
+  fire_counts_avg <- monthly_df %>%
+    count(Year, Month) %>%
+    group_by(Month) %>%
+    summarise(Avg_Fires = mean(n), .groups = "drop")
+
+  acre_totals_avg <- monthly_df %>%
+    group_by(Year, Month) %>%
+    summarise(Total_Acres = sum(Acres, na.rm = TRUE), .groups = "drop") %>%
+    group_by(Month) %>%
+    summarise(Avg_Acres = mean(Total_Acres), .groups = "drop")
+
+  # Create ggplots (no embedded title here; UI provides headings)
+  g1 <- make_bar(fire_counts_avg, Month, Avg_Fires, "Avg. Fires", "#264653", title = NULL)
+  g2 <- make_bar(acre_totals_avg, Month, Avg_Acres, "Avg. Acres Burned", "#e76f51", title = NULL)
+
+  # Convert to plotly objects
+  p1 <- ggplotly(g1, tooltip = "text")
+  p2 <- ggplotly(g2, tooltip = "text")
+
+  # Combine side-by-side and explicitly set axis titles so they show in HTML
+  subplot(p1, p2, nrows = 1, shareX = TRUE, margin = 0.08) %>%
+    layout(
+      hoverlabel = list(bgcolor = "white"),
+      hovermode = "closest",
+      # yaxis corresponds to left plot, yaxis2 to right plot
+      yaxis = list(title = "Avg. Fires", automargin = TRUE),
+      yaxis2 = list(title = "Avg. Acres Burned", automargin = TRUE)
+    )
+})
+
+# ---- Total Plots (Interactive) ----
+output$monthly_fire_histograms_total <- renderPlotly({
+  req(selected_years())
+  
+  monthly_df <- YELL_Fire_Final %>%
+    filter(Year %in% selected_years()) %>%
+    mutate(
+      Month = month(Date, label = TRUE, abbr = FALSE),
+      Acres = as.numeric(Acres)
+    )
+
+  # Compute total metrics
+  fire_counts_total <- monthly_df %>%
+    count(Month, name = "Total_Fires")
+
+  acre_totals_total <- monthly_df %>%
+    group_by(Month) %>%
+    summarise(Total_Acres = sum(Acres, na.rm = TRUE), .groups = "drop")
+
+  # Create ggplots (no embedded title here; UI provides headings)
+  g3 <- make_bar(fire_counts_total, Month, Total_Fires, "Total Fires", "#2a9d8f", title = NULL)
+  g4 <- make_bar(acre_totals_total, Month, Total_Acres, "Total Acres Burned", "#f4a261", title = NULL)
+
+  # Convert to plotly objects
+  p3 <- ggplotly(g3, tooltip = "text")
+  p4 <- ggplotly(g4, tooltip = "text")
+
+  # Combine and set axis titles for interactive display
+  subplot(p3, p4, nrows = 1, shareX = TRUE, margin = 0.08) %>%
+    layout(
+      hoverlabel = list(bgcolor = "white"),
+      hovermode = "closest",
+      yaxis = list(title = "Total Fires", automargin = TRUE),
+      yaxis2 = list(title = "Total Acres Burned", automargin = TRUE)
+    )
+})
+
+# ---- Download button (static patchwork PNG with titles) ----
+output$download_monthly_plots <- downloadHandler(
+  filename = function() {
+    "YELL_Monthly_Fires.png"
+  },
+  content = function(file) {
+    # Prepare same datasets for static PNG
+    monthly_df <- YELL_Fire_Final %>%
+      filter(Year %in% selected_years()) %>%
+      mutate(Month = month(Date, label = TRUE, abbr = FALSE),
+             Acres = as.numeric(Acres))
+
+    fire_counts_avg <- monthly_df %>%
+      count(Year, Month) %>%
+      group_by(Month) %>%
+      summarise(Avg_Fires = mean(n), .groups = "drop")
+    acre_totals_avg <- monthly_df %>%
+      group_by(Year, Month) %>%
+      summarise(Total_Acres = sum(Acres, na.rm = TRUE), .groups = "drop") %>%
+      group_by(Month) %>%
+      summarise(Avg_Acres = mean(Total_Acres), .groups = "drop")
+
+    fire_counts_total <- monthly_df %>%
+      count(Month, name = "Total_Fires")
+    acre_totals_total <- monthly_df %>%
+      group_by(Month) %>%
+      summarise(Total_Acres = sum(Acres, na.rm = TRUE), .groups = "drop")
+
+    # Use titles for the downloaded PNG version
+    g_png_1 <- make_bar(fire_counts_avg, Month, Avg_Fires, "Avg. Fires", "#264653", title = "Average Number of Fires")
+    g_png_2 <- make_bar(acre_totals_avg, Month, Avg_Acres, "Avg. Acres Burned", "#e76f51", title = "Average Acres Burned")
+    g_png_3 <- make_bar(fire_counts_total, Month, Total_Fires, "Total Fires", "#2a9d8f", title = "Total Number of Fires")
+    g_png_4 <- make_bar(acre_totals_total, Month, Total_Acres, "Total Acres Burned", "#f4a261", title = "Total Acres Burned")
+
+    ggsave(
+      file,
+      plot = patchwork::wrap_plots(
+        g_png_1, g_png_2,
+        g_png_3, g_png_4,
+        ncol = 2
+      ),
+      width = 12, height = 8, dpi = 300
+    )
+  }
+)
+
+# ---- Render UI with section headers ----
+output$monthly_fire_histograms_ui <- renderUI({
+  tagList(
+    # Average Metrics row
+    tags$h4("Average Number of Fires and Acres Burned by Month", style = "color: purple; font-weight: bold; margin-top: 20px;"),
+    plotlyOutput("monthly_fire_histograms_avg", height = "400px"),
+
+    # Total Metrics row
+    tags$h4("Total Number of Fires and Acres Burned by Month", style = "color: purple; font-weight: bold; margin-top: 20px;"),
+    plotlyOutput("monthly_fire_histograms_total", height = "400px"),
+
+    # Note
+    tags$p(
+      style = "color: red; font-style: italic; margin-top: 10px;",
+      "Acres burned in a month correspond to incidents that started in that same month. ",
+      "For example, total number of acres burned in August reflects only fires that started in August ",
+      "(so it wouldn't include fires that started in July that then burned into August)."
+    ),
+
+    # Download button
+    downloadButton("download_monthly_plots", "Download Plot", style = "margin-top: 10px;")
+  )
+})
+```
+
+```{r fires by month render, include=TRUE, echo=FALSE}
+uiOutput("monthly_fire_histograms_ui")
+```
+
+---
+
+## Time to Fire Declared Out
+
+```{r summary header for declared out, include=TRUE, echo=FALSE}
+renderUI({
+  yrs <- sort(as.numeric(selected_years()))
+  if (is.null(yrs) || length(yrs) == 0) {
+    return(tags$div(style = "color: red; font-style: italic;",
+                    "Please select either individual year(s) or a year group to view results."))
+  }
+
+  # Check if selection came from a batch
+  is_batch <- input$selected_batch != "" && input$selected_batch %in% names(batch_choices)
+
+  year_text <- if (is_batch) {
+    paste0(min(yrs), "–", max(yrs))
+  } else if (length(yrs) == 1) {
+    paste(yrs)
+  } else {
+    paste(yrs, collapse = ", ")
+  }
+
+  tags$h4(
+    style = "color: orange; font-weight: bold;",
+    paste("Showing results for:", year_text,
+          sprintf("(%d year%s selected)", length(yrs), ifelse(length(yrs) > 1, "s", "")))
+  )
+})
+```
+
+```{r time to declared out, include=TRUE, echo=FALSE}
+renderUI({
+  yrs <- selected_years()
+  req(yrs)
+
+  filtered_df <- YELL_Fire_Final %>%
+    filter(Year %in% yrs) %>%
+    mutate(
+      Date = as.Date(Date),
+      Date_Out = as.Date(Date_Out),
+      Time_to_Out = as.numeric(Date_Out - Date)
+    ) %>%
+    # Replace NA or negative values (data errors) with NA
+    mutate(Time_to_Out = ifelse(Time_to_Out < 0, NA, Time_to_Out))
+
+  # Summary statistics
+  summary_tto <- filtered_df %>%
+    summarise(
+      `Fires with Data` = sum(!is.na(Time_to_Out)),
+      `Mean Days` = round(mean(Time_to_Out, na.rm = TRUE), 1),
+      `Median Days` = median(Time_to_Out, na.rm = TRUE),
+      `Min Days` = min(Time_to_Out, na.rm = TRUE),
+      `Max Days` = max(Time_to_Out, na.rm = TRUE)
+    )
+
+  # ---- Interactive Histogram ----
+  output$hist_tto <- renderPlotly({
+  req(filtered_df$Time_to_Out)
+
+  # Compute histogram counts
+  hist_df <- filtered_df %>%
+    filter(!is.na(Time_to_Out)) %>%
+    mutate(Bin = floor(Time_to_Out)) %>%  # binwidth = 1
+    group_by(Bin) %>%
+    summarise(Count = n(), .groups = "drop")
+
+  p <- ggplot(hist_df, aes(x = Bin, y = Count,
+                           text = paste0("Days to Out: ", Bin, "<br>Number of Fires: ", Count))) +
+    geom_col(fill = "#90be6d", color = "black") +
+    labs(x = NULL, y = NULL, title = NULL) +
+    theme_minimal(base_size = 16)
+
+  ggplotly(p, tooltip = "text") %>%
+    layout(
+      hoverlabel = list(bgcolor = "white"),
+      xaxis = list(title = list(text = "<b>Days to Fire Declared Out</b>", font = list(size = 14))),
+      yaxis = list(title = list(text = "<b>Number of Fires</b>", font = list(size = 14))),
+      hovermode = "closest"
+    )
+})
+
+  # ---- Download PNG ----
+  output$download_hist_tto <- downloadHandler(
+    filename = function() {
+      "YELL_Fire_Time_to_Declared_Out.png"
+    },
+    content = function(file) {
+      p <- ggplot(filtered_df, aes(x = Time_to_Out)) +
+        geom_histogram(binwidth = 1, fill = "#90be6d", color = "black") +
+        labs(
+          title = "Days to Fire Declared Out",
+          x = "Days to Fire Declared Out",
+          y = "Number of Fires"
+        ) +
+        theme_minimal(base_size = 18) +
+        theme(
+          plot.title = element_text(face = "bold", hjust = 0, size = 16),
+          axis.title.x = element_text(size = 14, face = "bold"),
+          axis.title.y = element_text(size = 14, face = "bold")
+        )
+
+      ggsave(file, plot = p, width = 10, height = 6, dpi = 300)
+    }
+  )
+
+  # ---- Render UI ----
+  tagList(
+    reactable(
+      summary_tto,
+      bordered = TRUE,
+      highlight = TRUE,
+      striped = TRUE
+    ),
+    plotlyOutput("hist_tto", height = "500px"),
+    tags$p(
+      style = "color: red; font-style: italic; margin-top: 10px;",
+      "Declared out dates are not available prior to 1992."
+    ),
+    downloadButton("download_hist_tto", "Download Plot", style = "margin-top: 10px;")
+  )
+})
+```
+
+---
+
+## Time to Fire Declared Contained
+
+```{r time to declared contained, include=TRUE, echo=FALSE}
+renderUI({
+  yrs <- selected_years()
+  req(yrs)
+
+  filtered_df <- YELL_Fire_Final %>%
+    filter(Year %in% yrs) %>%
+    mutate(
+      Date = as.Date(Date),
+      Contain_Date = as.Date(Contain_Date),
+      Time_to_Contained = as.numeric(Contain_Date - Date)
+    ) %>%
+    # Replace NA or negative values (data errors) with NA
+    mutate(Time_to_Contained = ifelse(Time_to_Contained < 0, NA, Time_to_Contained))
+
+  # Summary statistics
+  summary_ttc <- filtered_df %>%
+    summarise(
+      `Fires with Data` = sum(!is.na(Time_to_Contained)),
+      `Mean Days` = round(mean(Time_to_Contained, na.rm = TRUE), 1),
+      `Median Days` = median(Time_to_Contained, na.rm = TRUE),
+      `Min Days` = min(Time_to_Contained, na.rm = TRUE),
+      `Max Days` = max(Time_to_Contained, na.rm = TRUE)
+    )
+
+  # ---- Interactive Histogram ----
+  output$hist_ttc <- renderPlotly({
+  req(filtered_df$Time_to_Contained)
+
+  # Compute histogram counts
+  hist_df <- filtered_df %>%
+    filter(!is.na(Time_to_Contained)) %>%
+    mutate(Bin = floor(Time_to_Contained)) %>%  # binwidth = 1
+    group_by(Bin) %>%
+    summarise(Count = n(), .groups = "drop")
+
+  p <- ggplot(hist_df, aes(x = Bin, y = Count,
+                           text = paste0("Days to Contained: ", Bin, "<br>Number of Fires: ", Count))) +
+    geom_col(fill = "#6da0be", color = "black") +
+    labs(x = NULL, y = NULL, title = NULL) +
+    theme_minimal(base_size = 16)
+
+  ggplotly(p, tooltip = "text") %>%
+    layout(
+      hoverlabel = list(bgcolor = "white"),
+      xaxis = list(title = list(text = "<b>Days to Fire Declared Contained</b>", font = list(size = 14))),
+      yaxis = list(title = list(text = "<b>Number of Fires</b>", font = list(size = 14))),
+      hovermode = "closest"
+    )
+})
+
+  # ---- Download PNG ----
+  output$download_hist_ttc <- downloadHandler(
+    filename = function() {
+      "YELL_Fire_Time_to_Declared_Contained.png"
+    },
+    content = function(file) {
+      p <- ggplot(filtered_df, aes(x = Time_to_Out)) +
+        geom_histogram(binwidth = 1, fill = "#6da0be", color = "black") +
+        labs(
+          title = "Days to Fire Declared Contained",
+          x = "Days to Fire Declared Contained",
+          y = "Number of Fires"
+        ) +
+        theme_minimal(base_size = 18) +
+        theme(
+          plot.title = element_text(face = "bold", hjust = 0, size = 16),
+          axis.title.x = element_text(size = 14, face = "bold"),
+          axis.title.y = element_text(size = 14, face = "bold")
+        )
+
+      ggsave(file, plot = p, width = 10, height = 6, dpi = 300)
+    }
+  )
+
+  # ---- Render UI ----
+  tagList(
+    reactable(
+      summary_ttc,
+      bordered = TRUE,
+      highlight = TRUE,
+      striped = TRUE
+    ),
+    plotlyOutput("hist_ttc", height = "500px"),
+    tags$p(
+      style = "color: red; font-style: italic; margin-top: 10px;",
+      "Declared containd dates are not available prior to 1992."
+    ),
+    downloadButton("download_hist_ttc", "Download Plot", style = "margin-top: 10px;")
+  )
+})
+```
+
+---
+
+## Time to Fire Declared Controlled
+
+```{r time to declared controlled, include=TRUE, echo=FALSE}
+renderUI({
+  yrs <- selected_years()
+  req(yrs)
+
+  filtered_df <- YELL_Fire_Final %>%
+    filter(Year %in% yrs) %>%
+    mutate(
+      Date = as.Date(Date),
+      Control_Date = as.Date(Control_Date),
+      Time_to_Control = as.numeric(Control_Date - Date)
+    ) %>%
+    # Replace NA or negative values (data errors) with NA
+    mutate(Time_to_Control = ifelse(Time_to_Control < 0, NA, Time_to_Control))
+
+  # Summary statistics
+  summary_ttctrl <- filtered_df %>%
+    summarise(
+      `Fires with Data` = sum(!is.na(Time_to_Control)),
+      `Mean Days` = round(mean(Time_to_Control, na.rm = TRUE), 1),
+      `Median Days` = median(Time_to_Control, na.rm = TRUE),
+      `Min Days` = min(Time_to_Control, na.rm = TRUE),
+      `Max Days` = max(Time_to_Control, na.rm = TRUE)
+    )
+
+  # ---- Interactive Histogram ----
+  output$hist_ttctrl <- renderPlotly({
+  req(filtered_df$Time_to_Control)
+
+  # Compute histogram counts
+  hist_df <- filtered_df %>%
+    filter(!is.na(Time_to_Control)) %>%
+    mutate(Bin = floor(Time_to_Control)) %>%  # binwidth = 1
+    group_by(Bin) %>%
+    summarise(Count = n(), .groups = "drop")
+
+  p <- ggplot(hist_df, aes(x = Bin, y = Count,
+                           text = paste0("Days to Controlled: ", Bin, "<br>Number of Fires: ", Count))) +
+    geom_col(fill = "#b66dbe", color = "black") +
+    labs(x = NULL, y = NULL, title = NULL) +
+    theme_minimal(base_size = 16)
+
+  ggplotly(p, tooltip = "text") %>%
+    layout(
+      hoverlabel = list(bgcolor = "white"),
+      xaxis = list(title = list(text = "<b>Days to Fire Declared Controlled</b>", font = list(size = 14))),
+      yaxis = list(title = list(text = "<b>Number of Fires</b>", font = list(size = 14))),
+      hovermode = "closest"
+    )
+})
+
+  # ---- Download PNG ----
+  output$download_hist_ttctrl <- downloadHandler(
+    filename = function() {
+      "YELL_Fire_Time_to_Declared_Controlled.png"
+    },
+    content = function(file) {
+      p <- ggplot(filtered_df, aes(x = Time_to_Control)) +
+        geom_histogram(binwidth = 1, fill = "#b66dbe", color = "black") +
+        labs(
+          title = "Days to Fire Declared Controlled",
+          x = "Days to Fire Declared Controlled",
+          y = "Number of Fires"
+        ) +
+        theme_minimal(base_size = 18) +
+        theme(
+          plot.title = element_text(face = "bold", hjust = 0, size = 16),
+          axis.title.x = element_text(size = 14, face = "bold"),
+          axis.title.y = element_text(size = 14, face = "bold")
+        )
+
+      ggsave(file, plot = p, width = 10, height = 6, dpi = 300)
+    }
+  )
+
+  # ---- Render UI ----
+  tagList(
+    reactable(
+      summary_ttctrl,
+      bordered = TRUE,
+      highlight = TRUE,
+      striped = TRUE
+    ),
+    plotlyOutput("hist_ttctrl", height = "500px"),
+    tags$p(
+      style = "color: red; font-style: italic; margin-top: 10px;",
+      "Declared controlled dates are not available prior to 1992."
+    ),
+    downloadButton("download_hist_ttctrl", "Download Plot", style = "margin-top: 10px;", style = "margin-bottom: 30px;")
+  )
+})
+```
+
