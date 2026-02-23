@@ -71,8 +71,8 @@ wDir <- here()
 
 ```{r load data, include=FALSE}
 # ---- Load data ----
-YELL_Fire <- read_csv(path(wDir, "GitHub/fire-history-reporting/data/YELL_Fires_2025.csv")) # 2025
-INFORM_Fire <- read_csv(path(wDir, "GitHub/fire-history-reporting/data/Yellowstone_INFORM_Incidents_2025.csv")) # 2025
+YELL_Fire <- read_csv(path(wDir, "data/YELL_Fires_2025.csv")) # 2025
+INFORM_Fire <- read_csv(path(wDir, "data/Yellowstone_INFORM_Incidents_2025.csv")) # 2025
 
 # For code diagnostics (will not resolve in Shiny runtime)
 #YELL_Fire <- read_csv(file = file.path(wDir, "Fire Statistics", "YELL_Fires_2025.csv"))
