@@ -716,7 +716,7 @@ output$decadal_boxplot <- renderPlot({
     geom_text(data=letters_df, aes(x=Decade, y=y_pos, label=Letters), size=6, vjust=0, color="red3") +
     scale_x_discrete(labels=function(x) gsub("_","–",x)) +
     theme_minimal(base_size=16) +
-    labs(title="Acres Burned by Decade (Kruskal-Wallis + Dunn's)",
+    labs(title="Acres Burned by Decade",
          y="Log(Acres Burned)", x="Decade",
          caption="Letters indicate statistically distinct groups (Dunn’s test, Holm correction)")
 })
@@ -742,7 +742,7 @@ output$download_decadal_boxplot <- downloadHandler(
       geom_text(data=letters_df, aes(x=Decade, y=y_pos, label=Letters), size=6, vjust=0, color="red3") +
       scale_x_discrete(labels=function(x) gsub("_","–",x)) +
       theme_minimal(base_size=16) +
-      labs(title="Acres Burned by Decade (Kruskal-Wallis + Dunn's)",
+      labs(title="Acres Burned by Decade",
            y="Log(Acres Burned)", x="Decade",
            caption="Letters indicate statistically distinct groups (Dunn’s test, Holm correction)")
 
@@ -762,8 +762,6 @@ conditionalPanel(
 
 ```{r dicsovery dates, include=FALSE}
 #| context: server
-#| include: false
-
 # Plot factory (reused by renderPlot + download)
 make_discovery_doy_ggplot <- function(include_1988 = FALSE) {
 
@@ -1477,23 +1475,22 @@ uiOutput("month_header")
 ```{r fires by month, include=FALSE, echo=FALSE}
 #| context: server
 # ---- Helper function (define outside render functions) ----
-# now accepts optional title (for static PNG use)
 make_bar <- function(df, x, y, ylab, color, title = NULL) {
-  ggplot(df, aes(x = {{ x }}, y = {{ y }}, 
+  ggplot(df, aes(x = {{ x }}, y = {{ y }},
                  text = paste0("<b>", {{ x }}, "</b><br>", ylab, ": ", round({{ y }}, 0)))) +
     geom_col(fill = color) +
     labs(title = title, x = NULL, y = ylab) +
     theme_minimal(base_size = 16) +
     theme(
       axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5),
-      plot.margin = margin(10, 30, 10, 20) # give extra right margin to prevent label clipping
+      plot.margin = margin(10, 30, 10, 20)
     )
 }
 
 # ---- Average Plots (Interactive) ----
 output$monthly_fire_histograms_avg <- renderPlotly({
   req(selected_years())
-  
+
   monthly_df <- YELL_Fire_Final %>%
     filter(Year %in% selected_years()) %>%
     mutate(
@@ -1501,7 +1498,6 @@ output$monthly_fire_histograms_avg <- renderPlotly({
       Acres = as.numeric(Acres)
     )
 
-  # Compute average metrics
   fire_counts_avg <- monthly_df %>%
     count(Year, Month) %>%
     group_by(Month) %>%
@@ -1513,20 +1509,16 @@ output$monthly_fire_histograms_avg <- renderPlotly({
     group_by(Month) %>%
     summarise(Avg_Acres = mean(Total_Acres), .groups = "drop")
 
-  # Create ggplots (no embedded title here; UI provides headings)
-  g1 <- make_bar(fire_counts_avg, Month, Avg_Fires, "Avg. Fires", "#264653", title = NULL)
-  g2 <- make_bar(acre_totals_avg, Month, Avg_Acres, "Avg. Acres Burned", "#e76f51", title = NULL)
+  g1 <- make_bar(fire_counts_avg, Month, Avg_Fires, "Avg. Fires", "#264653")
+  g2 <- make_bar(acre_totals_avg, Month, Avg_Acres, "Avg. Acres Burned", "#e76f51")
 
-  # Convert to plotly objects
   p1 <- ggplotly(g1, tooltip = "text")
   p2 <- ggplotly(g2, tooltip = "text")
 
-  # Combine side-by-side and explicitly set axis titles so they show in HTML
   subplot(p1, p2, nrows = 1, shareX = TRUE, margin = 0.08) %>%
     layout(
       hoverlabel = list(bgcolor = "white"),
       hovermode = "closest",
-      # yaxis corresponds to left plot, yaxis2 to right plot
       yaxis = list(title = "Avg. Fires", automargin = TRUE),
       yaxis2 = list(title = "Avg. Acres Burned", automargin = TRUE)
     )
@@ -1535,7 +1527,7 @@ output$monthly_fire_histograms_avg <- renderPlotly({
 # ---- Total Plots (Interactive) ----
 output$monthly_fire_histograms_total <- renderPlotly({
   req(selected_years())
-  
+
   monthly_df <- YELL_Fire_Final %>%
     filter(Year %in% selected_years()) %>%
     mutate(
@@ -1543,7 +1535,6 @@ output$monthly_fire_histograms_total <- renderPlotly({
       Acres = as.numeric(Acres)
     )
 
-  # Compute total metrics
   fire_counts_total <- monthly_df %>%
     count(Month, name = "Total_Fires")
 
@@ -1551,15 +1542,12 @@ output$monthly_fire_histograms_total <- renderPlotly({
     group_by(Month) %>%
     summarise(Total_Acres = sum(Acres, na.rm = TRUE), .groups = "drop")
 
-  # Create ggplots (no embedded title here; UI provides headings)
-  g3 <- make_bar(fire_counts_total, Month, Total_Fires, "Total Fires", "#2a9d8f", title = NULL)
-  g4 <- make_bar(acre_totals_total, Month, Total_Acres, "Total Acres Burned", "#f4a261", title = NULL)
+  g3 <- make_bar(fire_counts_total, Month, Total_Fires, "Total Fires", "#2a9d8f")
+  g4 <- make_bar(acre_totals_total, Month, Total_Acres, "Total Acres Burned", "#f4a261")
 
-  # Convert to plotly objects
   p3 <- ggplotly(g3, tooltip = "text")
   p4 <- ggplotly(g4, tooltip = "text")
 
-  # Combine and set axis titles for interactive display
   subplot(p3, p4, nrows = 1, shareX = TRUE, margin = 0.08) %>%
     layout(
       hoverlabel = list(bgcolor = "white"),
@@ -1571,20 +1559,22 @@ output$monthly_fire_histograms_total <- renderPlotly({
 
 # ---- Download button (static patchwork PNG with titles) ----
 output$download_monthly_plots <- downloadHandler(
-  filename = function() {
-    "YELL_Monthly_Fires.png"
-  },
+  filename = function() "YELL_Monthly_Fires.png",
   content = function(file) {
-    # Prepare same datasets for static PNG
+    req(selected_years())
+
     monthly_df <- YELL_Fire_Final %>%
       filter(Year %in% selected_years()) %>%
-      mutate(Month = month(Date, label = TRUE, abbr = FALSE),
-             Acres = as.numeric(Acres))
+      mutate(
+        Month = month(Date, label = TRUE, abbr = FALSE),
+        Acres = as.numeric(Acres)
+      )
 
     fire_counts_avg <- monthly_df %>%
       count(Year, Month) %>%
       group_by(Month) %>%
       summarise(Avg_Fires = mean(n), .groups = "drop")
+
     acre_totals_avg <- monthly_df %>%
       group_by(Year, Month) %>%
       summarise(Total_Acres = sum(Acres, na.rm = TRUE), .groups = "drop") %>%
@@ -1593,40 +1583,37 @@ output$download_monthly_plots <- downloadHandler(
 
     fire_counts_total <- monthly_df %>%
       count(Month, name = "Total_Fires")
+
     acre_totals_total <- monthly_df %>%
       group_by(Month) %>%
       summarise(Total_Acres = sum(Acres, na.rm = TRUE), .groups = "drop")
 
-    # Use titles for the downloaded PNG version
     g_png_1 <- make_bar(fire_counts_avg, Month, Avg_Fires, "Avg. Fires", "#264653", title = "Average Number of Fires")
     g_png_2 <- make_bar(acre_totals_avg, Month, Avg_Acres, "Avg. Acres Burned", "#e76f51", title = "Average Acres Burned")
     g_png_3 <- make_bar(fire_counts_total, Month, Total_Fires, "Total Fires", "#2a9d8f", title = "Total Number of Fires")
     g_png_4 <- make_bar(acre_totals_total, Month, Total_Acres, "Total Acres Burned", "#f4a261", title = "Total Acres Burned")
 
-    ggsave(
+    ggplot2::ggsave(
       file,
-      plot = patchwork::wrap_plots(
-        g_png_1, g_png_2,
-        g_png_3, g_png_4,
-        ncol = 2
-      ),
+      plot = patchwork::wrap_plots(g_png_1, g_png_2, g_png_3, g_png_4, ncol = 2),
       width = 12, height = 8, dpi = 300
     )
   }
 )
 
-# ---- Render UI with section headers ----
+# ---- Render UI with section headers (HIDDEN until years selected) ----
 output$monthly_fire_histograms_ui <- renderUI({
+  req(selected_years())  # <-- THIS is the key fix
+
   tagList(
-    # Average Metrics row
-    tags$h4("Average Number of Fires and Acres Burned by Month", style = "color: purple; font-weight: bold; margin-top: 20px;"),
+    tags$h4("Average Number of Fires and Acres Burned by Month",
+            style = "color: purple; font-weight: bold; margin-top: 20px;"),
     plotlyOutput("monthly_fire_histograms_avg", height = "400px"),
 
-    # Total Metrics row
-    tags$h4("Total Number of Fires and Acres Burned by Month", style = "color: purple; font-weight: bold; margin-top: 20px;"),
+    tags$h4("Total Number of Fires and Acres Burned by Month",
+            style = "color: purple; font-weight: bold; margin-top: 20px;"),
     plotlyOutput("monthly_fire_histograms_total", height = "400px"),
 
-    # Note
     tags$p(
       style = "color: red; font-style: italic; margin-top: 10px;",
       "Acres burned in a month correspond to incidents that started in that same month. ",
@@ -1634,7 +1621,6 @@ output$monthly_fire_histograms_ui <- renderUI({
       "(so it wouldn't include fires that started in July that then burned into August)."
     ),
 
-    # Download button
     downloadButton("download_monthly_plots", "Download Plot", style = "margin-top: 10px;")
   )
 })
@@ -1782,6 +1768,38 @@ uiOutput("declared_out_ui")
 
 ## Time to Fire Declared Contained
 
+```{r summary header for declared contained server, include=FALSE, echo=FALSE}
+#| context: server
+output$declared_contained_header <- renderUI({
+  yrs <- sort(as.numeric(selected_years()))
+  if (is.null(yrs) || length(yrs) == 0) {
+    return(tags$div(style = "color: red; font-style: italic;",
+                    "Please select either individual year(s) or a year group to view results."))
+  }
+
+  # Check if selection came from a batch
+  is_batch <- input$selected_batch != "" && input$selected_batch %in% names(batch_choices)
+
+  year_text <- if (is_batch) {
+    paste0(min(yrs), "–", max(yrs))
+  } else if (length(yrs) == 1) {
+    paste(yrs)
+  } else {
+    paste(yrs, collapse = ", ")
+  }
+
+  tags$h4(
+    style = "color: orange; font-weight: bold;",
+    paste("Showing results for:", year_text,
+          sprintf("(%d year%s selected)", length(yrs), ifelse(length(yrs) > 1, "s", "")))
+  )
+})
+```
+
+```{r summary header for declared contained ui, echo=FALSE}
+uiOutput("declared_contained_header")
+```
+
 ```{r time to declared contained server, include=FALSE, echo=FALSE}
 #| context: server
 output$declared_contained_ui <- renderUI({
@@ -1883,6 +1901,38 @@ uiOutput("declared_contained_ui")
 ---
 
 ## Time to Fire Declared Controlled
+
+```{r summary header for declared controlled server, include=FALSE, echo=FALSE}
+#| context: server
+output$declared_controlled_header <- renderUI({
+  yrs <- sort(as.numeric(selected_years()))
+  if (is.null(yrs) || length(yrs) == 0) {
+    return(tags$div(style = "color: red; font-style: italic;",
+                    "Please select either individual year(s) or a year group to view results."))
+  }
+
+  # Check if selection came from a batch
+  is_batch <- input$selected_batch != "" && input$selected_batch %in% names(batch_choices)
+
+  year_text <- if (is_batch) {
+    paste0(min(yrs), "–", max(yrs))
+  } else if (length(yrs) == 1) {
+    paste(yrs)
+  } else {
+    paste(yrs, collapse = ", ")
+  }
+
+  tags$h4(
+    style = "color: orange; font-weight: bold;",
+    paste("Showing results for:", year_text,
+          sprintf("(%d year%s selected)", length(yrs), ifelse(length(yrs) > 1, "s", "")))
+  )
+})
+```
+
+```{r summary header for declared controlled ui, echo=FALSE}
+uiOutput("declared_controlled_header")
+```
 
 ```{r time to declared controlled server, include=FALSE, echo=FALSE}
 #| context: server
