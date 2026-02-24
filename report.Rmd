@@ -307,7 +307,11 @@ selected_years <- reactive({
 ### Year(s) Selected
 
 ```{r summary header, include=TRUE, echo=FALSE}
-renderUI({
+uiOutput("summary_header")
+```
+
+```{r summary header server, include=FALSE}
+output$summary_header <- renderUI({
   yrs <- sort(as.numeric(selected_years()))
   if (is.null(yrs) || length(yrs) == 0) {
     return(tags$div(style = "color: red; font-style: italic;",
@@ -334,9 +338,18 @@ renderUI({
 ```
 
 
+
 --- 
 
 ## Number of Fires and Acres Burned
+
+```{r full record plots ui, include=TRUE, echo=FALSE}
+shiny::conditionalPanel(
+  condition = "input.selected_batch == 'Full Record (Post-1972)'",
+  plotlyOutput("hist_acres", height = "450px"),
+  plotlyOutput("hist_fires", height = "450px")
+)
+```
 
 ```{r full record plotly outputs, include=FALSE}
 ### Create full record plots in a separate chunk
@@ -396,7 +409,11 @@ output$hist_fires <- renderPlotly({
 
 
 ```{r summary header for summary table, include=TRUE, echo=FALSE}
-renderUI({
+uiOutput("summary_header_for_summary_table")
+```
+
+```{r summary header for summary table server, include=FALSE}
+output$summary_header_for_summary_table <- renderUI({
   yrs <- sort(as.numeric(selected_years()))
   if (is.null(yrs) || length(yrs) == 0) {
     return(tags$div(style = "color: red; font-style: italic;",
@@ -421,6 +438,7 @@ renderUI({
   )
 })
 ```
+
 
 
 ```{r total acres, include=TRUE, echo=FALSE}
@@ -796,7 +814,11 @@ conditionalPanel(
 ## Fires by Size Class
 
 ```{r summary header for size class, include=TRUE, echo=FALSE}
-renderUI({
+uiOutput("summary_header_for_size_class")
+```
+
+```{r summary header for size class server, include=FALSE}
+output$summary_header_for_size_class <- renderUI({
   yrs <- sort(as.numeric(selected_years()))
   if (is.null(yrs) || length(yrs) == 0) {
     return(tags$div(style = "color: red; font-style: italic;",
@@ -822,8 +844,13 @@ renderUI({
 })
 ```
 
+
 ```{r summary size class, include=TRUE, echo=FALSE}
-renderUI({
+uiOutput("summary_size_class")
+```
+
+```{r summary size class server, include=FALSE}
+output$summary_size_class <- renderUI({
   yrs <- selected_years()
   req(yrs)
 
@@ -925,12 +952,17 @@ renderUI({
 })
 ```
 
+
 --- 
 
 ## Type of Management Action Taken
 
 ```{r summary header for management action, include=TRUE, echo=FALSE}
-renderUI({
+uiOutput("summary_header_for_management_action")
+```
+
+```{r summary header for management action server, include=FALSE}
+output$summary_header_for_management_action <- renderUI({
   yrs <- sort(as.numeric(selected_years()))
   if (is.null(yrs) || length(yrs) == 0) {
     return(tags$div(style = "color: red; font-style: italic;",
@@ -956,8 +988,13 @@ renderUI({
 })
 ```
 
+
 ```{r summary type, include=TRUE, echo=FALSE}
-renderUI({
+uiOutput("summary_type")
+```
+
+```{r summary type server, include=FALSE}
+output$summary_type <- renderUI({
   yrs <- selected_years()
   req(yrs)
 
@@ -1053,12 +1090,17 @@ renderUI({
 })
 ```
 
+
 --- 
 
 ## Cause of Fire
 
 ```{r summary header for fire cause, include=TRUE, echo=FALSE}
-renderUI({
+uiOutput("summary_header_for_fire_cause")
+```
+
+```{r summary header for fire cause server, include=FALSE}
+output$summary_header_for_fire_cause <- renderUI({
   yrs <- sort(as.numeric(selected_years()))
   if (is.null(yrs) || length(yrs) == 0) {
     return(tags$div(style = "color: red; font-style: italic;",
@@ -1084,8 +1126,13 @@ renderUI({
 })
 ```
 
+
 ```{r summary cause, include=TRUE, echo=FALSE}
-renderUI({
+uiOutput("summary_cause")
+```
+
+```{r summary cause server, include=FALSE}
+output$summary_cause <- renderUI({
   yrs <- selected_years()
   req(yrs)
 
@@ -1173,12 +1220,17 @@ renderUI({
 })
 ```
 
+
 ---
 
 ## Specific Cause of Fire
 
 ```{r summary header for specific cause, include=TRUE, echo=FALSE}
-renderUI({
+uiOutput("summary_header_for_specific_cause")
+```
+
+```{r summary header for specific cause server, include=FALSE}
+output$summary_header_for_specific_cause <- renderUI({
   yrs <- sort(as.numeric(selected_years()))
   if (is.null(yrs) || length(yrs) == 0) {
     return(tags$div(style = "color: red; font-style: italic;",
@@ -1204,8 +1256,13 @@ renderUI({
 })
 ```
 
+
 ```{r summary cause specific, include=TRUE, echo=FALSE}
-renderUI({
+uiOutput("summary_cause_specific")
+```
+
+```{r summary cause specific server, include=FALSE}
+output$summary_cause_specific <- renderUI({
   yrs <- selected_years()
   req(yrs)
 
@@ -1319,12 +1376,17 @@ renderUI({
 })
 ```
 
+
 --- 
 
 ## Fires by Month
 
 ```{r summary header for fires by month, include=TRUE, echo=FALSE}
-renderUI({
+uiOutput("summary_header_for_fires_by_month")
+```
+
+```{r summary header for fires by month server, include=FALSE}
+output$summary_header_for_fires_by_month <- renderUI({
   yrs <- sort(as.numeric(selected_years()))
   if (is.null(yrs) || length(yrs) == 0) {
     return(tags$div(style = "color: red; font-style: italic;",
@@ -1349,6 +1411,7 @@ renderUI({
   )
 })
 ```
+
 
 ```{r fires by month, include=FALSE, echo=FALSE}
 # ---- Helper function (define outside render functions) ----
@@ -1524,7 +1587,11 @@ uiOutput("monthly_fire_histograms_ui")
 ## Time to Fire Declared Out
 
 ```{r summary header for declared out, include=TRUE, echo=FALSE}
-renderUI({
+uiOutput("summary_header_for_declared_out")
+```
+
+```{r summary header for declared out server, include=FALSE}
+output$summary_header_for_declared_out <- renderUI({
   yrs <- sort(as.numeric(selected_years()))
   if (is.null(yrs) || length(yrs) == 0) {
     return(tags$div(style = "color: red; font-style: italic;",
@@ -1550,8 +1617,13 @@ renderUI({
 })
 ```
 
+
 ```{r time to declared out, include=TRUE, echo=FALSE}
-renderUI({
+uiOutput("time_to_declared_out")
+```
+
+```{r time to declared out server, include=FALSE}
+output$time_to_declared_out <- renderUI({
   yrs <- selected_years()
   req(yrs)
 
@@ -1643,12 +1715,17 @@ renderUI({
 })
 ```
 
+
 ---
 
 ## Time to Fire Declared Contained
 
 ```{r time to declared contained, include=TRUE, echo=FALSE}
-renderUI({
+uiOutput("time_to_declared_contained")
+```
+
+```{r time to declared contained server, include=FALSE}
+output$time_to_declared_contained <- renderUI({
   yrs <- selected_years()
   req(yrs)
 
@@ -1740,12 +1817,17 @@ renderUI({
 })
 ```
 
+
 ---
 
 ## Time to Fire Declared Controlled
 
 ```{r time to declared controlled, include=TRUE, echo=FALSE}
-renderUI({
+uiOutput("time_to_declared_controlled")
+```
+
+```{r time to declared controlled server, include=FALSE}
+output$time_to_declared_controlled <- renderUI({
   yrs <- selected_years()
   req(yrs)
 
@@ -1836,4 +1918,5 @@ renderUI({
   )
 })
 ```
+
 
