@@ -2,19 +2,24 @@
 title: "Yellowstone Fire Statistics Reporting"
 author: "Nickolas Kichas"
 date: "2026-02-11"
-output: html_document
-runtime: shiny
+format: html
+server: shiny
+execute:
+  echo: false
 ---
+
 
 # Purpose
 
 This report summarizes annual fire season data (number of fires, fire size, fire cause, and types of management actions taken) across a singular year or multiple years in Yellowstone National Park.
 
 ```{r setup, include=FALSE}
+#| context: setup
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r install packages, include=FALSE}
+#| context: setup
 # ---- Install packages (if needed) ----
 
 # install.packages("boot")
@@ -40,6 +45,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ```{r load packages, include=FALSE}
+#| context: setup
 # ---- Load packages ----
 library(boot)
 library(dplyr)
@@ -65,14 +71,16 @@ library(tidyverse)
 ```
 
 ```{r import data, include=FALSE}
+#| context: setup
 # ---- Identify working directory ----
 wDir <- here()
 ```
 
 ```{r load data, include=FALSE}
+#| context: setup
 # ---- Load data ----
-YELL_Fire <- read_csv(path(wDir, "data/YELL_Fires_2025.csv")) # 2025
-INFORM_Fire <- read_csv(path(wDir, "data/Yellowstone_INFORM_Incidents_2025.csv")) # 2025
+YELL_Fire <- read_csv(path(wDir, "Fire Statistics/YELL_Fires_2025.csv")) # 2024
+INFORM_Fire <- read_csv(path(wDir, "Fire Statistics/Yellowstone_INFORM_Incidents_2025.csv")) # 2024
 
 # For code diagnostics (will not resolve in Shiny runtime)
 #YELL_Fire <- read_csv(file = file.path(wDir, "Fire Statistics", "YELL_Fires_2025.csv"))
@@ -89,6 +97,7 @@ The following R output summarizes Yellowstone fire data that was last updated on
 
 
 ```{r clean data, include=FALSE}
+#| context: setup
 ###############################
 #### Clean and Filter Data ####
 ###############################
@@ -230,6 +239,30 @@ YELL_Fire_Final$Control_Date <- as.Date(YELL_Fire_Final$Control_Date, format = "
 ```
 
 
+```{r batch choices setup}
+#| context: setup
+#| include: false
+
+# Precompute batch choices/labels once so they're available to both UI and server
+batch_lengths <- c(5, 10, 20, 30, 40, 50)
+all_years <- sort(unique(YELL_Fire_Final$Year), decreasing = TRUE)
+max_year <- max(all_years)
+
+batch_choices <- list()
+for (len in batch_lengths) {
+  start_year <- max_year
+  end_year <- max(max_year - len + 1, min(all_years))
+  label <- paste0("Most recent ", len, " years (", start_year, "–", end_year, ")")
+  years <- all_years[all_years <= start_year & all_years >= end_year]
+  batch_choices[[label]] <- years
+}
+
+batch_choices[["Full Record (Post-1972)"]] <- sort(unique(YELL_Fire_Final$Year[YELL_Fire_Final$Year >= 1972]), decreasing = TRUE)
+
+batch_labels <- names(batch_choices)
+names(batch_labels) <- batch_labels
+```
+
 ### Select Year(s)
 
 ```{r select year, include=TRUE, echo=FALSE}
@@ -245,23 +278,6 @@ selectInput("selected_year",
 
 ```{r select batch, include=TRUE, echo=FALSE}
 ### Select by Batch (Most Recent X Years)
-batch_lengths <- c(5, 10, 20, 30, 40, 50)
-all_years <- sort(unique(YELL_Fire_Final$Year), decreasing = TRUE)
-max_year <- max(all_years)
-
-batch_choices <- list()
-for (len in batch_lengths) {
-  start_year <- max_year
-  end_year <- max(max_year - len + 1, min(all_years))
-  label <- paste0("Most recent ", len, " years (", start_year, "–", end_year, ")")
-  years <- all_years[all_years <= start_year & all_years >= end_year]
-  batch_choices[[label]] <- years
-}
-
-batch_choices[["Full Record (Post-1972)"]] <- sort(unique(YELL_Fire_Final$Year[YELL_Fire_Final$Year >= 1972]), decreasing = TRUE)
-batch_labels <- names(batch_choices)
-names(batch_labels) <- batch_labels
-
 selectInput("selected_batch", 
             "Select Multi-Year Group (5–50 yrs):", 
             choices = c("None" = "", batch_labels),
@@ -271,6 +287,7 @@ selectInput("selected_batch",
 
 
 ```{r sync inputs, include=FALSE}
+#| context: server
 observeEvent(input$selected_year, {
   if (!is.null(input$selected_year) && length(input$selected_year) > 0) {
     updateSelectInput(session, "selected_batch", selected = "")
@@ -306,11 +323,8 @@ selected_years <- reactive({
 
 ### Year(s) Selected
 
-```{r summary header, include=TRUE, echo=FALSE}
-uiOutput("summary_header")
-```
-
-```{r summary header server, include=FALSE}
+```{r summary header server, include=FALSE, echo=FALSE}
+#| context: server
 output$summary_header <- renderUI({
   yrs <- sort(as.numeric(selected_years()))
   if (is.null(yrs) || length(yrs) == 0) {
@@ -337,21 +351,17 @@ output$summary_header <- renderUI({
 })
 ```
 
+```{r summary header ui, echo=FALSE}
+uiOutput("summary_header")
+```
 
 
 --- 
 
 ## Number of Fires and Acres Burned
 
-```{r full record plots ui, include=TRUE, echo=FALSE}
-shiny::conditionalPanel(
-  condition = "input.selected_batch == 'Full Record (Post-1972)'",
-  plotlyOutput("hist_acres", height = "450px"),
-  plotlyOutput("hist_fires", height = "450px")
-)
-```
-
 ```{r full record plotly outputs, include=FALSE}
+#| context: server
 ### Create full record plots in a separate chunk
 output$hist_acres <- renderPlotly({
   req(input$selected_batch == "Full Record (Post-1972)")
@@ -408,12 +418,9 @@ output$hist_fires <- renderPlotly({
 ```
 
 
-```{r summary header for summary table, include=TRUE, echo=FALSE}
-uiOutput("summary_header_for_summary_table")
-```
-
-```{r summary header for summary table server, include=FALSE}
-output$summary_header_for_summary_table <- renderUI({
+```{r summary header for summary table server, include=FALSE, echo=FALSE}
+#| context: server
+output$summary_table_header <- renderUI({
   yrs <- sort(as.numeric(selected_years()))
   if (is.null(yrs) || length(yrs) == 0) {
     return(tags$div(style = "color: red; font-style: italic;",
@@ -439,9 +446,13 @@ output$summary_header_for_summary_table <- renderUI({
 })
 ```
 
+```{r summary header for summary table ui, echo=FALSE}
+uiOutput("summary_table_header")
+```
 
 
-```{r total acres, include=TRUE, echo=FALSE}
+```{r total acres server, include=FALSE, echo=FALSE}
+#| context: server
 # --- Helper function to calculate mode ---
 get_mode <- function(x) {
   ux <- na.omit(unique(x))
@@ -592,7 +603,7 @@ output$download_plot_fires <- downloadHandler(
 )
 
 # --- Render Summary Table and Plots conditionally ---
-renderUI({
+output$total_acres_ui <- renderUI({
   yrs <- selected_years()
   
   # Require that years have been selected before displaying anything
@@ -633,8 +644,13 @@ renderUI({
 })
 ```
 
+```{r total acres ui, echo=FALSE}
+uiOutput("total_acres_ui")
+```
+
 
 ```{r boxplot calculations, include=FALSE}
+#| context: server
 # Reactive filtered data for the decadal boxplot
 decadal_plot_df <- reactive({
   req(input$selected_batch == "Full Record (Post-1972)")
@@ -738,6 +754,7 @@ conditionalPanel(
 
 
 ```{r dicsovery dates, include=FALSE}
+#| context: server
 output$discovery_doy_plot <- renderPlot({
   req(input$selected_batch == "Full Record (Post-1972)")
 
@@ -813,12 +830,9 @@ conditionalPanel(
 
 ## Fires by Size Class
 
-```{r summary header for size class, include=TRUE, echo=FALSE}
-uiOutput("summary_header_for_size_class")
-```
-
-```{r summary header for size class server, include=FALSE}
-output$summary_header_for_size_class <- renderUI({
+```{r summary header for size class server, include=FALSE, echo=FALSE}
+#| context: server
+output$size_class_header <- renderUI({
   yrs <- sort(as.numeric(selected_years()))
   if (is.null(yrs) || length(yrs) == 0) {
     return(tags$div(style = "color: red; font-style: italic;",
@@ -844,13 +858,13 @@ output$summary_header_for_size_class <- renderUI({
 })
 ```
 
-
-```{r summary size class, include=TRUE, echo=FALSE}
-uiOutput("summary_size_class")
+```{r summary header for size class ui, echo=FALSE}
+uiOutput("size_class_header")
 ```
 
-```{r summary size class server, include=FALSE}
-output$summary_size_class <- renderUI({
+```{r summary size class server, include=FALSE, echo=FALSE}
+#| context: server
+output$size_class_ui <- renderUI({
   yrs <- selected_years()
   req(yrs)
 
@@ -952,17 +966,17 @@ output$summary_size_class <- renderUI({
 })
 ```
 
+```{r summary size class ui, echo=FALSE}
+uiOutput("size_class_ui")
+```
 
 --- 
 
 ## Type of Management Action Taken
 
-```{r summary header for management action, include=TRUE, echo=FALSE}
-uiOutput("summary_header_for_management_action")
-```
-
-```{r summary header for management action server, include=FALSE}
-output$summary_header_for_management_action <- renderUI({
+```{r summary header for management action server, include=FALSE, echo=FALSE}
+#| context: server
+output$management_header <- renderUI({
   yrs <- sort(as.numeric(selected_years()))
   if (is.null(yrs) || length(yrs) == 0) {
     return(tags$div(style = "color: red; font-style: italic;",
@@ -988,13 +1002,13 @@ output$summary_header_for_management_action <- renderUI({
 })
 ```
 
-
-```{r summary type, include=TRUE, echo=FALSE}
-uiOutput("summary_type")
+```{r summary header for management action ui, echo=FALSE}
+uiOutput("management_header")
 ```
 
-```{r summary type server, include=FALSE}
-output$summary_type <- renderUI({
+```{r summary type server, include=FALSE, echo=FALSE}
+#| context: server
+output$management_ui <- renderUI({
   yrs <- selected_years()
   req(yrs)
 
@@ -1090,17 +1104,17 @@ output$summary_type <- renderUI({
 })
 ```
 
+```{r summary type ui, echo=FALSE}
+uiOutput("management_ui")
+```
 
 --- 
 
 ## Cause of Fire
 
-```{r summary header for fire cause, include=TRUE, echo=FALSE}
-uiOutput("summary_header_for_fire_cause")
-```
-
-```{r summary header for fire cause server, include=FALSE}
-output$summary_header_for_fire_cause <- renderUI({
+```{r summary header for fire cause server, include=FALSE, echo=FALSE}
+#| context: server
+output$cause_header <- renderUI({
   yrs <- sort(as.numeric(selected_years()))
   if (is.null(yrs) || length(yrs) == 0) {
     return(tags$div(style = "color: red; font-style: italic;",
@@ -1126,13 +1140,13 @@ output$summary_header_for_fire_cause <- renderUI({
 })
 ```
 
-
-```{r summary cause, include=TRUE, echo=FALSE}
-uiOutput("summary_cause")
+```{r summary header for fire cause ui, echo=FALSE}
+uiOutput("cause_header")
 ```
 
-```{r summary cause server, include=FALSE}
-output$summary_cause <- renderUI({
+```{r summary cause server, include=FALSE, echo=FALSE}
+#| context: server
+output$cause_ui <- renderUI({
   yrs <- selected_years()
   req(yrs)
 
@@ -1220,17 +1234,17 @@ output$summary_cause <- renderUI({
 })
 ```
 
+```{r summary cause ui, echo=FALSE}
+uiOutput("cause_ui")
+```
 
 ---
 
 ## Specific Cause of Fire
 
-```{r summary header for specific cause, include=TRUE, echo=FALSE}
-uiOutput("summary_header_for_specific_cause")
-```
-
-```{r summary header for specific cause server, include=FALSE}
-output$summary_header_for_specific_cause <- renderUI({
+```{r summary header for specific cause server, include=FALSE, echo=FALSE}
+#| context: server
+output$specific_cause_header <- renderUI({
   yrs <- sort(as.numeric(selected_years()))
   if (is.null(yrs) || length(yrs) == 0) {
     return(tags$div(style = "color: red; font-style: italic;",
@@ -1256,13 +1270,13 @@ output$summary_header_for_specific_cause <- renderUI({
 })
 ```
 
-
-```{r summary cause specific, include=TRUE, echo=FALSE}
-uiOutput("summary_cause_specific")
+```{r summary header for specific cause ui, echo=FALSE}
+uiOutput("specific_cause_header")
 ```
 
-```{r summary cause specific server, include=FALSE}
-output$summary_cause_specific <- renderUI({
+```{r summary cause specific server, include=FALSE, echo=FALSE}
+#| context: server
+output$specific_cause_ui <- renderUI({
   yrs <- selected_years()
   req(yrs)
 
@@ -1376,17 +1390,17 @@ output$summary_cause_specific <- renderUI({
 })
 ```
 
+```{r summary cause specific ui, echo=FALSE}
+uiOutput("specific_cause_ui")
+```
 
 --- 
 
 ## Fires by Month
 
-```{r summary header for fires by month, include=TRUE, echo=FALSE}
-uiOutput("summary_header_for_fires_by_month")
-```
-
-```{r summary header for fires by month server, include=FALSE}
-output$summary_header_for_fires_by_month <- renderUI({
+```{r summary header for fires by month server, include=FALSE, echo=FALSE}
+#| context: server
+output$month_header <- renderUI({
   yrs <- sort(as.numeric(selected_years()))
   if (is.null(yrs) || length(yrs) == 0) {
     return(tags$div(style = "color: red; font-style: italic;",
@@ -1412,8 +1426,12 @@ output$summary_header_for_fires_by_month <- renderUI({
 })
 ```
 
+```{r summary header for fires by month ui, echo=FALSE}
+uiOutput("month_header")
+```
 
 ```{r fires by month, include=FALSE, echo=FALSE}
+#| context: server
 # ---- Helper function (define outside render functions) ----
 # now accepts optional title (for static PNG use)
 make_bar <- function(df, x, y, ylab, color, title = NULL) {
@@ -1586,12 +1604,9 @@ uiOutput("monthly_fire_histograms_ui")
 
 ## Time to Fire Declared Out
 
-```{r summary header for declared out, include=TRUE, echo=FALSE}
-uiOutput("summary_header_for_declared_out")
-```
-
-```{r summary header for declared out server, include=FALSE}
-output$summary_header_for_declared_out <- renderUI({
+```{r summary header for declared out server, include=FALSE, echo=FALSE}
+#| context: server
+output$declared_out_header <- renderUI({
   yrs <- sort(as.numeric(selected_years()))
   if (is.null(yrs) || length(yrs) == 0) {
     return(tags$div(style = "color: red; font-style: italic;",
@@ -1617,13 +1632,13 @@ output$summary_header_for_declared_out <- renderUI({
 })
 ```
 
-
-```{r time to declared out, include=TRUE, echo=FALSE}
-uiOutput("time_to_declared_out")
+```{r summary header for declared out ui, echo=FALSE}
+uiOutput("declared_out_header")
 ```
 
-```{r time to declared out server, include=FALSE}
-output$time_to_declared_out <- renderUI({
+```{r time to declared out server, include=FALSE, echo=FALSE}
+#| context: server
+output$declared_out_ui <- renderUI({
   yrs <- selected_years()
   req(yrs)
 
@@ -1715,17 +1730,17 @@ output$time_to_declared_out <- renderUI({
 })
 ```
 
+```{r time to declared out ui, echo=FALSE}
+uiOutput("declared_out_ui")
+```
 
 ---
 
 ## Time to Fire Declared Contained
 
-```{r time to declared contained, include=TRUE, echo=FALSE}
-uiOutput("time_to_declared_contained")
-```
-
-```{r time to declared contained server, include=FALSE}
-output$time_to_declared_contained <- renderUI({
+```{r time to declared contained server, include=FALSE, echo=FALSE}
+#| context: server
+output$declared_contained_ui <- renderUI({
   yrs <- selected_years()
   req(yrs)
 
@@ -1817,17 +1832,17 @@ output$time_to_declared_contained <- renderUI({
 })
 ```
 
+```{r time to declared contained ui, echo=FALSE}
+uiOutput("declared_contained_ui")
+```
 
 ---
 
 ## Time to Fire Declared Controlled
 
-```{r time to declared controlled, include=TRUE, echo=FALSE}
-uiOutput("time_to_declared_controlled")
-```
-
-```{r time to declared controlled server, include=FALSE}
-output$time_to_declared_controlled <- renderUI({
+```{r time to declared controlled server, include=FALSE, echo=FALSE}
+#| context: server
+output$declared_controlled_ui <- renderUI({
   yrs <- selected_years()
   req(yrs)
 
@@ -1919,4 +1934,7 @@ output$time_to_declared_controlled <- renderUI({
 })
 ```
 
+```{r time to declared controlled ui, echo=FALSE}
+uiOutput("declared_controlled_ui")
+```
 
