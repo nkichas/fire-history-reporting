@@ -244,7 +244,7 @@ YELL_Fire_Final$Control_Date <- as.Date(YELL_Fire_Final$Control_Date, format = "
 #| include: false
 
 # Precompute batch choices/labels once so they're available to both UI and server
-batch_lengths <- c(5, 10, 20, 30, 40, 50)
+batch_lengths <- c(5, 10, 15, 20, 25, 30, 40, 50)
 all_years <- sort(unique(YELL_Fire_Final$Year), decreasing = TRUE)
 max_year <- max(all_years)
 
@@ -580,6 +580,9 @@ output$download_plot_acres <- downloadHandler(
       geom_col(fill = "#F4A261") +
       labs(x = "Year", y = "Total Acres Burned") +
       theme_minimal(base_size = 16) +
+      theme(axis.text.x = element_text(angle = 90, hjust = 1),
+          axis.title.x = element_text(face = "bold", size = 14),
+          axis.title.y = element_text(face = "bold", size = 14)) +
       coord_cartesian(ylim = c(0, max_y))
     
     ggplot2::ggsave(file, g, width = 10, height = 6, dpi = 300)
@@ -596,6 +599,9 @@ output$download_plot_fires <- downloadHandler(
       geom_col(fill = "#E76F51") +
       labs(x = "Year", y = "Number of Fires") +
       theme_minimal(base_size = 16) +
+      theme(axis.text.x = element_text(angle = 90, hjust = 1),
+          axis.title.x = element_text(face = "bold", size = 14),
+          axis.title.y = element_text(face = "bold", size = 14)) +
       coord_cartesian(ylim = c(0, max_y))
     
     ggplot2::ggsave(file, g, width = 10, height = 6, dpi = 300)
@@ -755,74 +761,111 @@ conditionalPanel(
 
 ```{r dicsovery dates, include=FALSE}
 #| context: server
-output$discovery_doy_plot <- renderPlot({
-  req(input$selected_batch == "Full Record (Post-1972)")
+#| include: false
 
-  # Prep data
+# Plot factory (reused by renderPlot + download)
+make_discovery_doy_ggplot <- function(include_1988 = FALSE) {
+
   filtered_df <- YELL_Fire_Final %>%
-  filter(!is.na(Date)) %>%
-  mutate(Year = lubridate::year(Date),
-         DOY = lubridate::yday(Date)) %>%
-  filter(Year >= 1972) %>%
-  { if (!input$include_1988) filter(., Year != 1988) else . }
+    dplyr::filter(!is.na(Date)) %>%
+    dplyr::mutate(
+      Year = lubridate::year(Date),
+      DOY  = lubridate::yday(Date)
+    ) %>%
+    dplyr::filter(Year >= 1972) %>%
+    { if (!include_1988) dplyr::filter(., Year != 1988) else . }
 
-  # Bin by decade
   breaks <- seq(1972, max(filtered_df$Year, na.rm = TRUE) + 11, by = 11)
   labels <- paste0(breaks[-length(breaks)], "_", breaks[-1] - 1)
-  filtered_df <- filtered_df %>%
-    mutate(Decade = cut(Year, breaks = breaks, labels = labels, include.lowest = TRUE))
 
-  # Kruskal-Wallis + Dunn's test
-  kw_result <- kruskal.test(DOY ~ Decade, data = filtered_df)
+  filtered_df <- filtered_df %>%
+    dplyr::mutate(Decade = cut(Year, breaks = breaks, labels = labels, include.lowest = TRUE))
+
   dunn_result <- FSA::dunnTest(DOY ~ Decade, data = filtered_df, method = "holm")
 
   dunn_pvals <- dunn_result$res %>%
-    select(Comparison, P.adj) %>%
+    dplyr::select(Comparison, P.adj) %>%
     tidyr::separate(Comparison, into = c("Group1", "Group2"), sep = " - ")
 
-  pval_matrix <- matrix(1, nrow = length(labels), ncol = length(labels),
-                        dimnames = list(labels, labels))
+  pval_matrix <- matrix(
+    1,
+    nrow = length(labels),
+    ncol = length(labels),
+    dimnames = list(labels, labels)
+  )
+
   for (i in seq_len(nrow(dunn_pvals))) {
     g1 <- as.character(dunn_pvals$Group1[i])
     g2 <- as.character(dunn_pvals$Group2[i])
-    p <- dunn_pvals$P.adj[i]
+    p  <- dunn_pvals$P.adj[i]
     pval_matrix[g1, g2] <- p
     pval_matrix[g2, g1] <- p
   }
 
-  letters_df <- multcompView::multcompLetters(pval_matrix)$Letters %>%
+  letters_df <- multcompView::multcompLetters(pval_matrix)$Letters |>
     tibble::enframe(name = "Decade", value = "Letters")
 
-  # Get max DOY per decade for positioning letters
   position_df <- filtered_df %>%
-    group_by(Decade) %>%
-    summarize(max_y = max(DOY, na.rm = TRUE), .groups = "drop")
+    dplyr::group_by(Decade) %>%
+    dplyr::summarize(max_y = max(DOY, na.rm = TRUE), .groups = "drop")
 
-  letters_df <- left_join(letters_df, position_df, by = "Decade") %>%
-    mutate(label_y = max_y + 5)  # offset a bit above max
+  letters_df <- dplyr::left_join(letters_df, position_df, by = "Decade") %>%
+    dplyr::mutate(label_y = max_y + 5)
 
-  # Plot
-  ggplot(filtered_df, aes(x = Decade, y = DOY)) +
-    geom_boxplot(fill = "#264653", alpha = 0.7) +
-    geom_jitter(width = 0.1, alpha = 0.3, color = "gray40", size = 3) +
-    geom_text(data = letters_df,
-              aes(x = Decade, y = label_y, label = Letters),
-              size = 6, vjust = 0, color = "red3") +
-    scale_x_discrete(labels = function(x) gsub("_", "–", x)) +
-    scale_y_continuous(name = "Day of Year", breaks = seq(100, 300, 20)) +
-    theme_minimal(base_size = 16) +
-    labs(
+  ggplot2::ggplot(filtered_df, ggplot2::aes(x = Decade, y = DOY)) +
+    ggplot2::geom_boxplot(fill = "#264653", alpha = 0.7) +
+    ggplot2::geom_jitter(width = 0.1, alpha = 0.3, color = "gray40", size = 3) +
+    ggplot2::geom_text(
+      data = letters_df,
+      ggplot2::aes(x = Decade, y = label_y, label = Letters),
+      size = 6, vjust = 0, color = "red3"
+    ) +
+    ggplot2::scale_x_discrete(labels = function(x) gsub("_", "–", x)) +
+    ggplot2::scale_y_continuous(name = "Day of Year", breaks = seq(100, 300, 20)) +
+    ggplot2::theme_minimal(base_size = 16) +
+    ggplot2::labs(
       title = "Fire Discovery Dates by Decade",
       x = "Decade",
       caption = "Letters indicate statistically distinct groups (Dunn’s test, Holm correction)"
     )
+}
+
+# Render plot (only when full record selected)
+output$discovery_doy_plot <- renderPlot({
+  req(input$selected_batch == "Full Record (Post-1972)")
+  make_discovery_doy_ggplot(include_1988 = isTRUE(input$include_1988))
 })
+
+# Conditional UI: only show the plot (no button here)
+output$discovery_doy_ui <- renderUI({
+  req(input$selected_batch == "Full Record (Post-1972)")
+  plotOutput("discovery_doy_plot", height = "600px")
+})
+
+# Download handler (button is placed in the document body via conditionalPanel)
+output$download_discovery_doy_plot <- downloadHandler(
+  filename = function() {
+    paste0("Fire_Discovery_Dates_by_Decade_", Sys.Date(), ".png")
+  },
+  content = function(file) {
+    req(input$selected_batch == "Full Record (Post-1972)")
+    p <- make_discovery_doy_ggplot(include_1988 = isTRUE(input$include_1988))
+    ggplot2::ggsave(
+      filename = file,
+      plot = p,
+      device = "png",
+      width = 12, height = 7, units = "in",
+      dpi = 300
+    )
+  }
+)
 ```
 
 ```{r discovery date output, include=TRUE, echo=FALSE}
+uiOutput("discovery_doy_ui")
 conditionalPanel(
   condition = "input.selected_batch == 'Full Record (Post-1972)'",
-  plotOutput("discovery_doy_plot")
+  downloadButton("download_discovery_doy_plot", "Download Plot")
 )
 ```
 
