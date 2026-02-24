@@ -1,7 +1,7 @@
 ---
 title: "Yellowstone Fire Statistics Reporting"
 author: "Nickolas Kichas"
-date: "2026-02-11"
+date: "2026-02-24"
 format: html
 server: shiny
 execute:
@@ -87,7 +87,7 @@ INFORM_Fire <- read_csv(path(wDir, "data/Yellowstone_INFORM_Incidents_2025.csv")
 #INFORM_Fire <- read_csv(file = file.path(wDir, "data", "Yellowstone_INFORM_Incidents_2025.csv"))
 
 # ---- Collect file date into new objects ----
-file_info <- file.info(path(wDir,"YELL_Fires_2025.csv"))
+file_info <- file.info(path(wDir,"data/YELL_Fires_2025.csv"))
 data_date <- file_info$mtime
 formatted_data_date <- paste0(format(data_date, "%b %d"), ", ", format(data_date, "%Y"))
 ```
