@@ -83,8 +83,8 @@ YELL_Fire <- read_csv(path(wDir, "data/YELL_Fires_2025.csv")) # 2024
 INFORM_Fire <- read_csv(path(wDir, "data/Yellowstone_INFORM_Incidents_2025.csv")) # 2024
 
 # For code diagnostics (will not resolve in Shiny runtime)
-#YELL_Fire <- read_csv(file = file.path(wDir, "Fire Statistics", "YELL_Fires_2025.csv"))
-#INFORM_Fire <- read_csv(file = file.path(wDir, "Fire Statistics", "Yellowstone_INFORM_Incidents_2025.csv"))
+#YELL_Fire <- read_csv(file = file.path(wDir, "data", "YELL_Fires_2025.csv"))
+#INFORM_Fire <- read_csv(file = file.path(wDir, "data", "Yellowstone_INFORM_Incidents_2025.csv"))
 
 # ---- Collect file date into new objects ----
 file_info <- file.info(path(wDir,"YELL_Fires_2025.csv"))
@@ -114,6 +114,7 @@ YELL_Fire <- YELL_Fire %>%
   mutate(IncidentName = clean_name(IncidentName))
 
 INFORM_Fire <- INFORM_Fire %>%
+  filter(!tolower(POOProtectingAgency) %in% "usfs") %>%
   mutate(IncidentName = clean_name(IncidentName))
 
 # 1. Filter INFORM_Fire to remove blank Fire Cause
@@ -235,7 +236,7 @@ YELL_Fire_Final$Contain_Date <- as.Date(YELL_Fire_Final$Contain_Date, format = "
 YELL_Fire_Final$Control_Date <- as.Date(YELL_Fire_Final$Control_Date, format = "%m/%d/%Y")
 
 # --- Write .csv file for merged dataset for use with Fire Statisitcs Reporting (Names) script ----
-#write.csv(YELL_Fire_Final, "YELL_Fire_Final_Merged_2025.csv")
+#write.csv(YELL_Fire_Final, "YELL_Fire_Final_Merged_2025_Updated.csv")
 ```
 
 
