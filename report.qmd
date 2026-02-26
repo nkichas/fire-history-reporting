@@ -11,7 +11,7 @@ execute:
 
 # Purpose
 
-This report summarizes annual fire season data (number of fires, fire size, fire cause, and types of management actions taken) across a singular year or multiple years in Yellowstone National Park.
+This report summarizes annual fire season data (number of fires, fire size, fire cause, and types of management actions taken) across a singular year, or multiple years, in Yellowstone National Park.
 
 ```{r setup, include=FALSE}
 #| context: setup
@@ -258,7 +258,7 @@ for (len in batch_lengths) {
   batch_choices[[label]] <- years
 }
 
-batch_choices[["Full Record (Post-1972)"]] <- sort(unique(YELL_Fire_Final$Year[YELL_Fire_Final$Year >= 1972]), decreasing = TRUE)
+batch_choices[["Full Record (1972-Current)"]] <- sort(unique(YELL_Fire_Final$Year[YELL_Fire_Final$Year >= 1972]), decreasing = TRUE)
 
 batch_labels <- names(batch_choices)
 names(batch_labels) <- batch_labels
@@ -330,7 +330,7 @@ output$summary_header <- renderUI({
   yrs <- sort(as.numeric(selected_years()))
   if (is.null(yrs) || length(yrs) == 0) {
     return(tags$div(style = "color: red; font-style: italic;",
-                    "Please select either individual year(s) or a year group to view results."))
+                    "Please select either individual year(s) or multi-year group to view results."))
   }
 
   # Check if selection came from a batch
@@ -365,10 +365,10 @@ uiOutput("summary_header")
 #| context: server
 ### Create full record plots in a separate chunk
 output$hist_acres <- renderPlotly({
-  req(input$selected_batch == "Full Record (Post-1972)")
+  req(input$selected_batch == "Full Record (1972-Current)")
 
   df <- YELL_Fire_Final %>%
-    filter(Year %in% batch_choices[["Full Record (Post-1972)"]]) %>%
+    filter(Year %in% batch_choices[["Full Record (1972-Current)"]]) %>%
     { if (!input$include_1988) filter(., Year != 1988) else . } %>%
     group_by(Year) %>%
     summarise(Total_Acres = sum(suppressWarnings(as.numeric(Acres)), na.rm = TRUE))
@@ -397,10 +397,10 @@ output$hist_acres <- renderPlotly({
 })
 
 output$hist_fires <- renderPlotly({
-  req(input$selected_batch == "Full Record (Post-1972)")
+  req(input$selected_batch == "Full Record (1972-Current)")
 
   df <- YELL_Fire_Final %>%
-    filter(Year %in% batch_choices[["Full Record (Post-1972)"]]) %>%
+    filter(Year %in% batch_choices[["Full Record (1972-Current)"]]) %>%
     { if (!input$include_1988) filter(., Year != 1988) else . } %>%
     count(Year, name = "Fire_Count")
 
@@ -425,7 +425,7 @@ output$summary_table_header <- renderUI({
   yrs <- sort(as.numeric(selected_years()))
   if (is.null(yrs) || length(yrs) == 0) {
     return(tags$div(style = "color: red; font-style: italic;",
-                    "Please select either individual year(s) or a year group to view results."))
+                    "Please select either individual year(s) or multi-year group to view results."))
   }
 
   # Check if selection came from a batch
@@ -540,15 +540,18 @@ output$plot_acres <- renderPlotly({
   max_y_acres <- quantile(df$Total_Acres, 0.95, na.rm = TRUE) * 1.1
   
   p <- ggplot(df, aes(x = factor(Label, levels = Label), y = Total_Acres,
-                      text = paste0("Year: ", Year, "<br>Total Acres: ", round(Total_Acres, 0)))) +
-    geom_col(fill = "#F4A261") +
-    labs(x = "Year", y = "Total Acres Burned",
-         caption = "*Indicates year with large area burned") +
-    theme_minimal(base_size = 16) +
-    theme(axis.text.x = element_text(angle = 90, hjust = 1),
-          axis.title.x = element_text(face = "bold", size = 14),
-          axis.title.y = element_text(face = "bold", size = 14)) +
-    coord_cartesian(ylim = c(0, max_y_acres))
+                          text = paste0("Year: ", Year,
+                                        "<br>Total Acres: ",
+                                        scales::comma(round(Total_Acres, 0))))) +
+        geom_col(fill = "#F4A261") +
+        labs(x = "Year", y = "Total Acres Burned",
+             caption = "*Indicates year with large area burned") +
+        scale_y_continuous(labels = scales::comma) +  # <- adds 1,000 separators
+        theme_minimal(base_size = 16) +
+        theme(axis.text.x = element_text(angle = 90, hjust = 1),
+              axis.title.x = element_text(face = "bold", size = 14),
+              axis.title.y = element_text(face = "bold", size = 14)) +
+        coord_cartesian(ylim = c(0, max_y_acres))
   
   ggplotly(p, tooltip = "text")
 })
@@ -558,14 +561,17 @@ output$plot_fires <- renderPlotly({
   max_y_fires <- quantile(df$Fire_Count, 0.95, na.rm = TRUE) * 1.1
   
   p <- ggplot(df, aes(x = factor(Label, levels = Label), y = Fire_Count,
-                      text = paste0("Year: ", Year, "<br>Fires: ", Fire_Count))) +
-    geom_col(fill = "#E76F51") +
-    labs(x = "Year", y = "Number of Fires") +
-    theme_minimal(base_size = 16) +
-    theme(axis.text.x = element_text(angle = 90, hjust = 1),
-          axis.title.x = element_text(face = "bold", size = 14),
-          axis.title.y = element_text(face = "bold", size = 14)) +
-    coord_cartesian(ylim = c(0, max_y_fires))
+                          text = paste0("Year: ", Year,
+                                        "<br>Fires: ",
+                                        scales::comma(Fire_Count)))) +
+        geom_col(fill = "#E76F51") +
+        labs(x = "Year", y = "Number of Fires") +
+        scale_y_continuous(labels = scales::comma) +  # <- adds 1,000 separators
+        theme_minimal(base_size = 16) +
+        theme(axis.text.x = element_text(angle = 90, hjust = 1),
+              axis.title.x = element_text(face = "bold", size = 14),
+              axis.title.y = element_text(face = "bold", size = 14)) +
+        coord_cartesian(ylim = c(0, max_y_fires))
   
   ggplotly(p, tooltip = "text")
 })
@@ -579,6 +585,7 @@ output$download_plot_acres <- downloadHandler(
     
     g <- ggplot(df, aes(x = factor(Label, levels = Label), y = Total_Acres)) +
       geom_col(fill = "#F4A261") +
+      scale_y_continuous(labels = scales::comma) +  # <- adds 1,000 separators
       labs(x = "Year", y = "Total Acres Burned") +
       theme_minimal(base_size = 16) +
       theme(axis.text.x = element_text(angle = 90, hjust = 1),
@@ -598,6 +605,7 @@ output$download_plot_fires <- downloadHandler(
     
     g <- ggplot(df, aes(x = factor(Label, levels = Label), y = Fire_Count)) +
       geom_col(fill = "#E76F51") +
+      scale_y_continuous(labels = scales::comma) +  # <- adds 1,000 separators
       labs(x = "Year", y = "Number of Fires") +
       theme_minimal(base_size = 16) +
       theme(axis.text.x = element_text(angle = 90, hjust = 1),
@@ -627,6 +635,7 @@ output$total_acres_ui <- renderUI({
         Metric = colDef(name = "Metric"),
         Value = colDef(
           name = "",
+          format = colFormat(separators = TRUE), # <- adds 1,000 separators
           style = function(value, index) {
             category <- summary_df()$Category[index]
             color <- switch(category,
@@ -660,93 +669,142 @@ uiOutput("total_acres_ui")
 #| context: server
 # Reactive filtered data for the decadal boxplot
 decadal_plot_df <- reactive({
-  req(input$selected_batch == "Full Record (Post-1972)")
+  req(input$selected_batch == "Full Record (1972-Current)")
 
   df <- YELL_Fire_Final %>%
     filter(Year >= 1972) %>%
     { if (!input$include_1988) filter(., Year != 1988) else . } %>%
-    mutate(Acres = as.numeric(Acres)) %>%
+    mutate(Acres = suppressWarnings(as.numeric(Acres))) %>%
     filter(!is.na(Acres) & Acres > 0)
 
-  if(nrow(df) == 0) return(NULL)
+  if (nrow(df) == 0) return(NULL)
 
   # Decade binning
   breaks <- seq(1972, max(df$Year, na.rm = TRUE) + 11, by = 11)
   labels <- paste0(breaks[-length(breaks)], "_", breaks[-1] - 1)
-  df <- df %>% mutate(Decade = cut(Year, breaks = breaks, labels = labels, include.lowest = TRUE))
+  df <- df %>%
+    mutate(Decade = cut(Year, breaks = breaks, labels = labels, include.lowest = TRUE))
 
   # Post-hoc letters for Dunn's test (skip if only one decade present)
-  letters_df <- if(length(unique(df$Decade)) > 1) {
-    dunn_result <- FSA::dunnTest(Acres ~ Decade, data = df, method = "holm")
+  letters_df <- if (length(unique(df$Decade)) > 1) {
+    dunn_result <- dunnTest(Acres ~ Decade, data = df, method = "holm")
     dunn_pvals <- dunn_result$res %>%
       select(Comparison, P.adj) %>%
-      tidyr::separate(Comparison, into = c("Group1","Group2"), sep = " - ")
+      separate(Comparison, into = c("Group1", "Group2"), sep = " - ")
 
-    pval_matrix <- matrix(1, nrow=length(labels), ncol=length(labels), dimnames=list(labels, labels))
-    for(i in 1:nrow(dunn_pvals)) {
-      g1 <- dunn_pvals$Group1[i]
-      g2 <- dunn_pvals$Group2[i]
-      pval_matrix[g1,g2] <- dunn_pvals$P.adj[i]
-      pval_matrix[g2,g1] <- dunn_pvals$P.adj[i]
+    pval_matrix <- matrix(1, nrow = length(labels), ncol = length(labels), dimnames = list(labels, labels))
+    for (i in seq_len(nrow(dunn_pvals))) {
+      g1 <- as.character(dunn_pvals$Group1[i])
+      g2 <- as.character(dunn_pvals$Group2[i])
+      pval_matrix[g1, g2] <- dunn_pvals$P.adj[i]
+      pval_matrix[g2, g1] <- dunn_pvals$P.adj[i]
     }
+
     multcompView::multcompLetters(pval_matrix)$Letters %>%
-      enframe(name="Decade", value="Letters") %>%
+      enframe(name = "Decade", value = "Letters") %>%
       mutate(Decade = factor(Decade, levels = levels(df$Decade))) %>%
-      left_join(df %>% group_by(Decade) %>% summarise(max_y=max(Acres), .groups="drop"),
-                by="Decade") %>%
-      mutate(y_pos = log10(max_y)*1.05)
+      left_join(
+        df %>% group_by(Decade) %>% summarise(max_y = max(Acres), .groups = "drop"),
+        by = "Decade"
+      ) %>%
+      mutate(y_pos = log10(max_y) * 1.05)
   } else {
-    tibble(Decade=character(), Letters=character(), max_y=numeric(), y_pos=numeric())
+    tibble(Decade = character(), Letters = character(), max_y = numeric(), y_pos = numeric())
   }
 
-  list(df=df, letters_df=letters_df)
+  list(df = df, letters_df = letters_df)
 })
 
-# Render the decadal boxplot
-output$decadal_boxplot <- renderPlot({
+# Helper: build the ggplot object (optionally with a title for the PNG)
+make_decadal_boxplot_gg <- function(df, letters_df, title = NULL) {
+  caption_txt <- "Letters indicate statistically distinct groups (Dunn’s test, Holm correction)"
+
+  ggplot(
+    df,
+    aes(
+      x = Decade,
+      y = log10(Acres),
+      text = paste0(
+        "Decade: ", gsub("_", "–", as.character(Decade)),
+        "<br>Acres burned: ", scales::comma(round(Acres, 0)),
+        "<br>Log10(acres): ", round(log10(Acres), 3)
+      )
+    )
+  ) +
+    geom_boxplot(fill = "#2a9d8f", alpha = 0.7) +
+    geom_jitter(width = 0.1, alpha = 0.3, color = "gray40", size = 4) +
+    geom_text(
+      data = letters_df,
+      aes(x = Decade, y = y_pos, label = Letters),
+      inherit.aes = FALSE,
+      size = 6, vjust = 0, color = "red3"
+    ) +
+    scale_x_discrete(labels = function(x) gsub("_", "–", x)) +
+    scale_y_continuous(name = "Log(Acres Burned)") +
+    theme_minimal(base_size = 16) +
+    theme(
+      axis.title.x = element_text(face = "bold", size = 14),
+      axis.title.y = element_text(face = "bold", size = 14),
+      plot.title   = element_text(face = "bold", size = 16),
+      plot.caption = element_text(hjust = 0, face = "italic", color = "red", size = 10)
+    ) +
+    labs(
+      title = title,          # NULL for displayed; set for PNG
+      x = "Decade",
+      y = "Log(Acres Burned)",
+      caption = caption_txt
+    )
+}
+
+# Render the decadal boxplot as Plotly (no title inside plot)
+output$decadal_boxplot <- renderPlotly({
   data_list <- decadal_plot_df()
-  req(data_list)  # ensures plot only renders if data exists
+  req(data_list)
 
   df <- data_list$df
   letters_df <- data_list$letters_df
 
-  ggplot(df, aes(x=Decade, y=log10(Acres))) +
-    geom_boxplot(fill="#2a9d8f", alpha=0.7) +
-    geom_jitter(width=0.1, alpha=0.3, color="gray40", size=4) +
-    geom_text(data=letters_df, aes(x=Decade, y=y_pos, label=Letters), size=6, vjust=0, color="red3") +
-    scale_x_discrete(labels=function(x) gsub("_","–",x)) +
-    theme_minimal(base_size=16) +
-    labs(title="Acres Burned by Decade",
-         y="Log(Acres Burned)", x="Decade",
-         caption="Letters indicate statistically distinct groups (Dunn’s test, Holm correction)")
+  g <- make_decadal_boxplot_gg(df, letters_df, title = NULL)
+
+  ggplotly(g, tooltip = "text") %>%
+    layout(
+      hoverlabel = list(bgcolor = "white"),
+      hovermode = "closest",
+      # We render caption as HTML below, so remove plotly's caption area spacing
+      margin = list(b = 60)
+    )
 })
 
-# Conditional UI: only show if full record is selected
+# Conditional UI: header + plotly output + caption (HTML) (only when full record selected)
 output$decadal_boxplot_ui <- renderUI({
-  req(input$selected_batch == "Full Record (Post-1972)")
-  plotOutput("decadal_boxplot")
+  req(input$selected_batch == "Full Record (1972-Current)")
+
+  tagList(
+    h4(tags$span(
+      style = "font-weight: bold; color: purple; font-size: 24px;",
+      "Acres Burned by Decade"
+    )),
+    plotlyOutput("decadal_boxplot", height = "500px"),
+    tags$p(
+      style = "color: red; font-style: italic; font-size: 10px; text-align: left; margin-top: 6px;",
+      "Letters indicate statistically distinct groups (Dunn’s test, Holm correction)"
+    )
+  )
 })
 
-# Download button
+# Download button (PNG keeps the title inside the plot)
 output$download_decadal_boxplot <- downloadHandler(
   filename = function() "Decadal_Boxplot.png",
   content = function(file) {
     data_list <- decadal_plot_df()
     req(data_list)
+
     df <- data_list$df
     letters_df <- data_list$letters_df
 
-    g <- ggplot(df, aes(x=Decade, y=log10(Acres))) +
-      geom_boxplot(fill="#2a9d8f", alpha=0.7) +
-      geom_jitter(width=0.1, alpha=0.3, color="gray40", size=4) +
-      geom_text(data=letters_df, aes(x=Decade, y=y_pos, label=Letters), size=6, vjust=0, color="red3") +
-      scale_x_discrete(labels=function(x) gsub("_","–",x)) +
-      theme_minimal(base_size=16) +
-      labs(title="Acres Burned by Decade",
-           y="Log(Acres Burned)", x="Decade",
-           caption="Letters indicate statistically distinct groups (Dunn’s test, Holm correction)")
+    g <- make_decadal_boxplot_gg(df, letters_df, title = "Acres Burned by Decade")
 
-    ggsave(file, g, width=10, height=6, dpi=300)
+    ggsave(file, g, width = 10, height = 6, dpi = 300)
   }
 )
 ```
@@ -754,37 +812,37 @@ output$download_decadal_boxplot <- downloadHandler(
 ```{r boxplot output, include=TRUE, echo=FALSE}
 uiOutput("decadal_boxplot_ui")
 conditionalPanel(
-  condition="input.selected_batch=='Full Record (Post-1972)'",
+  condition="input.selected_batch=='Full Record (1972-Current)'",
   downloadButton("download_decadal_boxplot", "Download Plot")
 )
 ```
 
 
-```{r dicsovery dates, include=FALSE}
+```{r discovery dates, include=FALSE}
 #| context: server
-# Plot factory (reused by renderPlot + download)
-make_discovery_doy_ggplot <- function(include_1988 = FALSE) {
+# Helper: build ggplot (optionally include a title for PNG)
+make_discovery_doy_ggplot <- function(include_1988 = FALSE, title = NULL) {
 
   filtered_df <- YELL_Fire_Final %>%
-    dplyr::filter(!is.na(Date)) %>%
-    dplyr::mutate(
-      Year = lubridate::year(Date),
-      DOY  = lubridate::yday(Date)
+    filter(!is.na(Date)) %>%
+    mutate(
+      Year = year(Date),
+      DOY  = yday(Date)
     ) %>%
-    dplyr::filter(Year >= 1972) %>%
-    { if (!include_1988) dplyr::filter(., Year != 1988) else . }
+    filter(Year >= 1972) %>%
+    { if (!include_1988) filter(., Year != 1988) else . }
 
   breaks <- seq(1972, max(filtered_df$Year, na.rm = TRUE) + 11, by = 11)
   labels <- paste0(breaks[-length(breaks)], "_", breaks[-1] - 1)
 
   filtered_df <- filtered_df %>%
-    dplyr::mutate(Decade = cut(Year, breaks = breaks, labels = labels, include.lowest = TRUE))
+    mutate(Decade = cut(Year, breaks = breaks, labels = labels, include.lowest = TRUE))
 
-  dunn_result <- FSA::dunnTest(DOY ~ Decade, data = filtered_df, method = "holm")
+  dunn_result <- dunnTest(DOY ~ Decade, data = filtered_df, method = "holm")
 
   dunn_pvals <- dunn_result$res %>%
-    dplyr::select(Comparison, P.adj) %>%
-    tidyr::separate(Comparison, into = c("Group1", "Group2"), sep = " - ")
+    select(Comparison, P.adj) %>%
+    separate(Comparison, into = c("Group1", "Group2"), sep = " - ")
 
   pval_matrix <- matrix(
     1,
@@ -802,56 +860,103 @@ make_discovery_doy_ggplot <- function(include_1988 = FALSE) {
   }
 
   letters_df <- multcompView::multcompLetters(pval_matrix)$Letters |>
-    tibble::enframe(name = "Decade", value = "Letters")
+    enframe(name = "Decade", value = "Letters")
 
   position_df <- filtered_df %>%
-    dplyr::group_by(Decade) %>%
-    dplyr::summarize(max_y = max(DOY, na.rm = TRUE), .groups = "drop")
+    group_by(Decade) %>%
+    summarize(max_y = max(DOY, na.rm = TRUE), .groups = "drop")
 
   letters_df <- dplyr::left_join(letters_df, position_df, by = "Decade") %>%
-    dplyr::mutate(label_y = max_y + 5)
+    mutate(label_y = max_y + 5)
 
-  ggplot2::ggplot(filtered_df, ggplot2::aes(x = Decade, y = DOY)) +
-    ggplot2::geom_boxplot(fill = "#264653", alpha = 0.7) +
-    ggplot2::geom_jitter(width = 0.1, alpha = 0.3, color = "gray40", size = 3) +
-    ggplot2::geom_text(
+  ggplot(
+    filtered_df,
+    aes(
+      x = Decade,
+      y = DOY,
+      text = paste0(
+        "Decade: ", gsub("_", "–", as.character(Decade)),
+        "<br>Year: ", Year,
+        "<br>Day of Year: ", DOY
+      )
+    )
+  ) +
+    geom_boxplot(fill = "#264653", alpha = 0.7) +
+    geom_jitter(width = 0.1, alpha = 0.3, color = "gray40", size = 3) +
+    geom_text(
       data = letters_df,
-      ggplot2::aes(x = Decade, y = label_y, label = Letters),
+      aes(x = Decade, y = label_y, label = Letters),
+      inherit.aes = FALSE,
       size = 6, vjust = 0, color = "red3"
     ) +
-    ggplot2::scale_x_discrete(labels = function(x) gsub("_", "–", x)) +
-    ggplot2::scale_y_continuous(name = "Day of Year", breaks = seq(100, 300, 20)) +
-    ggplot2::theme_minimal(base_size = 16) +
-    ggplot2::labs(
-      title = "Fire Discovery Dates by Decade",
+    scale_x_discrete(labels = function(x) gsub("_", "–", x)) +
+    scale_y_continuous(name = "Day of Year", breaks = seq(100, 300, 20)) +
+    theme_minimal(base_size = 16) +
+    theme(
+      axis.text.x  = element_text(angle = 90, hjust = 1),
+      axis.title.x = element_text(face = "bold", size = 14),
+      axis.title.y = element_text(face = "bold", size = 14),
+      plot.title   = element_text(face = "bold", size = 16),
+      plot.caption = element_text(hjust = 0, face = "italic", color = "red", size = 10)
+    ) +
+    labs(
+      title = title,  # NULL for displayed; set for PNG
       x = "Decade",
+      y = "Day of Year",
       caption = "Letters indicate statistically distinct groups (Dunn’s test, Holm correction)"
     )
 }
 
-# Render plot (only when full record selected)
-output$discovery_doy_plot <- renderPlot({
-  req(input$selected_batch == "Full Record (Post-1972)")
-  make_discovery_doy_ggplot(include_1988 = isTRUE(input$include_1988))
+# Render displayed plot as Plotly (no title inside plot)
+output$discovery_doy_plot <- renderPlotly({
+  req(input$selected_batch == "Full Record (1972-Current)")
+
+  g <- make_discovery_doy_ggplot(
+    include_1988 = isTRUE(input$include_1988),
+    title = NULL
+  )
+
+  ggplotly(g, tooltip = "text") %>%
+    layout(
+      hoverlabel = list(bgcolor = "white"),
+      hovermode = "closest",
+      margin = list(b = 60)
+    )
 })
 
-# Conditional UI: only show the plot (no button here)
+# Conditional UI: header + plotly output + caption (HTML) (only when full record selected)
 output$discovery_doy_ui <- renderUI({
-  req(input$selected_batch == "Full Record (Post-1972)")
-  plotOutput("discovery_doy_plot", height = "600px")
+  req(input$selected_batch == "Full Record (1972-Current)")
+
+  tagList(
+    h4(tags$span(
+      style = "font-weight: bold; color: purple; font-size: 24px;",
+      "Fire Discovery Dates by Decade"
+    )),
+    plotlyOutput("discovery_doy_plot", height = "600px"),
+    tags$p(
+      style = "color: red; font-style: italic; font-size: 10px; text-align: left; margin-top: 6px;",
+      "Letters indicate statistically distinct groups (Dunn’s test, Holm correction)"
+    )
+  )
 })
 
-# Download handler (button is placed in the document body via conditionalPanel)
+# Download handler (PNG keeps the title inside the plot)
 output$download_discovery_doy_plot <- downloadHandler(
   filename = function() {
     paste0("Fire_Discovery_Dates_by_Decade_", Sys.Date(), ".png")
   },
   content = function(file) {
-    req(input$selected_batch == "Full Record (Post-1972)")
-    p <- make_discovery_doy_ggplot(include_1988 = isTRUE(input$include_1988))
-    ggplot2::ggsave(
+    req(input$selected_batch == "Full Record (1972-Current)")
+
+    g <- make_discovery_doy_ggplot(
+      include_1988 = isTRUE(input$include_1988),
+      title = "Fire Discovery Dates by Decade"
+    )
+
+    ggsave(
       filename = file,
-      plot = p,
+      plot = g,
       device = "png",
       width = 12, height = 7, units = "in",
       dpi = 300
@@ -863,7 +968,7 @@ output$download_discovery_doy_plot <- downloadHandler(
 ```{r discovery date output, include=TRUE, echo=FALSE}
 uiOutput("discovery_doy_ui")
 conditionalPanel(
-  condition = "input.selected_batch == 'Full Record (Post-1972)'",
+  condition = "input.selected_batch == 'Full Record (1972-Current)'",
   downloadButton("download_discovery_doy_plot", "Download Plot")
 )
 ```
@@ -878,7 +983,7 @@ output$size_class_header <- renderUI({
   yrs <- sort(as.numeric(selected_years()))
   if (is.null(yrs) || length(yrs) == 0) {
     return(tags$div(style = "color: red; font-style: italic;",
-                    "Please select either individual year(s) or a year group to view results."))
+                    "Please select either individual year(s) or multi-year group to view results."))
   }
 
   # Check if selection came from a batch
@@ -1022,7 +1127,7 @@ output$management_header <- renderUI({
   yrs <- sort(as.numeric(selected_years()))
   if (is.null(yrs) || length(yrs) == 0) {
     return(tags$div(style = "color: red; font-style: italic;",
-                    "Please select either individual year(s) or a year group to view results."))
+                    "Please select either individual year(s) or multi-year group to view results."))
   }
 
   # Check if selection came from a batch
@@ -1058,8 +1163,8 @@ output$management_ui <- renderUI({
   summary_type <- YELL_Fire_Final %>%
     filter(Year %in% yrs) %>%
     mutate(Type_Description = case_when(
-      Type == 11 ~ "Full Suppression Strategy",
-      Type %in% c(14, 49) ~ "Not Full Suppression Strategy",
+      Type == 11 ~ "Direct Extinguishment",
+      Type %in% c(14, 49) ~ "Indirect Confinement",
       Type == 21 ~ "Natural Out",
       Type == 48 ~ "Rx Burn",
       Type == 51 ~ "False Report",
@@ -1160,7 +1265,7 @@ output$cause_header <- renderUI({
   yrs <- sort(as.numeric(selected_years()))
   if (is.null(yrs) || length(yrs) == 0) {
     return(tags$div(style = "color: red; font-style: italic;",
-                    "Please select either individual year(s) or a year group to view results."))
+                    "Please select either individual year(s) or multi-year group to view results."))
   }
 
   # Check if selection came from a batch
@@ -1290,7 +1395,7 @@ output$specific_cause_header <- renderUI({
   yrs <- sort(as.numeric(selected_years()))
   if (is.null(yrs) || length(yrs) == 0) {
     return(tags$div(style = "color: red; font-style: italic;",
-                    "Please select either individual year(s) or a year group to view results."))
+                    "Please select either individual year(s) or multi-year group to view results."))
   }
 
   # Check if selection came from a batch
@@ -1446,7 +1551,7 @@ output$month_header <- renderUI({
   yrs <- sort(as.numeric(selected_years()))
   if (is.null(yrs) || length(yrs) == 0) {
     return(tags$div(style = "color: red; font-style: italic;",
-                    "Please select either individual year(s) or a year group to view results."))
+                    "Please select either individual year(s) or multi-year group to view results."))
   }
 
   # Check if selection came from a batch
@@ -1640,7 +1745,7 @@ output$declared_out_header <- renderUI({
   yrs <- sort(as.numeric(selected_years()))
   if (is.null(yrs) || length(yrs) == 0) {
     return(tags$div(style = "color: red; font-style: italic;",
-                    "Please select either individual year(s) or a year group to view results."))
+                    "Please select either individual year(s) or multi-year group to view results."))
   }
 
   # Check if selection came from a batch
@@ -1774,7 +1879,7 @@ output$declared_contained_header <- renderUI({
   yrs <- sort(as.numeric(selected_years()))
   if (is.null(yrs) || length(yrs) == 0) {
     return(tags$div(style = "color: red; font-style: italic;",
-                    "Please select either individual year(s) or a year group to view results."))
+                    "Please select either individual year(s) or multi-year group to view results."))
   }
 
   # Check if selection came from a batch
@@ -1887,7 +1992,7 @@ output$declared_contained_ui <- renderUI({
     plotlyOutput("hist_ttc", height = "500px"),
     tags$p(
       style = "color: red; font-style: italic; margin-top: 10px;",
-      "Declared containd dates are not available prior to 1992."
+      "Declared contained dates are not available prior to 1992."
     ),
     downloadButton("download_hist_ttc", "Download Plot", style = "margin-top: 10px;")
   )
@@ -1908,7 +2013,7 @@ output$declared_controlled_header <- renderUI({
   yrs <- sort(as.numeric(selected_years()))
   if (is.null(yrs) || length(yrs) == 0) {
     return(tags$div(style = "color: red; font-style: italic;",
-                    "Please select either individual year(s) or a year group to view results."))
+                    "Please select either individual year(s) or multi-year group to view results."))
   }
 
   # Check if selection came from a batch
