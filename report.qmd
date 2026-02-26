@@ -454,10 +454,17 @@ uiOutput("summary_table_header")
 
 ```{r total acres server, include=FALSE, echo=FALSE}
 #| context: server
-# --- Helper function to calculate mode ---
-get_mode <- function(x) {
-  ux <- na.omit(unique(x))
-  ux[which.max(tabulate(match(x, ux)))]
+# --- Helper function: robust numeric mode (optionally bin/round) ---
+get_mode_num <- function(x, digits = 2) {
+  x <- suppressWarnings(as.numeric(x))
+  x <- x[!is.na(x)]
+  if (length(x) == 0) return(NA_real_)
+
+  # Round to stabilize float noise and align with how acres are recorded (e.g., 0.01, 0.1, etc.)
+  x_round <- round(x, digits)
+
+  tab <- table(x_round)
+  as.numeric(names(tab)[which.max(tab)])
 }
 
 # --- Reactive plot data frame ---
@@ -485,53 +492,74 @@ plot_df_reactive <- reactive({
 
 # --- Summary table ---
 summary_df <- reactive({
+  yrs <- selected_years()
+  req(yrs)
+
   df <- YELL_Fire_Final %>%
-    filter(Year %in% selected_years()) %>%
-    mutate(Acres = suppressWarnings(as.numeric(Acres)))
-  
-  summary_type <- df %>% count(Type, name = "Type_Count")
-  
-  total_number <- sum(summary_type$Type_Count)
-  avg_number_fires <- total_number / length(selected_years())
-  acres_median <- median(df$Acres, na.rm = TRUE)
-  acres_mode <- get_mode(df$Acres)
-  fires_mode <- get_mode(summary_type$Type_Count)
-  
+    dplyr::filter(Year %in% yrs) %>%
+    dplyr::mutate(Acres = suppressWarnings(as.numeric(Acres))) %>%
+    dplyr::filter(!is.na(Acres))
+
+  total_number <- nrow(df)
+  total_acres  <- sum(df$Acres, na.rm = TRUE)
+
   yearly_summary <- df %>%
-    group_by(Year) %>%
-    summarise(Total_Acres_Yearly = sum(Acres, na.rm = TRUE),
-              Fire_Count_Yearly = n(), .groups = "drop")
-  
-  acres_median_yearly <- median(yearly_summary$Total_Acres_Yearly)
-  acres_mode_yearly <- get_mode(yearly_summary$Total_Acres_Yearly)
-  fires_median_yearly <- median(yearly_summary$Fire_Count_Yearly)
-  fires_mode_yearly <- get_mode(yearly_summary$Fire_Count_Yearly)
-  
-  total_summary <- df %>%
-    summarise(Total_Acres = sum(Acres, na.rm = TRUE)) %>%
-    mutate(
-      `Acres Burned (Total)` = round(Total_Acres, 0),
-      `Acres Burned (Average)` = round(Total_Acres / length(selected_years()), 0),
-      `Acres Burned (Median)` = round(acres_median_yearly, 0),
-      `Acres Burned (Mode)` = round(acres_mode, 2),
-      `Number of Fires (Total)` = total_number,
-      `Number of Fires (Average)` = as.integer(round(avg_number_fires)),
-      `Number of Fires (Median)` = as.integer(round(fires_median_yearly)),
-      `Number of Fires (Mode)` = as.integer(round(fires_mode_yearly))
-    ) %>%
-    select(`Number of Fires (Total)`, `Acres Burned (Total)`,
-           `Number of Fires (Average)`, `Acres Burned (Average)`,
-           `Number of Fires (Median)`, `Acres Burned (Median)`,
-           `Number of Fires (Mode)`, `Acres Burned (Mode)`) %>%
-    pivot_longer(cols = everything(), names_to = "Metric", values_to = "Value") %>%
-    mutate(Category = case_when(
+    dplyr::group_by(Year) %>%
+    dplyr::summarise(
+      Total_Acres_Yearly = sum(Acres, na.rm = TRUE),
+      Fire_Count_Yearly  = dplyr::n(),
+      .groups = "drop"
+    )
+
+  # ----- ACRES -----
+  if (length(yrs) == 1) {
+    # Single-year: per-fire stats
+    acres_avg_val    <- mean(df$Acres, na.rm = TRUE)
+    acres_median_val <- median(df$Acres, na.rm = TRUE)
+  } else {
+    # Multi-year: stats across yearly totals (your desired behavior)
+    acres_avg_val    <- mean(yearly_summary$Total_Acres_Yearly, na.rm = TRUE)
+    acres_median_val <- median(yearly_summary$Total_Acres_Yearly, na.rm = TRUE)
+  }
+
+  # Mode: ALWAYS incident-level acres (matches your old “0.1” behavior)
+  acres_mode_val <- get_mode_num(df$Acres, digits = 2)
+
+  # ----- FIRES -----
+  if (length(yrs) == 1) {
+    fires_avg_val    <- total_number
+    fires_median_val <- total_number
+    fires_mode_val   <- total_number
+  } else {
+    fires_avg_val    <- mean(yearly_summary$Fire_Count_Yearly, na.rm = TRUE)
+    fires_median_val <- median(yearly_summary$Fire_Count_Yearly, na.rm = TRUE)
+
+    # fire count mode across yearly fire counts
+    tab_f <- table(yearly_summary$Fire_Count_Yearly)
+    fires_mode_val <- as.numeric(names(tab_f)[which.max(tab_f)])
+  }
+
+  # ---- Build final table with rounding rules ----
+  tibble::tibble(
+    `Number of Fires (Total)`   = as.integer(round(total_number, 0)),
+    `Acres Burned (Total)`      = round(total_acres, 0),
+
+    `Number of Fires (Average)` = as.integer(round(fires_avg_val, 0)),
+    `Acres Burned (Average)`    = round(acres_avg_val, 0),
+
+    `Number of Fires (Median)`  = as.integer(round(fires_median_val, 0)),
+    `Acres Burned (Median)`     = round(acres_median_val, 1),
+
+    `Number of Fires (Mode)`    = as.integer(round(fires_mode_val, 0)),
+    `Acres Burned (Mode)`       = round(acres_mode_val, 2)  # <-- keep 2 decimals ONLY here
+  ) %>%
+    tidyr::pivot_longer(cols = dplyr::everything(), names_to = "Metric", values_to = "Value") %>%
+    dplyr::mutate(Category = dplyr::case_when(
       grepl("Total", Metric) ~ "Total",
       grepl("Average", Metric) ~ "Average",
       grepl("Median", Metric) ~ "Median",
       grepl("Mode", Metric) ~ "Mode"
     ))
-  
-  total_summary
 })
 
 # --- Render Plots ---
@@ -715,10 +743,8 @@ decadal_plot_df <- reactive({
   list(df = df, letters_df = letters_df)
 })
 
-# Helper: build the ggplot object (optionally with a title for the PNG)
-make_decadal_boxplot_gg <- function(df, letters_df, title = NULL) {
-  caption_txt <- "Letters indicate statistically distinct groups (Dunn’s test, Holm correction)"
-
+# Helper: build ggplot for PLOTLY (includes tooltip text)
+make_decadal_boxplot_gg_plotly <- function(df, letters_df) {
   ggplot(
     df,
     aes(
@@ -744,12 +770,43 @@ make_decadal_boxplot_gg <- function(df, letters_df, title = NULL) {
     theme_minimal(base_size = 16) +
     theme(
       axis.title.x = element_text(face = "bold", size = 14),
+      axis.title.y = element_text(face = "bold", size = 14)
+      # NOTE: caption handled in UI below plot, so no caption theme needed here
+    ) +
+    labs(
+      title = NULL,
+      x = "Decade",
+      y = "Log(Acres Burned)"
+    )
+}
+
+# Helper: build ggplot for PNG (NO tooltip text aesthetic)
+make_decadal_boxplot_gg_png <- function(df, letters_df, title = "Acres Burned by Decade") {
+  caption_txt <- "Letters indicate statistically distinct groups (Dunn’s test, Holm correction)"
+
+  ggplot(
+    df,
+    aes(x = Decade, y = log10(Acres))
+  ) +
+    geom_boxplot(fill = "#2a9d8f", alpha = 0.7) +
+    geom_jitter(width = 0.1, alpha = 0.3, color = "gray40", size = 4) +
+    geom_text(
+      data = letters_df,
+      aes(x = Decade, y = y_pos, label = Letters),
+      inherit.aes = FALSE,
+      size = 6, vjust = 0, color = "red3"
+    ) +
+    scale_x_discrete(labels = function(x) gsub("_", "–", x)) +
+    scale_y_continuous(name = "Log(Acres Burned)") +
+    theme_minimal(base_size = 16) +
+    theme(
+      axis.title.x = element_text(face = "bold", size = 14),
       axis.title.y = element_text(face = "bold", size = 14),
       plot.title   = element_text(face = "bold", size = 16),
       plot.caption = element_text(hjust = 0, face = "italic", color = "red", size = 10)
     ) +
     labs(
-      title = title,          # NULL for displayed; set for PNG
+      title = title,
       x = "Decade",
       y = "Log(Acres Burned)",
       caption = caption_txt
@@ -764,13 +821,12 @@ output$decadal_boxplot <- renderPlotly({
   df <- data_list$df
   letters_df <- data_list$letters_df
 
-  g <- make_decadal_boxplot_gg(df, letters_df, title = NULL)
+  g <- make_decadal_boxplot_gg_plotly(df, letters_df)
 
   ggplotly(g, tooltip = "text") %>%
     layout(
       hoverlabel = list(bgcolor = "white"),
       hovermode = "closest",
-      # We render caption as HTML below, so remove plotly's caption area spacing
       margin = list(b = 60)
     )
 })
@@ -786,7 +842,7 @@ output$decadal_boxplot_ui <- renderUI({
     )),
     plotlyOutput("decadal_boxplot", height = "500px"),
     tags$p(
-      style = "color: red; font-style: italic; font-size: 10px; text-align: left; margin-top: 6px;",
+      style = "color: red; font-style: italic; text-align: left; margin-top: 6px;",
       "Letters indicate statistically distinct groups (Dunn’s test, Holm correction)"
     )
   )
@@ -802,7 +858,7 @@ output$download_decadal_boxplot <- downloadHandler(
     df <- data_list$df
     letters_df <- data_list$letters_df
 
-    g <- make_decadal_boxplot_gg(df, letters_df, title = "Acres Burned by Decade")
+    g <- make_decadal_boxplot_gg_png(df, letters_df, title = "Acres Burned by Decade")
 
     ggsave(file, g, width = 10, height = 6, dpi = 300)
   }
@@ -820,8 +876,8 @@ conditionalPanel(
 
 ```{r discovery dates, include=FALSE}
 #| context: server
-# Helper: build ggplot (optionally include a title for PNG)
-make_discovery_doy_ggplot <- function(include_1988 = FALSE, title = NULL) {
+# ---- Shared data prep (returns filtered_df + letters_df) ----
+discovery_doy_data <- function(include_1988 = FALSE) {
 
   filtered_df <- YELL_Fire_Final %>%
     filter(!is.na(Date)) %>%
@@ -859,15 +915,24 @@ make_discovery_doy_ggplot <- function(include_1988 = FALSE, title = NULL) {
     pval_matrix[g2, g1] <- p
   }
 
-  letters_df <- multcompView::multcompLetters(pval_matrix)$Letters |>
+  letters_df <- multcompLetters(pval_matrix)$Letters |>
     enframe(name = "Decade", value = "Letters")
 
   position_df <- filtered_df %>%
     group_by(Decade) %>%
     summarize(max_y = max(DOY, na.rm = TRUE), .groups = "drop")
 
-  letters_df <- dplyr::left_join(letters_df, position_df, by = "Decade") %>%
+  letters_df <- left_join(letters_df, position_df, by = "Decade") %>%
     mutate(label_y = max_y + 5)
+
+  list(filtered_df = filtered_df, letters_df = letters_df)
+}
+
+# ---- Plot builder for PLOTLY (includes tooltip text aesthetic) ----
+make_discovery_doy_gg_plotly <- function(include_1988 = FALSE) {
+  dat <- discovery_doy_data(include_1988 = include_1988)
+  filtered_df <- dat$filtered_df
+  letters_df  <- dat$letters_df
 
   ggplot(
     filtered_df,
@@ -893,28 +958,57 @@ make_discovery_doy_ggplot <- function(include_1988 = FALSE, title = NULL) {
     scale_y_continuous(name = "Day of Year", breaks = seq(100, 300, 20)) +
     theme_minimal(base_size = 16) +
     theme(
-      axis.text.x  = element_text(angle = 90, hjust = 1),
+      axis.title.x = element_text(face = "bold", size = 14),
+      axis.title.y = element_text(face = "bold", size = 14)
+    ) +
+    labs(
+      title = NULL,         # no title inside the displayed plot
+      x = "Decade",
+      y = "Day of Year"
+    )
+}
+
+# ---- Plot builder for PNG (NO tooltip aesthetic; keeps title + caption) ----
+make_discovery_doy_gg_png <- function(include_1988 = FALSE,
+                                      title = "Fire Discovery Dates by Decade") {
+  dat <- discovery_doy_data(include_1988 = include_1988)
+  filtered_df <- dat$filtered_df
+  letters_df  <- dat$letters_df
+
+  ggplot(
+    filtered_df,
+    aes(x = Decade, y = DOY)
+  ) +
+    geom_boxplot(fill = "#264653", alpha = 0.7) +
+    geom_jitter(width = 0.1, alpha = 0.3, color = "gray40", size = 3) +
+    geom_text(
+      data = letters_df,
+      aes(x = Decade, y = label_y, label = Letters),
+      inherit.aes = FALSE,
+      size = 6, vjust = 0, color = "red3"
+    ) +
+    scale_x_discrete(labels = function(x) gsub("_", "–", x)) +
+    scale_y_continuous(name = "Day of Year", breaks = seq(100, 300, 20)) +
+    theme_minimal(base_size = 16) +
+    theme(
       axis.title.x = element_text(face = "bold", size = 14),
       axis.title.y = element_text(face = "bold", size = 14),
       plot.title   = element_text(face = "bold", size = 16),
       plot.caption = element_text(hjust = 0, face = "italic", color = "red", size = 10)
     ) +
     labs(
-      title = title,  # NULL for displayed; set for PNG
+      title = title,
       x = "Decade",
       y = "Day of Year",
       caption = "Letters indicate statistically distinct groups (Dunn’s test, Holm correction)"
     )
 }
 
-# Render displayed plot as Plotly (no title inside plot)
+# ---- Render displayed plot as Plotly (no title inside plot) ----
 output$discovery_doy_plot <- renderPlotly({
   req(input$selected_batch == "Full Record (1972-Current)")
 
-  g <- make_discovery_doy_ggplot(
-    include_1988 = isTRUE(input$include_1988),
-    title = NULL
-  )
+  g <- make_discovery_doy_gg_plotly(include_1988 = isTRUE(input$include_1988))
 
   ggplotly(g, tooltip = "text") %>%
     layout(
@@ -924,43 +1018,37 @@ output$discovery_doy_plot <- renderPlotly({
     )
 })
 
-# Conditional UI: header + plotly output + caption (HTML) (only when full record selected)
-output$discovery_doy_ui <- renderUI({
+# ---- Conditional UI: header + plotly output + caption (HTML) ----
+output$discovery_doy_ui <- shiny::renderUI({
   req(input$selected_batch == "Full Record (1972-Current)")
 
   tagList(
-    h4(tags$span(
+    h4(shiny::tags$span(
       style = "font-weight: bold; color: purple; font-size: 24px;",
       "Fire Discovery Dates by Decade"
     )),
     plotlyOutput("discovery_doy_plot", height = "600px"),
     tags$p(
-      style = "color: red; font-style: italic; font-size: 10px; text-align: left; margin-top: 6px;",
+      style = "color: red; font-style: italic; text-align: left; margin-top: 6px",
       "Letters indicate statistically distinct groups (Dunn’s test, Holm correction)"
     )
   )
 })
 
-# Download handler (PNG keeps the title inside the plot)
-output$download_discovery_doy_plot <- downloadHandler(
+# ---- Download handler: PNG uses the clean PNG builder ----
+output$download_discovery_doy_plot <- shiny::downloadHandler(
   filename = function() {
     paste0("Fire_Discovery_Dates_by_Decade_", Sys.Date(), ".png")
   },
   content = function(file) {
     req(input$selected_batch == "Full Record (1972-Current)")
 
-    g <- make_discovery_doy_ggplot(
+    g <- make_discovery_doy_gg_png(
       include_1988 = isTRUE(input$include_1988),
       title = "Fire Discovery Dates by Decade"
     )
 
-    ggsave(
-      filename = file,
-      plot = g,
-      device = "png",
-      width = 12, height = 7, units = "in",
-      dpi = 300
-    )
+    ggsave(file, g, width = 10, height = 6, dpi = 300)
   }
 )
 ```
