@@ -1,7 +1,7 @@
 ---
 title: "Yellowstone Fire Statistics Reporting"
 author: "Nickolas Kichas"
-date: "2026-02-24"
+date: "2026-03-26"
 format: html
 server: shiny
 execute:
@@ -258,7 +258,13 @@ for (len in batch_lengths) {
   batch_choices[[label]] <- years
 }
 
-batch_choices[["Full Record (1972-Current)"]] <- sort(unique(YELL_Fire_Final$Year[YELL_Fire_Final$Year >= 1972]), decreasing = TRUE)
+batch_choices[["1989-Current"]] <- sort(
+  unique(YELL_Fire_Final$Year[YELL_Fire_Final$Year >= 1989]),
+  decreasing = TRUE)
+
+batch_choices[["Full Record (1972-Current)"]] <- sort(
+  unique(YELL_Fire_Final$Year[YELL_Fire_Final$Year >= 1972]), 
+  decreasing = TRUE)
 
 batch_labels <- names(batch_choices)
 names(batch_labels) <- batch_labels
@@ -278,7 +284,7 @@ selectInput("selected_year",
 
 
 ```{r select batch, include=TRUE, echo=FALSE}
-### Select by Batch (Most Recent X Years)
+# Select by Batch (Most Recent X Years)
 selectInput("selected_batch", 
             "Select Multi-Year Group (5–50 yrs):", 
             choices = c("None" = "", batch_labels),
@@ -363,7 +369,7 @@ uiOutput("summary_header")
 
 ```{r full record plotly outputs, include=FALSE}
 #| context: server
-### Create full record plots in a separate chunk
+# Create full record plots in a separate chunk
 output$hist_acres <- renderPlotly({
   req(input$selected_batch == "Full Record (1972-Current)")
 
